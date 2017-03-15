@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import JournalInputContainer from './containers/JournalInputContainer'
+import UserProfileContainer from './containers/UserProfileContainer'
 import SignUp from './components/SignUp'
 
 const ExampleApp = connect(
@@ -35,6 +36,7 @@ render (
         <Route path="/home" component={Home} />
         <Route path="/JournalInput" component={JournalInputContainer} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/user" component={UserProfileContainer} />
 
       </Route>
     </Router>
