@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
+import {Router, Route, IndexRedirect, browserHistory, Link} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
@@ -17,7 +17,9 @@ const ExampleApp = connect(
   ({ user, children }) =>
     <div>
       <nav className="login">
-        {user ? <WhoAmI/> : <Login/>}
+        {user ? <WhoAmI/> : <Login/> }
+        <Link to="/signup">Sign Up!</Link> <br/>
+        <Link to="/home">Home</Link>
       </nav>
       {children}
     </div>
