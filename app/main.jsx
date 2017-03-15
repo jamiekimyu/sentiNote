@@ -5,7 +5,7 @@ import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
-
+import Home from './components/Home'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import JournalInputContainer from './containers/JournalInputContainer'
@@ -15,9 +15,9 @@ const ExampleApp = connect(
 ) (
   ({ user, children }) =>
     <div>
-      <nav>
+      <nav className="login">
         {user ? <WhoAmI/> : <Login/>}
-      </nav> 
+      </nav>
       {children}
     </div>
 )
@@ -26,7 +26,10 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/JournalInput"  component={JournalInputContainer} />
+        
+
+        <IndexRedirect to="/home" />
+        <Route path="/home" component={Home} />
         <Route path="/JournalInput" component={JournalInputContainer} />
 
       </Route>
