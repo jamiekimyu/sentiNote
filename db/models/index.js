@@ -6,7 +6,14 @@
 
 const User = require('./user')
 const OAuth = require('./oauth')
+const Journal = require('./journal')
+const Entry = require('./entry');
+
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User}
+
+Journal.belongsTo(User);
+Journal.hasMany(Entry);
+
+module.exports = {User, Journal}
