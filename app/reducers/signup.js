@@ -29,13 +29,6 @@ export const reducer = (state = initState, action) => {
 /* ------------       DISPATCHERS     ------------------ */
 
 
-export const loadProductsInCat = (category) => dispatch => {
-  axios.get(`/api/products/cat/${category}`)
-  .then(res => {
-    dispatch(selCatProducts(res.data))
-  })
-  .catch(console.error)
-}
 
 export const signup = (username, email, password) =>
   dispatch =>
