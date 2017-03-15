@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('APP/db');
 
-const Entry = db.define('journals', {
+const Entry = db.define('entries', {
 	title: {
 		type: Sequelize.STRING,
 		allowNull: false
