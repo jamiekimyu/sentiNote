@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
 
-var r1 = sentiment(' Abandon.');
-console.log('r1',r1); 
+
 
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
@@ -33,7 +32,6 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
 class JournalInput extends Component {
 
   render(){
-    console.log('props',this.props)
     const handleSubmit = this.props.handleSubmit;
     const submitting = this.props.submitting;
     
