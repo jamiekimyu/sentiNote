@@ -1,5 +1,5 @@
 {
-  "name": "sentinote",
+  "name": "sentiNote",
   "version": "0.0.1",
   "description": "A happy little skeleton.",
   "main": "index.js",
@@ -62,8 +62,10 @@
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
+    "redux-form": "^6.5.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
+    "sentiment": "^3.0.1",
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
