@@ -8,6 +8,7 @@ import store from './store'
 import Home from './components/Home'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import JournalInputContainer from './containers/JournalInputContainer'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -25,8 +26,12 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
+        
+
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
+        <Route path="/JournalInput" component={JournalInputContainer} />
+
       </Route>
     </Router>
   </Provider>,
