@@ -6,25 +6,22 @@ import {connect} from 'react-redux'
 
 
 const mapstate = (state) => {
+  console.log('steelo',state)
 	let title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   	let content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   
 
   return {
-
-  title,
-  content
+    title:title,
+    content: content,
+    user: state.auth
 
   }
 }
 
 const mapDisptachToProps = (dispatch) => {
   return {
-
-  	// handleSubmit() {
-  	// 	return
-  	// }
-
+  	 //addEntry (product) {dispatch(addProduct(product))}
   }
 }
 

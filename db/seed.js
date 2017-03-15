@@ -5,9 +5,9 @@ const seedUsers = () => db.Promise.map([
   {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
 ], user => db.model('users').create(user))
 
-const seedJournals = () => db.Promise.map([
-	{title: "My Journal", user_id:1}
-], journal => db.model('journals').create(journal))
+const seedEntries = () => db.Promise.map([
+	{title: "My 1st Entry!", content: "I'm doing super awesome today", user_id:1}
+], entry => db.model('entries').create(entry))
 
 db.didSync
   .then(() => db.sync({force: true}))
@@ -15,7 +15,7 @@ db.didSync
   .then(users => {
     console.log(`Seeded ${users.length} users OK`)
   })
-  .then(seedJournals)
-  .then(journals => console.log(`Seeded ${journals.length} journals OK`))
+  .then(seedEntries)
+  .then(entries => console.log(`Seeded ${entries.length} entries OK`))
   .catch(error => console.error(error))
   .finally(() => db.close())
