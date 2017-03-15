@@ -1,0 +1,56 @@
+.homepage{
+	min-height: 800px;
+}
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.flex-container > * {
+    padding: 15px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+
+}
+
+.content {
+    text-align: left;
+		min-height:600px;
+}
+
+header {
+	background: #941313;
+	color:white;
+}
+
+footer {
+	background: black;
+	color:white;
+}
+.sidebar-nav {
+	background: #E3EBED;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar-nav ul a {
+    text-decoration: none;
+}
+
+.login{
+	background: #941313;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:25px;
+}
+
+@media all and (min-width: 768px) {
+    .sidebar-nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+    .content {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
