@@ -9,6 +9,9 @@ const Entry = db.define('entries', {
 	content: {
 		type: Sequelize.TEXT,
 		allowNull: false
+	},
+	sent: {
+		type: Sequelize.JSON
 	}
 })
 
