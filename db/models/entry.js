@@ -12,6 +12,9 @@ const Entry = db.define('entries', {
 	},
 	sent: {
 		type: Sequelize.JSON
+	},
+	emotion: {
+		type: Sequelize.JSON
 	}
 })
 
