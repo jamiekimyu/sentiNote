@@ -38,10 +38,10 @@ export default connect(mapstate, mapDisptachToProps)(SongForm);
 
  let validate = function (values) {
   const error = {}
-  if (!values.title) {
+  if (!values.song_title) {
     error.song_title = 'A Song Title is Required'
   }
-  if (!values.content) {
+  if (!values.song_artist) {
     error.song_artist = 'Artist is  Required'
   }
   console.log('Errors======>', error)
