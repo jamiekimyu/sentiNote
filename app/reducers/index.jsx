@@ -7,7 +7,8 @@ const rootReducer = combineReducers({
   auth: require('./auth').default, 
   entries: require('./entry').default, 
   form: form,
-  signup: require('./signup').default
+  signup: require('./signup').default,
+  songs: require('./song').default
 
 })
 

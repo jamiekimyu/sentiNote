@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import JournalInputContainer from './containers/JournalInputContainer'
+import SongInputContainer from './containers/SongInputContainer'
 import UserProfileContainer from './containers/UserProfileContainer'
 import SignUp from './components/SignUp'
 
@@ -35,6 +36,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/JournalInput" component={JournalInputContainer} />
+        <Route path="/SongInput" component={SongInputContainer} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
 

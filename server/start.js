@@ -13,6 +13,14 @@ const finalHandler = require('finalhandler')
 // saying require('APP/whatever').
 //
 // This next line requires our root index.js:
+var lyr = require('lyrics-fetcher');
+ 
+lyr.fetch('Led Zeppelin', 'Stairway to Heaven', function (err, lyrics) {
+    console.log(err || lyrics);
+});
+
+
+
 const pkg = require('APP')
 
 const app = express()
