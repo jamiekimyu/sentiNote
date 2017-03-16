@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
-
-
-//console.log('emotion',emotion)
-
-
+import PieChart from './Graphs/PieChart'
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (
@@ -36,8 +32,8 @@ class JournalInput extends Component {
   render(){
     const submitting = this.props.submitting;
     
-    var r2 = sentiment(this.props.content);
-    console.log('contentsscore',r2); 
+    var sentimentObject = sentiment(this.props.content);
+    console.log('contentsscore',sentimentObject); 
 
     let emotion = require('../emotion');
 
@@ -75,7 +71,8 @@ class JournalInput extends Component {
             </div>
           </div>
           <div>
-            <h1>hello</h1>
+            <h1>Graph</h1>
+            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
           </div>
       </div>
     )

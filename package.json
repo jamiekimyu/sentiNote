@@ -68,7 +68,8 @@
     "sentiment": "^3.0.1",
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "victory": "^0.18.2"
   },
   "devDependencies": {
     "babel": "^6.5.2",
