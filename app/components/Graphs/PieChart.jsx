@@ -16,38 +16,37 @@ const dataRange = (emotionObject) => {
   return emotionArray
 };
 
-    return (
-      <VictoryPie
-        data={dataRange(emotionObject)}
-        x="emotion"
-        y="intensity"
-        
-        style={{
-          data: {
-            fill: (data) => {
-              if(data.x === "anger"){
-                return "red"
-              } else if(data.x === "anticipation"){
-                return "pink"
-              } else if(data.x === "disgust"){
-                return "gray"
-              } else if(data.x === "fear"){
-                return "black"
-              } else if(data.x === "joy"){
-                return "yellow"
-              } else if(data.x === "sadness"){
-                return "violet"
-              } else if(data.x === "surprise"){
-                return "purple"
-              } else if(data.x === "trust"){
-                return "orange"
-              } else {
-                return "white"
-              }
+  return (
+    <VictoryPie
+      data={dataRange(emotionObject)}
+      x="emotion"
+      y="intensity"
+      style={{
+        data: {
+          fill: (data) => {
+            if(data.x === "anger"){
+              return "red"
+            } else if(data.x === "anticipation"){
+              return "pink"
+            } else if(data.x === "disgust"){
+              return "green"
+            } else if(data.x === "fear"){
+              return "purple"
+            } else if(data.x === "joy"){
+              return "yellow"
+            } else if(data.x === "sadness"){
+              return "blue"
+            } else if(data.x === "surprise"){
+              return "pink"
+            } else if(data.x === "trust"){
+              return "orange"
+            } else {
+              return "white"
             }
-          },
-        }}
-      />
-    );
+          }
+        }
+      }}
+    />
+  );
 
 }
