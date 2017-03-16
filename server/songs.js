@@ -3,9 +3,6 @@
 const db = require('APP/db')
 let lyr = require('lyrics-fetcher');
  
-lyr.fetch('Led Zeppelin', 'Stairway to Heaven', function (err, lyrics) {
-    console.log(err || lyrics);
-});
 
 module.exports = require('express').Router()
 
