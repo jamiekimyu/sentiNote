@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
+
+import PieChart from './Graphs/PieChart'
+
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
-
-
-//console.log('emotion',emotion)
-
 
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
@@ -38,16 +37,14 @@ class JournalInput extends Component {
 
   render(){
     const submitting = this.props.submitting;
-
-    var r2 = sentiment(this.props.content);
-    console.log('contentsscore',r2);
+    
+    var sentimentObject = sentiment(this.props.content);
+    console.log('contentsscore',sentimentObject); 
 
     let emotion = require('../emotion');
 
     let emotionObject = {}
     let wordArray = this.props.content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
-
-
 
     wordArray.forEach(word=>{
       if(emotion[word]){
@@ -77,8 +74,11 @@ class JournalInput extends Component {
           <div>
             <div>Title: {this.props.title}</div>
             <div>Content: {this.props.content}</div>
-
           </div>
+        </div>
+        <div>
+          <h1>Graph</h1>
+          <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
         <Footer />
       </div>
