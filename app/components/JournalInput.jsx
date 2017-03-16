@@ -76,7 +76,7 @@ class JournalInput extends Component {
             <div>Content: {this.props.content}</div>
           </div>
         </div>
-        <div>
+        <div className="flex-container">
           <h1>Graph</h1>
           <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
