@@ -1,27 +1,30 @@
 import JournalInput from '../components/JournalInput';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux'
+import {addEntry} from '../reducers/entry'
+import sentiment from 'sentiment'
 
 
-
-
+let title, content, user, sent
 const mapstate = (state) => {
-  console.log('steelo',state)
-	let title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
-  	let content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
+	title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
+  content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
+  user =   state.auth
+  sent = sentiment(content)
   
-
   return {
-    title:title,
-    content: content,
-    user: state.auth
-
+    title,
+    content,
+    user
   }
 }
 
 const mapDisptachToProps = (dispatch) => {
   return {
-  	 //addEntry (product) {dispatch(addProduct(product))}
+     addEntry (e) {
+      e.preventDefault()
+      dispatch(addEntry({title,content,sent,user_id:user.id}))
+    }
   }
 }
 
@@ -31,6 +34,8 @@ const JournalForm = reduxForm({
 })(JournalInput)
 
 export default connect(mapstate, mapDisptachToProps)(JournalForm);
+
+
 
  let validate = function (values) {
   const error = {}

@@ -32,7 +32,6 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
 class JournalInput extends Component {
 
   render(){
-    const handleSubmit = this.props.handleSubmit;
     const submitting = this.props.submitting;
     
     var r2 = sentiment(this.props.content);
@@ -41,9 +40,10 @@ class JournalInput extends Component {
     return (
       <div className="well">
         <h2>New Journal Entry</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.props.addEntry}>
           <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
           <Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" />
+          <Field name="user" type="hidden"  value={this.props.user} component={renderField}  />
           <button type="submit" disabled={submitting} className="btn btn-primary">Add Entry</button>
         </form>
         <div>
