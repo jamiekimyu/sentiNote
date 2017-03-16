@@ -9,7 +9,7 @@ const Home = () => (
 
 		<Sidebar />
 
-		<div className="content">
+		<div className="content min-height-600">
 			<h1>Welcome To SentiNote</h1>
 			<p>
 				SentiNote is ...................
