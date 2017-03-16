@@ -5,20 +5,20 @@ import { VictoryPie } from 'victory';
 export default function PieChart ({sentimentObject, emotionObject}) {
     //console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
 
+//{anticipation: 3, joy: 3, positive: 3, trust: 3}
+const dataRange = (emotionObject) => {
+  let emotionArray = [];
+  for(var emotion in emotionObject){
+    emotionArray.push({emotion: emotion, intensity: emotionObject[emotion]})  
+  }
+  return emotionArray
+};
+
     return (
       <VictoryPie
-        data={[
-          {month: "September", profit: 35000, loss: 2000},
-          {month: "October", profit: 42000, loss: 8000},
-          {month: "November", profit: 55000, loss: 5000}
-        ]}
-        x="month"
-        y={(datum) => datum.profit - datum.loss}
-        style={{
-          data: {fill: (d) => d.y > 0 ? "red" : "blue"},
-          labels: {fontSize: 12},
-          parent: {border: "1px solid #ccc"}
-        }}
+        data={dataRange(emotionObject)}
+        x="emotion"
+        y="intensity"
       />
     );
 
