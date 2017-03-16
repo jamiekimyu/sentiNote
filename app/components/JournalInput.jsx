@@ -42,7 +42,8 @@ class JournalInput extends Component {
     let emotion = require('../emotion');
 
     let emotionObject = {}
-    let wordArray = this.props.content.replace(/\./g,'').split(' ')
+    let wordArray = this.props.content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
+
   
 
     wordArray.forEach(word=>{

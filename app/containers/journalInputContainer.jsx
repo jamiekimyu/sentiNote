@@ -31,7 +31,7 @@ const mapDisptachToProps = (dispatch,ownProps) => {
       e.preventDefault()
       let emotionObject={}
       let emotion = require('../emotion');
-      let wordArray = content.replace(/\./g,'').split(' ')
+      let wordArray = this.props.content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
 
       wordArray.forEach(word=>{
         if(emotion[word]){
