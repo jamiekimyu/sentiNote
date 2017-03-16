@@ -19,7 +19,7 @@ const ExampleApp = connect(
     <div>
       <nav className="login">
         {user ? <WhoAmI/> : <Login/> }
-        <Link to="/signup">Sign Up!</Link> <br/>
+        {!user ? <div><Link to="/signup">Sign Up!</Link> <br/></div> : <div><Link to="/journalInput">Write an Entry!</Link> <br/></div> }
         <Link to="/home">Home</Link>
       </nav>
       {children}

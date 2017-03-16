@@ -18,7 +18,14 @@
 
 .content {
     text-align: left;
-		min-height:600px;
+}
+
+.min-height-600{
+    min-height:600px;
+}
+
+.content-no-height{
+    text-align: left;
 }
 
 header {

@@ -1,10 +1,17 @@
 import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import Sidebar from './Sidebar';
 
 export  function Signup ({signup}){
 
 
   return (
-    <div className="well floatleft margin10">
+    <div className="flex-container">
+      <Header />
+      <Sidebar />
+
+      <div className="content">
       <h4>Sign up for a new account</h4>
 
       <form onSubmit={evt => {
@@ -26,7 +33,8 @@ export  function Signup ({signup}){
         <button type="submit" value="Signup" className="btn btn-primary">Sign Up </button>
 
 
-    </form>
+    </form></div>
+    <Footer />
   </div>
     );
 }
