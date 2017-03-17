@@ -65,7 +65,10 @@ class SongInput extends Component {
             <div>Content: {this.props.lyrics} </div>
           </div>
         </div>
+
+
         <div className="flex-container">
+
           <h1>Graph</h1>
          <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
