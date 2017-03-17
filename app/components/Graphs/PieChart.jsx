@@ -27,19 +27,19 @@ const dataRange = (emotionObject) => {
             if(data.x === "anger"){
               return "red"
             } else if(data.x === "anticipation"){
-              return "pink"
+              return "#FD4675"
             } else if(data.x === "disgust"){
-              return "green"
+              return "#287C52"
             } else if(data.x === "fear"){
-              return "purple"
+              return "#3D3532"
             } else if(data.x === "joy"){
-              return "yellow"
+              return "#FFBC0B"
             } else if(data.x === "sadness"){
-              return "blue"
+              return "#3DA6AB"
             } else if(data.x === "surprise"){
-              return "pink"
+              return "#FCC530"
             } else if(data.x === "trust"){
-              return "orange"
+              return "#47C5DA"
             } else {
               return "white"
             }
