@@ -8,6 +8,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/entries', require('./entries'))
-	.use('/twitter', require('./twitter'))
-// No routes matched? 404.
+  .use('/twitter', require('./twitter'))
+  .use('/songs', require('./songs'))
+
 api.use((req, res) => res.status(404).end())

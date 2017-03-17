@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import JournalInputContainer from './containers/JournalInputContainer'
+import SongInputContainer from './containers/SongInputContainer'
 import UserProfileContainer from './containers/UserProfileContainer'
 import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
@@ -19,7 +20,7 @@ const ExampleApp = connect(
   ({ user, children }) =>
     <div>
       <nav className="login">
-        {user ? <WhoAmI/> : <Login/> }
+        {user.user ? <WhoAmI/> : <Login/> }
         {!user ? <div><Link to="/signup">Sign Up!</Link> <br/></div> : <div><Link to="/journalInput">Write an Entry!</Link> <br/></div> }
         <Link to="/home">Home</Link>
       </nav>
@@ -36,6 +37,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/JournalInput" component={JournalInputContainer} />
+        <Route path="/SongInput" component={SongInputContainer} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
 				<Route path="/twitter" component={Twitter} />

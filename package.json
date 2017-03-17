@@ -49,6 +49,7 @@
     "enzyme": "^2.5.1",
     "express": "^4.14.0",
     "finalhandler": "^1.0.0",
+    "lyrics-fetcher": "^1.0.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",

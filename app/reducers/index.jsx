@@ -8,7 +8,11 @@ const rootReducer = combineReducers({
   entries: require('./entry').default,
   form: form,
   signup: require('./signup').default,
-	twitter: require('./twitter').default
+  twitter: require('./twitter').default,
+  songs: require('./song').default
 });
+
+  
+
 
 export default rootReducer;
