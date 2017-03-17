@@ -15,9 +15,9 @@ const mapstate = (state) => {
   user =   state.auth
   sent = sentiment(content)
 
-  
- 
-  
+
+
+
   return {
     title,
     content,
@@ -31,7 +31,7 @@ const mapDisptachToProps = (dispatch,ownProps) => {
       e.preventDefault()
       let emotionObject={}
       let emotion = require('../emotion');
-      let wordArray = this.props.content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
+      let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
 
       wordArray.forEach(word=>{
         if(emotion[word]){
@@ -46,7 +46,7 @@ const mapDisptachToProps = (dispatch,ownProps) => {
       })
       dispatch(addEntry({title,content,sent,emotion:emotionObject,user_id:user.id}))
     }
-  
+
   }
 }
 

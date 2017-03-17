@@ -5,7 +5,7 @@ export const WhoAmI = ({ user, logout }) => (
   <div>
 	  <Link to="/user">
 		  <div className="whoami">
-		    <span className="whoami-user-name">Hello, {user && user.name}!</span> <br />
+		    <span className="whoami-user-name">Hello, {user.user && user.user.name}!</span> <br />
 
 		  </div>
 	  </Link>

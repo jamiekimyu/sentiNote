@@ -46,6 +46,7 @@
     "check-node-version": "^1.1.2",
     "concurrently": "^3.1.0",
     "cookie-session": "^2.0.0-alpha.1",
+    "dotenv": "^4.0.0",
     "enzyme": "^2.5.1",
     "express": "^4.14.0",
     "finalhandler": "^1.0.0",
@@ -71,6 +72,7 @@
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
+    "twit": "^2.2.5",
     "victory": "^0.18.2"
   },
   "devDependencies": {

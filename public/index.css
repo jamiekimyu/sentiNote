@@ -16,6 +16,13 @@
 
 }
 
+.userInfo{
+    border-color: red;
+    border-style: double;
+    border-width: 5px;
+    padding: 5px;
+}
+
 .content {
     text-align: left;
 }
