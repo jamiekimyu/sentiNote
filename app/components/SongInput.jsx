@@ -5,8 +5,20 @@ import PieChart from './Graphs/PieChart'
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
+import { TagCloud } from "react-tagcloud";
 
-
+let emotionWord = ''
+let emotionInstances
+let data = []
+let array = []
+let key = 0
+let data2  = [];
+let emotion = require('../emotion');
+let alertShow = false
+let alertText = ''
+let showAlert = function(){
+  return alertShow = true
+}
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (
   <div className="content">
@@ -32,21 +44,36 @@ class SongInput extends Component {
       emotionObject = {}
      }else {
         sentimentObject = sentiment(this.props.lyrics);
-        let emotion = require('../emotion');
         emotionObject = {}
         let wordArray = this.props.lyrics.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
 
+        
+        let deeta = {}
+
         wordArray.forEach(word=>{
           if(emotion[word]){
+            if(!deeta[word]){
+              deeta[word]=[emotion[word],1]
+            }else{
+              deeta[word][1]=deeta[word][1]+1
+            }
             emotion[word].forEach(match=>{
               if (!emotionObject[match]) {
                 emotionObject[match]=1
+
               }else{
                 emotionObject[match] = emotionObject[match] + 1
               }
             })
           }
         })
+        for(let deet in deeta) {
+          data.push({value: deet, count: deeta[deet][1]})
+        }
+        console.log('deeta',deeta)
+        console.log('data',data)
+        console.log('data2',data2)
+
      }
 
 
@@ -65,14 +92,42 @@ class SongInput extends Component {
             <div>Content: {this.props.lyrics} </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="flex-container noFlex">
-=======
+
+
         <div className="flex-container">
->>>>>>> 7f596428f549cb18c26a7b25c7f74f2462eba825
           <h1>Graph</h1>
          <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
+
+        <div className="flex-container">
+           <TagCloud minSize={20}
+            maxSize={70}
+            tags={data2.concat(data)}
+            onClick={tag => {emotionWord=tag.value; emotionInstances=tag.count; array = (emotion[tag.value]);alertShow=true;this.forceUpdate() }}
+            key={key++}
+            shuffle={false}          />
+          {
+            alertShow&&(
+             
+                 <div className="alert alert-info" onClick={e=>{alertShow=false; this.forceUpdate()}}>
+                  <a className="close" aria-label="close">&times;</a>
+                <p>Emotion Lexicon KeyWord : {emotionWord}</p>
+                <p>Instances: {emotionInstances} </p>
+                <span>Associated Emotions: </span>
+                {array.map(emotion=>(
+                  <span>{emotion + " "}</span>
+
+                  ))
+              }
+               </div>
+
+        
+           
+            )
+          }
+
+        </div>
+
         <Footer />
       </div>
     )
