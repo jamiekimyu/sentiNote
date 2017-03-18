@@ -1,30 +1,33 @@
-.margin10 {
-	margin: 10px;
+
+#main {
+	background-color: black
+}
+
+.black {
+	background-color: black
+}
+
+.input-xs {
+  height: 23px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+  border-radius: 3px;
+  background-color: white
+}
+
+.margTop6{
+	margin-top: 6px;
+}
+
+#margLeft15{
+	margin-left: 15px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 .floatLeft {
 	float:left;
-	margin : 5px;
 }
-
-.right {
-	position: relative;
-	top:0px;
-	width:10px;
-}
-
-svg {
-	width:100px;
-	height:100px;
-	viewBox: 0 0 100 100;
-}
-
-.noFlex {
-	max-width:100px;
-	max-height:100px;
-}
-
-@keyframes blinker {
-  50% { opacity: 0.0; }
-}
-

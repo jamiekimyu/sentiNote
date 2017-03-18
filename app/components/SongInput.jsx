@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
 import PieChart from './Graphs/PieChart'
-import Header from './Header';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
 import { TagCloud } from "react-tagcloud";
 
 let emotionWord, emotionInstances, array = [], data  = [], emotion = require('../emotion'), errorString = "Sorry, We don't have lyrics for this song yet."
@@ -81,8 +79,6 @@ class SongInput extends Component {
 
     return (
       <div className="flex-container">
-        <Header />
-        <Sidebar />
         <div className= "content">
           <h2>Analyze a Song</h2>
           <form onSubmit={this.handleClick}>
