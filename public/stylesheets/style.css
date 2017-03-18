@@ -29,11 +29,18 @@ primary: 2a9fd6
 }
 
 .margTop{
-	margin-top: 80px;
+  margin-top: 80px;
+}
+.margTop8{
+	margin-top: 8px;
 }
 
 #margLeft15{
 	margin-left: 15px;
+}
+
+#pwd {
+  width: 100px;
 }
 
 input:-webkit-autofill {

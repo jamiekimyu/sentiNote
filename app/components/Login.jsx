@@ -7,8 +7,7 @@ export const Login = ({ login }) => (
     login(evt.target.username.value, evt.target.password.value)}}
   >
     <Navbar.Form pullRight>
-    <div className='margTop6'>
-     
+    <div className='margTop8'>
           <input className='form-control input-xs' type="text" name='username' placeholder="email" />
           <input id='pwd' className='form-control input-xs' placeholder="password" name='password' type='password' />
 
