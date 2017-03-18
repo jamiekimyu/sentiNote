@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
  
@@ -48,5 +48,59 @@ const dataRange = (emotionObject) => {
       }}
     />
   );
+
+}*/
+
+import React, { Component } from 'react';
+import { PieChart, Pie, Sector, Cell } from 'recharts'
+
+export default function SimplePieChart ({sentimentObject, emotionObject}) {
+//console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
+
+const dataRange = (emotionObj) => {
+  const emotionsWithColors = {anger: "red", anticipation: "#FD4675", disgust: "#287C52", fear: "#3D3532", joy: "#FFBC0B", sadness: "#3DA6AB", surprise: "#FCC530", trust: "#47C5DA"}
+  let emotionArray = [];
+  for(var emotion in emotionObj){
+    if(emotion !== "positive" && emotion !== "negative"){
+      emotionArray.push({name: emotion, value: emotionObj[emotion], color: emotionsWithColors[emotion]})  
+    }
+  }
+  return emotionArray
+};
+
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const RADIAN = Math.PI / 180;
+   	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x  = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy  + radius * Math.sin(-midAngle * RADIAN);
+    return (
+      <text x={x} y={y} fill="white" fontSize="13px" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
+      	{`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  }
+  
+//example dummy data
+// const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
+//                   {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
+const data = dataRange(emotionObject);
+
+  	return (
+    	<PieChart width={800} height={400}>
+        <Pie
+          data={data} 
+          cx={300} 
+          cy={200} 
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={80} 
+          fill="#8884d8"
+        >
+        	{
+          	data.map((entry, index) => <Cell key={index} fill={entry.color}/>)
+          }
+        </Pie>
+      </PieChart>
+    );
 
 }

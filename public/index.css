@@ -68,3 +68,16 @@ footer {
     .content {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
     footer {-webkit-order:3;order:3;}
 }
+
+body {
+  margin: 0;
+}
+#container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 800px;
+  height: 800px;
+  background-color: #fff;
+}
