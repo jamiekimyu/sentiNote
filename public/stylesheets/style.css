@@ -1,25 +1,100 @@
-.margin10 {
-	margin: 10px;
+/*
+success: #558000
+default: #424242
+warning: #ff8800
+info: #9933cc
+danger: #cc0000
+primary: 2a9fd6
+*/
+#main {
+	background-color: black
+}
+
+.black {
+	background-color: black
+}
+
+.center {
+   text-align: center;
+   margin:0 auto;
+}
+
+.input-xs {
+  height: 23px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+  border-radius: 3px;
+  background-color: white
+}
+
+.margTop{
+  margin-top: 80px;
+}
+.margTop8{
+	margin-top: 8px;
+}
+
+#margLeft15{
+	margin-left: 15px;
+}
+
+#pwd {
+  width: 100px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 .floatLeft {
 	float:left;
-	margin : 5px;
 }
 
-.right {
-	position: relative;
-	top:0px;
-	width:10px;
+.row-centered {
+    text-align:center;
+    margin-top:150px;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    height: 200px;
+    width: 324px;
+    text-align:left;
+    /* inline-block space fix */
+    margin: 2%;
+   
 }
 
-svg {
-	width:100px;
-	height:100px;
-	viewBox: 0 0 100 100;
+#box1 {
+  background-color: #424242
 }
 
-.noFlex {
-	max-width:100px;
-	max-height:100px;
+#box2 {
+   background-color: #2a9fd6
 }
+
+#box3 {
+  background-color: #558000
+}
+
+#box4 {
+  background-color: #9933cc
+}
+
+#box5 {
+  background-color: #ff8800
+}
+
+#box6 {
+  background-color: #cc0000
+}
+
+
+
+
+
+
+
+
+

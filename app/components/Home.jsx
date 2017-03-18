@@ -1,22 +1,18 @@
 import React from 'react';
-import Header from './Header';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
+
 
 const Home = () => (
-  <div className="flex-container">
-		<Header />
-
-		<Sidebar />
-
-		<div className="content min-height-600">
-			<h1>Welcome To SentiNote</h1>
-			<p>
-				SentiNote is ...................
-			</p>
-		</div>
-
-		<Footer />
-  </div>
-);
+	<div className="container">
+		<div className="row row-centered">
+			<div id='box1' className="col-xs-6 col-md-4 col-centered">  </div> 
+			<div id='box2' className="col-xs-6 col-md-4 col-centered">  </div> 
+			<div id='box3' className="col-xs-6 col-md-4 col-centered">  </div> 
+			<div id='box4' className="col-xs-6 col-md-4 col-centered ">  </div> 
+			<div id='box5' className="col-xs-6 col-md-4 col-centered">  </div> 
+			<div id='box6' className="col-xs-6 col-md-4 col-centered">  </div> 
+		</div> 
+		<Footer/>
+	</div>
+	);
 export default Home;

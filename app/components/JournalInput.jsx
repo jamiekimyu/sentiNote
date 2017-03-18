@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
-
 import PieChart from './Graphs/PieChart'
-
-import Header from './Header';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
-
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (
@@ -61,8 +56,6 @@ class JournalInput extends Component {
 
     return (
       <div className="flex-container">
-        <Header />
-        <Sidebar />
         <div className= "content">
           <h2>New Journal Entry</h2>
           <form onSubmit={this.props.addEntry}>
@@ -80,7 +73,7 @@ class JournalInput extends Component {
           <h1>Graph</h1>
           <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     )
   }
