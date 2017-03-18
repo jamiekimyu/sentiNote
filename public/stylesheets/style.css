@@ -1,10 +1,22 @@
-
+/*
+success: #558000
+default: #424242
+warning: #ff8800
+info: #9933cc
+danger: #cc0000
+primary: 2a9fd6
+*/
 #main {
 	background-color: black
 }
 
 .black {
 	background-color: black
+}
+
+.center {
+   text-align: center;
+   margin:0 auto;
 }
 
 .input-xs {
@@ -16,8 +28,8 @@
   background-color: white
 }
 
-.margTop6{
-	margin-top: 6px;
+.margTop{
+	margin-top: 80px;
 }
 
 #margLeft15{
@@ -31,3 +43,51 @@ input:-webkit-autofill {
 .floatLeft {
 	float:left;
 }
+
+.row-centered {
+    text-align:center;
+    margin-top:150px;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    height: 200px;
+    width: 324px;
+    text-align:left;
+    /* inline-block space fix */
+    margin: 2%;
+   
+}
+
+#box1 {
+  background-color: #424242
+}
+
+#box2 {
+   background-color: #2a9fd6
+}
+
+#box3 {
+  background-color: #558000
+}
+
+#box4 {
+  background-color: #9933cc
+}
+
+#box5 {
+  background-color: #ff8800
+}
+
+#box6 {
+  background-color: #cc0000
+}
+
+
+
+
+
+
+
+
+

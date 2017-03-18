@@ -123,9 +123,8 @@ class SongInput extends Component {
             )
           }
         </div>
-
-        <Footer />
-      </div>
+          <Footer />
+        </div>
     )
   }
 }

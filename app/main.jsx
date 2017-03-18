@@ -32,14 +32,20 @@ const ExampleApp = connect(
         <NavItem eventKey={1} ><Link to="/journalInput">Journal</Link></NavItem>
         <NavItem eventKey={2} ><Link to="/twitter">Tweets</Link></NavItem>
         <NavItem eventKey={3} ><Link to="/SongInput">Songs</Link></NavItem>
+        {!user.user&&<NavItem eventKey={4} ><Link to="/signup">Signup</Link></NavItem>}
       </Nav>
       <Nav pullRight>
         { user.user ? <NavItem eventKey={1} > <WhoAmI/> </NavItem> : <Login/> }
       </Nav>
     </Navbar.Collapse>
   </Navbar>
+  <div className='abs'>
    {children}
   </div>
+
+  
+  </div>
+
 )
 
 render (

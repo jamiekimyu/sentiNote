@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 const Footer = () => (
-	<footer>
-		Copyright &copy; Fullstack AJAK Team
+	<footer className='center margTop'>
+		<p className='text-warning'>&copy; Team AJAK - FullStack Academy</p>
 	</footer>
 );
 

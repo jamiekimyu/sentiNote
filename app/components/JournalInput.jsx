@@ -73,7 +73,7 @@ class JournalInput extends Component {
           <h1>Graph</h1>
           <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     )
   }
