@@ -12,6 +12,7 @@ export default function User (props) {
         <div className="userInfo">
           <h2>User Info</h2>
           <p>Name: {user.name}</p>
+          <img className='profilePhoto' src={user.photoURL} />
           <p>Id: {user.id}</p>
         </div>
         </div>

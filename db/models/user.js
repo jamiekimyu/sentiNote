@@ -14,6 +14,10 @@ const User = db.define('users', {
 			notEmpty: true,
 		}
   },
+  photoURL: {
+    type: Sequelize.STRING,
+    defaultValue: 'http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png'
+  },
 
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
