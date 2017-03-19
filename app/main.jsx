@@ -32,14 +32,10 @@ const ExampleApp = connect(
         <NavItem eventKey={1} className='margTop8' ><Link to="/journalInput">Journal</Link></NavItem>
         <NavItem eventKey={2} className='margTop8' ><Link to="/twitter">Tweets</Link></NavItem>
         <NavItem eventKey={3} className='margTop8' ><Link to="/SongInput">Songs</Link></NavItem>
-        {!user.user&&<NavItem eventKey={4} className='margTop8' ><Link to="/signup">Signup</Link></NavItem>}
-        {user.user&&<NavItem eventKey={5} id='dashBoardText' className='margTop8' ><Link to="/user"><span className='text-danger'>My Dashboard</span></Link></NavItem>} 
-        {user.user&&(
-          <div className='inline'>
-            <NavItem eventKey={5} className='inline' ><Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link></NavItem>
-          </div>)
-        }
+        <NavItem eventKey={4} id={user.user ? 'dashBoardText' : ''} className='margTop8' ><Link to={user.user ? '/user' : "/signup"}>{user.user ? <span className='text-danger'>My Dashboard</span> : 'Signup'}</Link></NavItem>
+        <NavItem eventKey={5} className='inline right' >{user.user&&<Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link>}</NavItem>
       </Nav>
+
       <Nav pullRight>
         { user.user ? <NavItem eventKey={1} > <WhoAmI/> </NavItem> : <Login/> }
       </Nav>
