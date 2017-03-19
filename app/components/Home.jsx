@@ -7,7 +7,7 @@ const Home = () => (
 	<div className="container">
 		<div className='row'>
 			<h1 className='text-danger' id='homeTitle'>SentiMentum</h1>
-			<p className='text-primary' id='homeSubTitle'>A Multi-Purpose Sentiment Analysis Tool</p>
+			<h4 className='text-primary' id='homeSubTitle'>A Multi-Purpose Sentiment Analysis Tool</h4>
 		</div>
 		<div className="row row-centered">
 			<Link to='/info'>
