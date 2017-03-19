@@ -9,7 +9,7 @@ const Home = () => (
 			<h1 className='text-danger' id='homeTitle'>SentiMentum</h1>
 			<h4 className='text-primary' id='homeSubTitle'>A Multi-Purpose Sentiment Analysis Tool</h4>
 		</div>
-		<div className="row row-centered">
+		<div className="row row-centered top75">
 			<Link to='/info'>
 				<div id='box1' className="col-xs-6 col-md-4 col-centered">
 					<img id='info' className='img-responsive center' src='/info.png'/>

@@ -10,6 +10,10 @@ primary: 2a9fd6
 	background-color: black
 }
 
+body {
+  margin: 0;
+}
+
 .black {
 	background-color: black
 }
@@ -50,7 +54,10 @@ input:-webkit-autofill {
 
 .row-centered {
     text-align:center;
-    margin-top:75px;
+}
+
+.top75 {
+  margin-top:75px;
 }
 .col-centered {
     display:inline-block;
@@ -213,8 +220,43 @@ input:-webkit-autofill {
   float:right;
 }
 
+.left {
+  float:left;
+}
 
 
+
+.journForm {
+  width: 150px;
+  margin-left: 60px;
+}
+
+#container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+  top: 0;
+}
+
+svg, .svg {
+  text-align: center;
+  display:inline-block;
+  margin: 0 auto;
+}
+
+#pieBox1 {
+  background-color: #2a9fd6;
+  height: 400px;
+}
+
+#cloudKey {
+  background-color: #2a9fd6;
+  width: 600px;
+}
 
 
 
