@@ -21,7 +21,14 @@
     border-style: double;
     border-width: 5px;
     padding: 5px;
+    color: silver;
+    text-align: center;
 }
+.userName{
+  font-size:20px;
+}
+
+
 
 .profilePhoto{
   max-width: 250px;
