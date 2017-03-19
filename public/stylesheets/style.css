@@ -242,15 +242,11 @@ input:-webkit-autofill {
   top: 0;
 }
 
-svg, .svg {
-  text-align: center;
-  display:inline-block;
-  margin: 0 auto;
-}
 
 #pieBox1 {
   background-color: #2a9fd6;
-  height: 400px;
+  height: 300px;
+  border-radius: 50%
 }
 
 #cloudKey {
@@ -258,7 +254,61 @@ svg, .svg {
   width: 600px;
 }
 
+/*.journalForm {
+  width: 1000px;
+  margin: 0 auto;
+}*/
 
+#journalContent {
+  height:250px;
+  width: 100%;
+  margin-bottom:10px;
+}
+
+#journalTitle {
+  width: 400px;
+  margin-bottom:10px;
+  float:left;
+}
+
+#journalSubmit {
+  float:right;
+}
+
+#songTitle {
+  width: 250px;
+  margin: 0 auto;
+
+}
+
+#songArtist {
+  width: 250px;
+  margin: 0 auto
+
+}
+
+#lyricText {
+ height:200px;
+ margin-left: 30px;
+ float:left;
+
+}
+
+#songSubmit {
+  margin-top: 25px;
+  float:right; 
+}
+
+#pT {
+  padding-top: 75px
+}
+
+#songHeading {
+  margin: 20px  0 55px 20px ;
+}
+#journalHeader {
+  margin: 20px  0 55px 0 ;
+}
 
 
 
