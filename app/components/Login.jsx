@@ -8,10 +8,10 @@ export const Login = ({ login }) => (
   >
     <Navbar.Form pullRight>
     <div className='margTop8'>
-          <input className='form-control input-xs' type="text" name='username' placeholder="email" />
+          <input id='email' className='form-control input-xs' type="text" name='username' placeholder="email" />
           <input id='pwd' className='form-control input-xs' placeholder="password" name='password' type='password' />
 
-      <Button className='btn btn-info btn-xs'  type="submit">Login</Button>
+      <Button id='loginButton' className='btn btn-info btn-xs'  type="submit">Login</Button>
     </div>
     </Navbar.Form>
   </form>

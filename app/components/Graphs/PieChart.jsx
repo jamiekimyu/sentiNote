@@ -58,7 +58,7 @@ export default function SimplePieChart ({sentimentObject, emotionObject}) {
 //console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
 
 const dataRange = (emotionObj) => {
-  const emotionsWithColors = {anger: "red", anticipation: "#FD4675", disgust: "#287C52", fear: "#3D3532", joy: "#FFBC0B", sadness: "#3DA6AB", surprise: "#FCC530", trust: "#47C5DA"}
+  const emotionsWithColors = {anger: '#cc0000', anticipation: "#9933cc", disgust: "#287C52", fear: "#424242", joy: "#558000", sadness: "#3DA6AB", surprise: "##ff8800", trust: "#2a9fd6"}
   let emotionArray = [];
   for(var emotion in emotionObj){
     if(emotion !== "positive" && emotion !== "negative"){
@@ -86,14 +86,14 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 const data = dataRange(emotionObject);
 
   	return (
-    	<PieChart width={800} height={400}>
+    	<PieChart width={400} height={400}>
         <Pie
           data={data} 
-          cx={300} 
-          cy={200} 
+          cx={140} 
+          cy={250} 
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80} 
+          outerRadius={90} 
           fill="#8884d8"
         >
         	{

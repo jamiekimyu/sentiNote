@@ -23,17 +23,19 @@ const ExampleApp = connect(
   <Navbar default collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a ><Link to="/home">Home</Link></a>
+        <a className='margTop8'><Link to="/home">Home</Link></a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1} ><Link to="/journalInput">Journal</Link></NavItem>
-        <NavItem eventKey={2} ><Link to="/twitter">Tweets</Link></NavItem>
-        <NavItem eventKey={3} ><Link to="/SongInput">Songs</Link></NavItem>
-        {!user.user&&<NavItem eventKey={4} ><Link to="/signup">Signup</Link></NavItem>}
+        <NavItem eventKey={1} className='margTop8' ><Link to="/journalInput">Journal</Link></NavItem>
+        <NavItem eventKey={2} className='margTop8' ><Link to="/twitter">Tweets</Link></NavItem>
+        <NavItem eventKey={3} className='margTop8' ><Link to="/SongInput">Songs</Link></NavItem>
+        <NavItem eventKey={4} id={user.user ? 'dashBoardText' : ''} className='margTop8' ><Link to={user.user ? '/user' : "/signup"}>{user.user ? <span className='text-danger'>My Dashboard</span> : 'Signup'}</Link></NavItem>
+        <NavItem eventKey={5} className='inline right' >{user.user&&<Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link>}</NavItem>
       </Nav>
+
       <Nav pullRight>
         { user.user ? <NavItem eventKey={1} > <WhoAmI/> </NavItem> : <Login/> }
       </Nav>
