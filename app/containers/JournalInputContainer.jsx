@@ -10,7 +10,7 @@ let title, content, user, sentimentObject,emotionObject, emotionReturn, emotionC
 const mapstate = (state) => {
 	title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
-  user =   state.auth
+  user =   state.auth.user
   sentimentObject = sentiment(content)
   emotionReturn = emotinator(content)
   emotionObject = emotionReturn[0]
