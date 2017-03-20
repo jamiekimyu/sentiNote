@@ -1,6 +1,7 @@
 
 import EditProfile from '../components/EditProfile';
 import { connect } from 'react-redux';
+import {authenticated} from '../reducers/auth';
 import axios from 'axios';
 
 
@@ -16,6 +17,8 @@ const mapStateToProps = (state) => {
   photoURL = profile ? profile.values ? profile.values.photoURL ? profile.values.photoURL : user.photoURL : user.photoURL : user.photoURL
   user_id = state.auth.user.id
 
+
+  //initial values are passed from state as prop to fields
   initialValues= {
   		name,
   		description,
@@ -38,17 +41,17 @@ const mapDispatch = dispatch => {
 		handleSubmit: ( e ) => {
 			//this is where we can perform axios request to update user
 			e.preventDefault();
-			console.log('name: ', name)
-			console.log('photoURL: ', photoURL)
-			console.log('description: ', description)
-			console.log('user_id: ', user_id)
 
 			axios.put(`/api/users/${user_id}`, {
 				name,
 				photoURL,
 				description
 			})
-			.then( res => console.log("update success! ? ", res.data))
+			.then( res => {
+				dispatch(authenticated(res.data))
+				console.log('attempting to redirect with localhost. Change for deployed app');
+				window.location.replace('http://localhost:1337/user') //this may have to change once deployed!!
+			})
 			.catch( err => console.error(err))
 		}
 	}
