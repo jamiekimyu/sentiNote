@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 const { DOM: { input, select, textarea } } = React
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
+
   return (
   <div className="content">
   {
@@ -40,21 +41,21 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
 
 class ProfileForm extends Component {
   render() {
-    const { handleSubmit} = this.props;
-
+    const { handleSubmit, name, photoURL, description} = this.props;
+    console.log("I got name on props: ", this.props)
     return (
       <div>
         <div className='userInfo'>
           <h2>Edit Your Profile!</h2>
           <form onSubmit={handleSubmit} >
             <div>
-              <Field name="name" component={renderField} label="name" placeholder={name} type="text"/>
+              <Field name="name" value={name} component={renderField} label="name" placeholder={name} type="text"/>
             </div>
             <div>
-              <Field name="photoURL" component={renderField} label="photoURL" type="url" />
+              <Field name="photoURL" value={photoURL} component={renderField} label="photoURL" type="url" />
             </div>
             <div>
-              <Field name="description" component={renderField} label="description" type="textarea" />
+              <Field name="description" value={description} component={renderField} label="description" type="textarea" />
             </div>
 
             <button className='btn-success' type="submit">Submit</button>

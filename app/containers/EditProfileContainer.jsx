@@ -15,13 +15,12 @@ const mapStateToProps = (state) => {
   photoURL = profile ? profile.values ? profile.values.photoURL ? profile.values.photoURL : user.photoURL : user.photoURL : user.photoURL
   user_id = state.auth.user.id
 
-  initialValues={
-  	initialValues: {
+  initialValues= {
   		name,
   		description,
   		photoURL
-  	}
   }
+
 
   return {
     user: state.auth,
