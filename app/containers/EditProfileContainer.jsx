@@ -10,6 +10,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatch = dispatch => {
 	return {
+		handleSubmit: ( e ) => {
+			e.preventDefault();
+			console.log(arguments, "im in my method!")
+		}
 	}
 }
 
