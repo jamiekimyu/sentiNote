@@ -36,17 +36,17 @@ export class Twitter extends React.Component{
 
 	handleSubmit(event){
 		event.preventDefault();
-		console.log(this.props.getTweets(this.state.twitterHandle));
+		this.props.getTweets(this.state.twitterHandle);
 	}
 
 	handleSearchSubmit(event){
 		event.preventDefault();
-		console.log(this.props.getSearchTweets(this.state.twitterSearchTerm));
+		this.props.getSearchTweets(this.state.twitterSearchTerm);
 	}
 
 	handleTopicSubmit(event){
 		event.preventDefault();
-		console.log(this.props.getTopicTweets(this.state.twitterTopic));
+		this.props.getTopicTweets(this.state.twitterTopic)
 	}
 
 	render(){
@@ -86,7 +86,7 @@ export class Twitter extends React.Component{
 
 				<form onSubmit={(event) => this.handleTopicSubmit(event)}>
 					<div className="form-group">
-						<label htmlFor="name" className="col-sm-2 control-label">Twitter Search Term:</label>
+						<label htmlFor="name" className="col-sm-2 control-label">Twitter Search Topic:</label>
 						<div className="col-sm-10">
 							<input onChange={(event) => this.handleChange(event)} value={this.state.twitterTopic} name="twitterTopic" type="text" className="form-control" />
 						</div>
@@ -97,7 +97,6 @@ export class Twitter extends React.Component{
 					</div>
 				</form>
 			</div>
-
 				<Footer />
 		  </div>
 		);
