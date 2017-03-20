@@ -86,11 +86,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 const data = dataRange(emotionObject);
 
   	return (
-    	<PieChart width={400} height={400}>
+    	<PieChart width={350} height={350}>
         <Pie
           data={data} 
-          cx={140} 
-          cy={250} 
+          cx={150} 
+          cy={150} 
           labelLine={false}
           label={renderCustomizedLabel}
           outerRadius={90} 
