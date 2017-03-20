@@ -10,8 +10,8 @@ export default function User (props) {
   if(user) return (
   	<div className="flex-container">
       <div className="content">
+        <h2 className="title">User Info</h2>
         <div className="userInfo row">
-          <h2>User Info</h2>
           <div className="col-xs-12">
             <p className='userName'>{user.name}</p>
             <img className='profilePhoto' src={user.photoURL} />

@@ -1,6 +1,7 @@
 
 import EditProfile from '../components/EditProfile';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
 let name, description, photoURL, user_id;
@@ -39,6 +40,16 @@ const mapDispatch = dispatch => {
 			e.preventDefault();
 			console.log('name: ', name)
 			console.log('photoURL: ', photoURL)
+			console.log('description: ', description)
+			console.log('user_id: ', user_id)
+
+			axios.put(`/api/users/${user_id}`, {
+				name,
+				photoURL,
+				description
+			})
+			.then( res => console.log("update success! ? ", res.data))
+			.catch( err => console.error(err))
 		}
 	}
 }
