@@ -6,14 +6,22 @@ import Footer from './Footer';
 export default function User (props) {
 
   const user = props.user.user
+  const myEntries = props.user.myEntries
   if(user) return (
   	<div className="flex-container">
       <div className="content">
-        <div className="userInfo">
+        <div className="userInfo row">
           <h2>User Info</h2>
-          <p className='userName'>{user.name}</p>
-          <img className='profilePhoto' src={user.photoURL} />
-          <p>Id: {user.id}</p>
+          <div className="col-xs-12">
+            <p className='userName'>{user.name}</p>
+            <img className='profilePhoto' src={user.photoURL} />
+            <p>#Journal Entries: {myEntries.length}</p>
+          </div>
+          <div className="col-xs-12">
+            <h2>Description: </h2>
+            <p> {user.description} </p>
+          </div>
+
         </div>
         </div>
       <Footer />
