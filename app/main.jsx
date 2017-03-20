@@ -10,6 +10,7 @@ import WhoAmI from './components/WhoAmI'
 import JournalInputContainer from './containers/JournalInputContainer'
 import SongInputContainer from './containers/SongInputContainer'
 import UserProfileContainer from './containers/UserProfileContainer'
+import EditProfileContainer from './containers/EditProfileContainer'
 import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
@@ -45,7 +46,7 @@ const ExampleApp = connect(
    {children}
   </div>
 
-  
+
   </div>
 
 )
@@ -60,6 +61,7 @@ render (
         <Route path="/SongInput" component={SongInputContainer} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
+        <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
       </Route>
     </Router>

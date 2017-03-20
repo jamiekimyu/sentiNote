@@ -20,7 +20,29 @@
     border-color: red;
     border-style: double;
     border-width: 5px;
-    padding: 5px;
+    padding: 15%;
+    margin: 5%;
+    color: silver;
+    text-align: center;
+}
+
+.title{
+  color: silver;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.userName{
+  font-size:20px;
+}
+
+
+
+.profilePhoto{
+  max-width: 250px;
+  max-height: 300px;
+  min-width: 250px;
+  min-height: 300px;
 }
 
 .content {
