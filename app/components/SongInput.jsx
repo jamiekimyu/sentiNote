@@ -4,6 +4,7 @@ import sentiment from 'sentiment'
 import PieChart from './Graphs/PieChart'
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
+import { customRenderer } from '../utils'
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 
@@ -104,16 +105,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
 )}
 
 
-const customRenderer = (tag, size, color) => (
-  <span key={tag.value}
-    style={{
-      fontSize: `${size+1}em`,
-      margin: '3px',
-      padding: '3px',
-      display: 'inline-block',
-      color: `${color}`
-    }}>{tag.value}</span>
-);
+
 
 
               

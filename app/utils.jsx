@@ -1,3 +1,7 @@
+import React from 'react';
+
+
+
 export function emotinator(content) {
   let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
   let emotionObject = {}
@@ -26,6 +30,17 @@ export function emotinator(content) {
   }
   return [emotionObject, emotionInstances]
 }
+
+export const customRenderer = (tag, size, color) => (
+  <span key={tag.value}
+    style={{
+      fontSize: `${size+1}em`,
+      margin: '3px',
+      padding: '3px',
+      display: 'inline-block',
+      color: `${color}`
+    }}>{tag.value}</span>
+);
 
 export function validateSong(values) {
   const error = {}

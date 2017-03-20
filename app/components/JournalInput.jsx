@@ -4,7 +4,7 @@ import sentiment from 'sentiment'
 import PieChart from './Graphs/PieChart'
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
-import { emotinator } from "../utils";
+import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 class JournalInput extends Component {
@@ -101,37 +101,6 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   </div>
 )}
 
-const customRenderer = (tag, size, color) => (
-  <span key={tag.value}
-    style={{
-      fontSize: `${size+1}em`,
-      margin: '3px',
-      padding: '3px',
-      display: 'inline-block',
-      color: `${color}`
-    }}>{tag.value}</span>
-);
-
-
-
-
-
-          //   <div id='cloudKey' className="col-xs-12 col-md-8 col-centered">
-          //       <TagCloud 
-          //   minSize={1}
-          //   maxSize={2}
-          //   tags={data.concat([])}
-          //   onClick={
-          //     tag => {
-          //       emotionWord=tag.value; 
-          //       emotionInstances=tag.count; 
-          //       array = (emotion[tag.value]);
-          //     }
-          //   }
-          //   renderer={customRenderer}
-          //   shuffle={false}          
-          // />
-          //   </div> 
 
 
 
