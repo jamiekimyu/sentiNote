@@ -8,7 +8,7 @@ import { emotinator, validateJournal } from "../utils";
 
 let title, content, user, sentimentObject,emotionObject, emotionReturn, emotionCount
 const mapstate = (state) => {
-	title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
+  title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
   sentimentObject = sentiment(content)
@@ -32,6 +32,7 @@ const mapDisptachToProps = (dispatch,ownProps) => {
       e.preventDefault()
       dispatch(addEntry({title,content,sent:sentimentObject,emotion:emotionObject,user_id:user.id}))
       dispatch(reset('journalForm'))
+      window.location.replace('http://localhost:1337/user')
     }
   }
 }

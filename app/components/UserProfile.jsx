@@ -28,7 +28,7 @@ export default function User (props) {
             <h2> Recent Entries </h2>
             <div className='row'>
               {
-                myEntries.map( entry => {
+                myEntries.slice(-4).map( entry => {
                   return <EntryListing entry={entry} key={entry.id}/>
                 })
               }
