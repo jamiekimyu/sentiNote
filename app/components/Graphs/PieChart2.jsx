@@ -12,7 +12,7 @@ export default function PieChart2 ({sentimentObject}) {
     sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
     sentimentArray.push({sentiment: "Negative", score: negativeWordAmount });
 
-    return sentimentArray
+    return sentimentArray;
   };
 
   return (
@@ -34,4 +34,4 @@ export default function PieChart2 ({sentimentObject}) {
     />
   );
 
-}
+};
