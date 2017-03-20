@@ -4,10 +4,16 @@ import Footer from './Footer';
 import EntryListing from './EntryListing';
 
 
+
 export default function User (props) {
+
 
   const user = props.user.user
   const myEntries = props.user.myEntries
+
+  const handleClick = props.handleClick
+
+
   if(user) return (
   	<div className="flex-container">
       <div className="content">
@@ -29,7 +35,7 @@ export default function User (props) {
             <div className='row'>
               {
                 myEntries.slice(-4).map( entry => {
-                  return <EntryListing entry={entry} key={entry.id}/>
+                  return <EntryListing entry={entry} key={entry.id} handleClick={handleClick}/>
                 })
               }
             </div>
