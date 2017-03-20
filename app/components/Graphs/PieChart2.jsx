@@ -4,18 +4,16 @@ import { VictoryPie, VictoryTheme } from 'victory';
  
 export default function PieChart2 ({sentimentObject}) {
 
-const dataRange = (sentimentObj) => {
-  let sentimentArray = [];
-  //let score = sentimentObj.score;
-  let positiveWordAmount = sentimentObj.positive.length;
-  let negativeWordAmount = sentimentObj.negative.length
+  const dataRange = (sentimentObj) => {
+    let sentimentArray = [];
+    let positiveWordAmount = sentimentObj.positive.length;
+    let negativeWordAmount = sentimentObj.negative.length;
 
-  sentimentArray.push({sentiment: "Positive", score: positiveWordAmount })
-  sentimentArray.push({sentiment: "Negative", score: negativeWordAmount })
-  //sentimentArray.push({sentiment: "Overall", score: positiveWordAmount-negativeWordAmount })
+    sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
+    sentimentArray.push({sentiment: "Negative", score: negativeWordAmount });
 
-  return sentimentArray
-};
+    return sentimentArray
+  };
 
   return (
     <VictoryPie

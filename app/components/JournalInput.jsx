@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import PieChart from './Graphs/PieChart';
-import BarGraph from './Graphs/BarGraph';
 import PieChart2 from './Graphs/PieChart2';
+import BarGraph from './Graphs/BarGraph';
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";

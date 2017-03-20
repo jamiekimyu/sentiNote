@@ -3,21 +3,19 @@ import { render } from 'react-dom';
 import { VictoryBar, VictoryStack, VictoryChart, VictoryPortal, VictoryLabel, VictoryAxis, VictoryTheme } from 'victory';
  
 export default function BarGraph ({sentimentObject}) {
-console.log('I GOT THE PROPS',sentimentObject); 
 
-//example sentimentObject: {score: 3, comparative: 3, negative: , positive, }
-const dataRange = (sentimentObj) => {
-  let sentimentArray = [];
-  let score = sentimentObj.score;
-  let positiveWordAmount = sentimentObj.positive.length;
-  let negativeWordAmount = sentimentObj.negative.length
+    //example sentimentObject: {score: 3, comparative: 3, negative: , positive, }
+    const dataRange = (sentimentObj) => {
+      const sentimentArray = [];
+      const positiveWordAmount = sentimentObj.positive.length;
+      const negativeWordAmount = sentimentObj.negative.length
 
-  sentimentArray.push({sentiment: "Positive", score: positiveWordAmount })
-  sentimentArray.push({sentiment: "Negative", score: -negativeWordAmount })
-  sentimentArray.push({sentiment: "Overall", score: positiveWordAmount-negativeWordAmount })
+      sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
+      sentimentArray.push({sentiment: "Negative", score: -negativeWordAmount });
+      sentimentArray.push({sentiment: "Overall", score: positiveWordAmount-negativeWordAmount });
 
-  return sentimentArray
-};
+      return sentimentArray
+    };
 
         
   return (
@@ -46,4 +44,4 @@ const dataRange = (sentimentObj) => {
     </VictoryChart>
   );
 
-}
+};
