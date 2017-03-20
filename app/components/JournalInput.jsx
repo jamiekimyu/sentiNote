@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
+import PieChart from './Graphs/PieChart';
+import PieChart2 from './Graphs/PieChart2';
+import BarGraph from './Graphs/BarGraph';
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
@@ -11,8 +12,10 @@ class JournalInput extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { alertShow:false }
+    this.state = {alertShow:false}
   }
+  
+ 
 
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
@@ -32,10 +35,13 @@ class JournalInput extends Component {
         </div>
         <div className="row row-centered">
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+                <PieChart emotionObject={emotionObject}/>
             </div>  
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+                <PieChart2 sentimentObject={sentimentObject}/>
+            </div>
+            <div>
+                <BarGraph sentimentObject={sentimentObject}/>
             </div> 
             <div className="row">
               <TagCloud 
