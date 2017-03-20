@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const express = require('express');
 const router = express.Router();
 
@@ -19,28 +19,44 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/user/:screenName', (req, res, next) => {
-	console.log(req.params.screenName);
-
 	twitterClient.get('statuses/user_timeline', { screen_name: req.params.screenName, count: 200 })
 					 .then((tweets) => {
-						 console.log('HERE',tweets);
+						 console.log('HERE', tweets);
 						 res.json(tweets.data);
 					 })
 					 .catch(next);
 });
 
-/*router.get('/track/:topic', (req, res, next) => {
-	const tweets = [];
-	twitterClient.stream('statuses/filter', {track: 'love'}, (stream) => {
-	stream.on('data', (tweet) => {
-		tweets.push(tweet);
-		//stream.destroy();
-		//process.exit(0);
-	})
-	setTimeout()
-							 .then((tweets) => {
-								 res.json(tweets.data);
-							 })
-							 .catch(next);
-});*/
+router.get('/search/:term', (req, res, next) => {
+	twitterClient.get('search/tweets', { q: req.params.term, count: 100 })
+					 .then((tweets) => {
+						 console.log(tweets.data.statuses.length);
+						 res.json(tweets.data.statuses);
+					 })
+					 .catch(next);
+});
+
+const getTopicTweets = (topic, results) => {
+	let stream = twitterClient.stream('statuses/filter', {track: topic});
+	stream.on('tweet', (tweet) => {
+		results.push(tweet);
+	});
+	setTimeout(() => {
+		stream.stop();
+		console.log(results.length);
+	}, 5000);
+
+	stream.on('error', (error) => {
+		return error;
+	});
+};
+
+router.get('/track/:topic', (req, res, next) => {
+	const results = [];
+	getTopicTweets(req.params.topic, results);
+	setTimeout(() => {
+		res.json(results);
+	}, 5100);
+});
+
 module.exports = router;
