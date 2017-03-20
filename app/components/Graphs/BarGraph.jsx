@@ -16,19 +16,9 @@ export default function BarGraph ({sentimentObject}) {
 
       return sentimentArray;
     };
-
-    //styling for axis
-    const baseLabelStyles = {
-        fontFamily: sansSerif,
-        fontSize,
-        letterSpacing,
-        padding,
-        fill: blueGrey700
-    };
-
         
   return (
-    <VictoryChart domainPadding={40} >
+    <VictoryChart domainPadding={40} theme={VictoryTheme.material}>
         <VictoryBar
             data={dataRange(sentimentObject)}
             x="sentiment"
@@ -49,7 +39,6 @@ export default function BarGraph ({sentimentObject}) {
                 </VictoryPortal>
             }
         />
-        <VictoryAxis/>
     </VictoryChart>
   );
 
