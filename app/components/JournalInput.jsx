@@ -5,11 +5,17 @@ import PieChart from './Graphs/PieChart'
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { emotinator } from "../utils";
+let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 class JournalInput extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = { alertShow:false }
+  }
+
   render(){
-    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user} = this.props
+    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
     
     return (
       <div className='container'>
@@ -31,14 +37,38 @@ class JournalInput extends Component {
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
                 <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
             </div> 
-            <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <div className="row">
+              <TagCloud 
+                minSize={1}
+                maxSize={2}
+                tags={emotionCount.concat([])}
+                renderer={customRenderer}
+                shuffle={false}
+                onClick={
+                  tag => {
+                    emotionWord=tag.value
+                    emotionInstances=tag.count 
+                    array = (emotion[tag.value])
+                    this.setState({alertShow:true})
+                  }
+                }            
+              />
             </div>     
-     
         </div> 
-         <div className="row row-centered">
+        <div className='row'>
+          {
+            this.state.alertShow&&(
+              <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
+                <a className="close" aria-label="close">&times;</a>
+                <h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
+                <p>Instances: {emotionInstances} </p>
+                <span>Associated Emotions: </span>
+                { array.map(emotion=>(<span>{emotion + " "}</span>)) }
+              </div>
+            )
+          }
+        </div> 
 
-        </div>
         <Footer/>
       </div>
 
@@ -55,7 +85,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   {
     label==='Title'&&(
       <div className="">
-          <input {...input} placeholder={label} type='textarea' className="form-control field" id="journalTitle" required/>
+          <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
           {touched && error && <span>{error}</span>}
       </div>
     )
@@ -71,9 +101,18 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   </div>
 )}
 
-   // for(let key in preData) {
-   //      data.push({value: key, count: preData[key][1]})
-   //    }
+const customRenderer = (tag, size, color) => (
+  <span key={tag.value}
+    style={{
+      fontSize: `${size+1}em`,
+      margin: '3px',
+      padding: '3px',
+      display: 'inline-block',
+      color: `${color}`
+    }}>{tag.value}</span>
+);
+
+
 
 
 
@@ -95,16 +134,6 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
           //   </div> 
 
 
-    //               const customRenderer = (tag, size, color) => (
-    //   <span key={tag.value}
-    //     style={{
-    //       fontSize: `${size+1}em`,
-    //       margin: '3px',
-    //       padding: '3px',
-    //       display: 'inline-block',
-    //       color: `${color}`
-    //     }}>{tag.value}</span>
-    // );
 
 
 

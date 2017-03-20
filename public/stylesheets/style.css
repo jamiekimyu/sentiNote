@@ -261,30 +261,29 @@ input:-webkit-autofill {
 
 #journalContent {
   height:250px;
-  width: 100%;
-  margin-bottom:10px;
+  width: 90%;
+  margin: 0 0 10px 30px;
 }
 
 #journalTitle {
-  width: 400px;
-  margin-bottom:10px;
+  width: 40%;
+  margin: 0 0 20px 30px;
   float:left;
 }
 
 #journalSubmit {
-  float:right;
+  margin: 0 0 20px 30px;
+  float:left;
 }
 
 #songTitle {
   width: 250px;
-  margin: 0 auto;
-
+  margin-left: 15px
 }
 
 #songArtist {
   width: 250px;
-  margin: 0 auto
-
+  margin-left: 15px
 }
 
 #lyricText {
@@ -295,8 +294,8 @@ input:-webkit-autofill {
 }
 
 #songSubmit {
-  margin-top: 25px;
-  float:right; 
+  margin-left: 15px;
+  float: left;
 }
 
 #pT {
@@ -307,7 +306,15 @@ input:-webkit-autofill {
   margin: 20px  0 55px 20px ;
 }
 #journalHeader {
-  margin: 20px  0 55px 0 ;
+  margin: 20px  0 55px 30px ;
+}
+
+#emotText {
+  color: black;
+}
+
+.alert-info {
+  text-align: center
 }
 
 

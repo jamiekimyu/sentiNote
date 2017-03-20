@@ -1,26 +1,30 @@
 import SongInput from '../components/SongInput';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux'
-import {fetchSong} from '../reducers/song'  ////
+import {fetchSong} from '../reducers/song' 
 import sentiment from 'sentiment'
 import { emotinator, validateSong } from "../utils";
 
-
-let song_title, song_artist, lyrics, sent, emot 
+let song_title, song_artist, lyrics, sentimentObject, emotionObject, emotionCount, emotionReturn
 const ERRORSTRING = "Sorry, We don't have lyrics for this song yet."
+
 const mapstate = (state) => {
 	song_title =  state.form.songForm ? state.form.songForm.values ? state.form.songForm.values.song_title ? state.form.songForm.values.song_title : '' : '' : ''
   song_artist =   state.form.songForm ? state.form.songForm.values ? state.form.songForm.values.song_artist ? state.form.songForm.values.song_artist : '' : '' : ''
   lyrics = state.songs.currentSongLyrics || ''
   console.log('lyrics',lyrics)
-  sent = lyrics === ERRORSTRING ? {} : sentiment(lyrics)
-  emot = lyrics === ERRORSTRING ? {} : emotinator(lyrics)
+
+  emotionReturn = emotinator(lyrics)
+  sentimentObject = lyrics === ERRORSTRING ? {} : sentiment(lyrics)
+  emotionObject = lyrics === ERRORSTRING ? {} : emotionReturn[0]
+  emotionCount = lyrics === ERRORSTRING ? [] : emotionReturn[1]
   return {
     song_title,
     song_artist,
     lyrics,
-    sent,
-    emot
+    sentimentObject,
+    emotionObject,
+    emotionCount
   }
 }
 

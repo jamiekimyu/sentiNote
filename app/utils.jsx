@@ -1,12 +1,8 @@
-
-
-
-
 export function emotinator(content) {
   let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
   let emotionObject = {}
   let preData = {}
-  let data = []
+  let emotionInstances = []
   let emotion = require('./emotion')
 
   wordArray.forEach(word=>{
@@ -25,7 +21,10 @@ export function emotinator(content) {
       })
     }
   })
-  return emotionObject
+ for(let key in preData) {
+    emotionInstances.push({value: key, count: preData[key][1]})
+  }
+  return [emotionObject, emotionInstances]
 }
 
 export function validateSong(values) {
@@ -53,14 +52,3 @@ export function validateJournal(values) {
 }
 
 
-
-
-    
-
-     
-
-      
-    //   for(let key in preData) {
-    //     data.push({value: key, count: preData[key][1]})
-    //   }
-    // console.log('emotion!', emotionObject )

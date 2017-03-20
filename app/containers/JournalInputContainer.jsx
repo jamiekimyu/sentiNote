@@ -6,20 +6,23 @@ import sentiment from 'sentiment'
 import { emotinator, validateJournal } from "../utils";
 
 
-let title, content, user, sentimentObject,emotionObject
+let title, content, user, sentimentObject,emotionObject, emotionReturn, emotionCount
 const mapstate = (state) => {
 	title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth
   sentimentObject = sentiment(content)
-  emotionObject = emotinator(content)
+  emotionReturn = emotinator(content)
+  emotionObject = emotionReturn[0]
+  emotionCount = emotionReturn[1]
 
   return {
     title,
     content,
     user,
     sentimentObject,
-    emotionObject
+    emotionObject,
+    emotionCount
   }
 }
 
