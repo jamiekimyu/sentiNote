@@ -1,20 +1,19 @@
-/*import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
  
-export default function PieChart ({sentimentObject, emotionObject}) {
-//console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
+export default function PieChart ({emotionObject}) {
 
-//example emotionObject: {anticipation: 3, joy: 3, positive: 3, trust: 3}
-const dataRange = (emotionObject) => {
-  let emotionArray = [];
-  for(var emotion in emotionObject){
-    if(emotion !== "positive" && emotion !== "negative"){
-      emotionArray.push({emotion: emotion, intensity: emotionObject[emotion]})  
-    }
-  }
-  return emotionArray
-};
+  //example emotionObject: {anticipation: 3, joy: 3, positive: 3, trust: 3}
+  const dataRange = (emotionObject) => {
+    let emotionArray = [];
+    for(var emotion in emotionObject){
+      if(emotion !== "positive" && emotion !== "negative"){
+        emotionArray.push({emotion: emotion, intensity: emotionObject[emotion]}); 
+      };
+    };
+    return emotionArray;
+  };
 
   return (
     <VictoryPie
@@ -49,13 +48,13 @@ const dataRange = (emotionObject) => {
     />
   );
 
-}*/
+};
 
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { PieChart, Pie, Sector, Cell } from 'recharts'
 
 export default function SimplePieChart ({sentimentObject, emotionObject}) {
-//console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
+console.log('I GOT THE PROPS',sentimentObject, emotionObject); 
 
 const dataRange = (emotionObj) => {
   const emotionsWithColors = {anger: '#cc0000', anticipation: "#9933cc", disgust: "#287C52", fear: "#424242", joy: "#558000", sadness: "#3DA6AB", surprise: "##ff8800", trust: "#2a9fd6"}
@@ -103,4 +102,4 @@ const data = dataRange(emotionObject);
       </PieChart>
     );
 
-}
+}*/
