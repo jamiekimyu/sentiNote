@@ -33,6 +33,8 @@
 .profilePhoto{
   max-width: 250px;
   max-height: 300px;
+  min-width: 250px;
+  min-height: 300px;
 }
 
 .content {
