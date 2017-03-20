@@ -13,7 +13,13 @@
     padding: 15px;
     -webkit-flex: 1 100%;
     flex: 1 100%;
+}
 
+.entry-listing{
+  font-weight: bold;
+  border-color: red;
+  border-width: 4px;
+  border-style:solid;
 }
 
 .userInfo{
