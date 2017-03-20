@@ -20,7 +20,29 @@
     border-color: red;
     border-style: double;
     border-width: 5px;
-    padding: 5px;
+    padding: 15%;
+    margin: 5%;
+    color: silver;
+    text-align: center;
+}
+
+.title{
+  color: silver;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.userName{
+  font-size:20px;
+}
+
+
+
+.profilePhoto{
+  max-width: 250px;
+  max-height: 300px;
+  min-width: 250px;
+  min-height: 300px;
 }
 
 .content {
@@ -67,4 +89,18 @@ footer {
     .sidebar-nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
     .content {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
     footer {-webkit-order:3;order:3;}
+}
+
+/*default CSS from recharts piechart example*/
+body {
+  margin: 0;
+}
+#container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 800px;
+  height: 800px;
+  background-color: #fff;
 }

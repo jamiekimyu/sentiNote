@@ -1,27 +1,36 @@
 import SongInput from '../components/SongInput';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux'
-import {fetchSong} from '../reducers/song'  ////
+import {fetchSong} from '../reducers/song' 
 import sentiment from 'sentiment'
+import { emotinator, validateSong } from "../utils";
 
+let song_title, song_artist, lyrics, sentimentObject, emotionObject, emotionCount, emotionReturn
+const ERRORSTRING = "Sorry, We don't have lyrics for this song yet."
 
-
-let song_title, song_artist, lyrics
 const mapstate = (state) => {
 	song_title =  state.form.songForm ? state.form.songForm.values ? state.form.songForm.values.song_title ? state.form.songForm.values.song_title : '' : '' : ''
   song_artist =   state.form.songForm ? state.form.songForm.values ? state.form.songForm.values.song_artist ? state.form.songForm.values.song_artist : '' : '' : ''
   lyrics = state.songs.currentSongLyrics || ''
+  console.log('lyrics',lyrics)
+
+  emotionReturn = emotinator(lyrics)
+  sentimentObject = lyrics === ERRORSTRING ? {} : sentiment(lyrics)
+  emotionObject = lyrics === ERRORSTRING ? {} : emotionReturn[0]
+  emotionCount = lyrics === ERRORSTRING ? [] : emotionReturn[1]
   return {
     song_title,
     song_artist,
-    lyrics
+    lyrics,
+    sentimentObject,
+    emotionObject,
+    emotionCount
   }
 }
 
 const mapDisptachToProps = (dispatch,ownProps) => {
   return {
      analyzeSong (e) {
-      console.log('tt',song_title, 'art',song_artist)
       e.preventDefault()
       dispatch(fetchSong({song_title,song_artist}))
     }
@@ -30,20 +39,9 @@ const mapDisptachToProps = (dispatch,ownProps) => {
 
 const SongForm = reduxForm({
   form: 'songForm',
-  validate
+  validateSong
 })(SongInput)
 
 export default connect(mapstate, mapDisptachToProps)(SongForm);
 
 
- let validate = function (values) {
-  const error = {}
-  if (!values.song_title) {
-    error.song_title = 'A Song Title is Required'
-  }
-  if (!values.song_artist) {
-    error.song_artist = 'Artist is  Required'
-  }
-  console.log('Errors======>', error)
-  return error
-}

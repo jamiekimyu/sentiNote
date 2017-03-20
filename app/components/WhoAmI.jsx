@@ -1,15 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router';
+import { NavItem} from 'react-bootstrap';
 
 export const WhoAmI = ({ user, logout }) => (
-  <div>
-	  <Link to="/user">
-		  <div className="whoami">
-		    <span className="whoami-user-name">Hello, {user.user && user.user.name}!</span> <br />
-
-		  </div>
-	  </Link>
-	  <Link to="/home"><button className="logout btn btn-primary" onClick={logout}>Logout</button></Link>
+  <div className='row'>
+  	<NavItem className='inline' eventKey={1} >
+  		<Link to="/user">
+			<p  className="whoami-user-name text-success floatLeft margTop8"  >Hello, {user.user && user.user.name}!</p> 
+		</Link>
+		<button id='margLeft15' className="inline logout btn btn-info btn-xs " onClick={logout}>Logout</button>
+	</NavItem>
   </div>
 )
 

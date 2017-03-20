@@ -2,80 +2,124 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
 import PieChart from './Graphs/PieChart'
-import Header from './Header';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
+import { TagCloud } from "react-tagcloud";
+import { customRenderer } from '../utils'
+let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
-
-const renderField = ({ input, label, type, meta: {touched, error} }) => {
-  return (
-  <div className="content">
-
-      <div className="">
-        <div><label>{label}</label></div>
-          <input {...input} placeholder={label} type='textarea' className="form-control field" />
-          {touched && error && <span>{error}</span>}
-      </div>  
-  </div>
-)}
 
 class SongInput extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = { alertShow:false }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(e) {
+    this.props.analyzeSong(e)
+  }  
+
   render(){
-     const submitting = this.props.submitting;
-     console.log('preelos',this.props)
-     let sentimentObject, emotionObject
-
-     let errorString = "Sorry, We don't have lyrics for this song yet."
-     if(this.props.lyrics===errorString){
-      sentimentObject = {}
-      emotionObject = {}
-     }else {
-        sentimentObject = sentiment(this.props.lyrics);
-        let emotion = require('../emotion');
-        emotionObject = {}
-        let wordArray = this.props.lyrics.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
-
-        wordArray.forEach(word=>{
-          if(emotion[word]){
-            emotion[word].forEach(match=>{
-              if (!emotionObject[match]) {
-                emotionObject[match]=1
-              }else{
-                emotionObject[match] = emotionObject[match] + 1
-              }
-            })
-          }
-        })
-     }
+    let {submitting, sentimentObject, emotionObject, emotionCount} = this.props
+  
+    console.log('sentiment rating:',sentimentObject); 
+    console.log('emotion analysis:', emotionObject )
+    console.log('emotion count:', emotionCount )
 
 
     return (
-      <div className="flex-container">
-        <Header />
-        <Sidebar />
-        <div className= "content">
-          <h2>Analyze a Song</h2>
-          <form onSubmit={this.props.analyzeSong}>
-            <Field name="song_title" type="text" className="" component={renderField} id="song_title" label="Song Title" />
-            <Field name="song_artist" type="text" className="" component={renderField} id="song_artist" label="Artist" />
-            <button type="submit" disabled={submitting} className="btn btn-primary">Analyze Song</button>
+      <div className='container'>
+        <div className="row ">
+          <h1 id='songHeading'>Analyze Song Lyrics</h1>
+        </div>
+      
+        <div className="row row-centered">
+          <form className='journalForm' onSubmit={this.handleClick}>
+            <Field name="song_title" type="text" className="" component={renderField} label="Title" />
+            <Field name="song_artist" type="text" className="" component={renderField} label="Artist" />
+            <button type="submit" disabled={submitting} id='songSubmit' className="btn btn-success" onClick={e=>this.setState({alertShow:false})}>Analyze Song</button>
           </form>
-          <div>
-            <div>Content: {this.props.lyrics} </div>
+             <div className='row row-centered' id='pT'>
+              <textarea  cols='160' value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
+            </div>
+        </div>
+      
+        <div className="row row-centered">
+          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+          </div>  
+          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+          </div> 
+          <div className="row">
+            <TagCloud 
+              minSize={1}
+              maxSize={2}
+              tags={emotionCount.concat([])}
+              renderer={customRenderer}
+              shuffle={false}
+              onClick={
+                tag => {
+                  emotionWord=tag.value
+                  emotionInstances=tag.count 
+                  array = (emotion[tag.value])
+                  this.setState({alertShow:true})
+                }
+              }          
+              />
+            </div>
           </div>
-        </div>
-
-
-        <div className="flex-container">
-
-          <h1>Graph</h1>
-         <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-        </div>
-        <Footer />
+          
+          <div className='row'>
+            {
+              this.state.alertShow&&(
+                <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
+                  <a className="close" aria-label="close">&times;</a>
+                  <h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
+                  <p>Instances: {emotionInstances} </p>
+                  <span>Associated Emotions: </span>
+                  { array.map(emotion=>(<span>{emotion + " "}</span>)) }
+                </div>
+              )
+            }
+          </div>     
+          <Footer/>
       </div>
     )
   }
 }
 
 export default SongInput;
+
+const renderField = ({ input, label, type, meta: {touched, error} }) => {
+  return (
+  <div className="content">
+      <div className="left">
+          <div className=''>
+          <input {...input} placeholder={label} type='textarea' className="form-control field" id={"song"+label} required/>
+          {touched && error && <span>{error}</span>}
+          </div>
+      </div>  
+  </div>
+)}
+
+
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
