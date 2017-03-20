@@ -15,7 +15,7 @@ export default function User (props) {
           <div className="col-xs-12">
             <p className='userName'>{user.name}</p>
             <img className='profilePhoto' src={user.photoURL} />
-            <p>#Journal Entries: {myEntries.length}</p>
+            <p>#Journal Entries: {myEntries.length} <button className='btn-info'>Edit Profile</button></p>
           </div>
           <div className="col-xs-12">
             <h2>Description: </h2>
