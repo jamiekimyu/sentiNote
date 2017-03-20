@@ -21,8 +21,8 @@ router.get('/', (req, res, next) => {
 router.get('/user/:screenName', (req, res, next) => {
 	twitterClient.get('statuses/user_timeline', { screen_name: req.params.screenName, count: 200 })
 		.then((tweets) => {
-		 console.log('HERE', tweets);
-		 res.json(tweets.data);
+		 	console.log('HERE', tweets);
+		 	res.json(tweets.data);
 		})
 		.catch(next);
 });

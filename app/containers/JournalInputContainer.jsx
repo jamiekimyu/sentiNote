@@ -16,11 +16,10 @@ const mapstate = (state) => {
   emotionObject = emotionReturn[0]
   emotionCount = emotionReturn[1]
 
-  let {positivos, negativos, orderedWordsRating} = sentiMentatorJournal(sentimentObject)
-  console.log('****', orderedWordsRating)
-  let totalPositive = positivos.reduce((a,b)=>a+b[1],0)
-  let totalNegative = negativos.reduce((a,b)=>a+b[1],0)
-  sentimentObject = Object.assign({},sentimentObject,{posWithVals:positivos,negsWithVals:negativos,orderedWordsRating,totalPositive,totalNegative})
+  let {posWithVals, negsWithVals, orderedWordsRating} = sentiMentatorJournal(sentimentObject)
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
+  sentimentObject = Object.assign({},sentimentObject,{posWithVals,negsWithVals,orderedWordsRating,totalPositive,totalNegative})
 
 
   return {

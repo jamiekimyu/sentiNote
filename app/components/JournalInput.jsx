@@ -8,7 +8,6 @@ import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
-
 class JournalInput extends Component {
 
   constructor(props) {
@@ -16,29 +15,8 @@ class JournalInput extends Component {
     this.state = {alertShow:false}
   }
   
- 
-
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
-    // if( (sentimentObject.positive.length) + (sentimentObject.negative.length) > positivos.length + negativos.length) {
-    //   if(sentimentObject.score > currentScore) {
-    //     let word = sentimentObject.positive[sentimentObject.positive.length - 1]
-    //     let polarityRating = sentimentObject.score - currentScore
-    //     positivos.push([word, polarityRating])
-    //     currentScore = sentimentObject.score
-    //   }else {
-    //     let word = sentimentObject.negative[sentimentObject.negative.length - 1]
-    //     let polarityRating = sentimentObject.score - currentScore
-    //     negativos.push([word, polarityRating])
-    //     currentScore = sentimentObject.score
-    //   }
-    // }
-    
-    // console.log('positives', positivos)
-    // console.log('negatives', negativos)
-    // console.log('totalPostitive', totalPositive)
-    // console.log('totalNegative', totalNegative)
-    // console.log('orderedWordsRating', orderedWordsRating)
     console.log('sent',sentimentObject)
     
     return (
@@ -105,7 +83,6 @@ class JournalInput extends Component {
 
 export default JournalInput;
 
-
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (
   <div className="content">
@@ -127,25 +104,3 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   }
   </div>
 )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

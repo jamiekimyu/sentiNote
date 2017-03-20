@@ -18,10 +18,10 @@ const mapstate = (state) => {
   sentimentObject = lyrics === ERRORSTRING ? {} : sentiment(lyrics)
 
   
-  let {positivos, negativos, orderedWordsRating} = sentiMentatorSong(sentimentObject)
-  let totalPositive = positivos.reduce((a,b)=>a+b[1],0)
-  let totalNegative = negativos.reduce((a,b)=>a+b[1],0)
-  sentimentObject = Object.assign({},sentimentObject,{posWithVals:positivos,negsWithVals:negativos,orderedWordsRating,totalPositive,totalNegative})
+  let {posWithVals, negsWithVals, orderedWordsRating} = sentiMentatorSong(sentimentObject)
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
+  sentimentObject = Object.assign({},sentimentObject,{posWithVals,negsWithVals,orderedWordsRating,totalPositive,totalNegative})
 
 
 
