@@ -20,20 +20,20 @@ router.get('/', (req, res, next) => {
 
 router.get('/user/:screenName', (req, res, next) => {
 	twitterClient.get('statuses/user_timeline', { screen_name: req.params.screenName, count: 200 })
-					 .then((tweets) => {
-						 console.log('HERE', tweets);
-						 res.json(tweets.data);
-					 })
-					 .catch(next);
+		.then((tweets) => {
+		 console.log('HERE', tweets);
+		 res.json(tweets.data);
+		})
+		.catch(next);
 });
 
 router.get('/search/:term', (req, res, next) => {
 	twitterClient.get('search/tweets', { q: req.params.term, count: 100 })
-					 .then((tweets) => {
-						 console.log(tweets.data.statuses.length);
-						 res.json(tweets.data.statuses);
-					 })
-					 .catch(next);
+		.then((tweets) => {
+			console.log(tweets.data.statuses.length);
+			res.json(tweets.data.statuses);
+		})
+		.catch(next);
 });
 
 const getTopicTweets = (topic, results) => {
