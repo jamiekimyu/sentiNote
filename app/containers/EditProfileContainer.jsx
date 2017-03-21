@@ -43,14 +43,14 @@ const mapDispatch = dispatch => {
 			e.preventDefault();
 
 			axios.put(`/api/users/${user_id}`, {
-				name,
+			  name,
 				photoURL,
 				description
 			})
 			.then( res => {
-				dispatch(authenticated(res.data))
+				dispatch(authenticated(res.data));
 				console.log('attempting to redirect with localhost. Change for deployed app');
-				window.location.replace('http://localhost:1337/user') //this may have to change once deployed!!
+				window.location.replace('http://localhost:1337/user'); //this may have to change once deployed!!
 			})
 			.catch( err => console.error(err))
 		}
