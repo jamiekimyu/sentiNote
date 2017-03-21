@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
   form: form,
   signup: require('./signup').default,
   twitter: require('./twitter').default,
-  songs: require('./song').default
+  songs: require('./song').default,
+  movies: require('./movie').default
 });
 
   
