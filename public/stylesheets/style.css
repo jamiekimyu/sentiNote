@@ -67,7 +67,7 @@ input:-webkit-autofill {
     text-align:left;
     /* inline-block space fix */
     margin: 2%;
-   
+
 }
 
 @-webkit-keyframes roll-in-left{0%{-webkit-transform:translateX(-800px) rotate(-540deg);transform:translateX(-800px) rotate(-540deg);opacity:0}100%{-webkit-transform:translateX(0) rotate(0deg);transform:translateX(0) rotate(0deg);opacity:1}}@keyframes roll-in-left{0%{-webkit-transform:translateX(-800px) rotate(-540deg);transform:translateX(-800px) rotate(-540deg);opacity:0}100%{-webkit-transform:translateX(0) rotate(0deg);transform:translateX(0) rotate(0deg);opacity:1}}
@@ -243,9 +243,14 @@ input:-webkit-autofill {
 }
 
 
-#pieBox1 {
+.pieBox1 {
   background-color: #2a9fd6;
   height: 300px;
+  border-radius: 70%;
+}
+
+.pieBox {
+  background-color: #2a9fd6;
   border-radius: 70%;
 }
 
