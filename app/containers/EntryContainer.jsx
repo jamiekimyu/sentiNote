@@ -8,13 +8,18 @@ import { emotinator, validateJournal } from "../utils";
 
 let title, content, user, sentimentObject, emotionObject, emotionReturn, emotionCount
 const mapstate = (state) => {
-  title =  state.entries.selectedEntry.title
-  content =   state.entries.selectedEntry.content
-  user =   state.auth.user
-  sentimentObject = sentiment(content)
-  emotionReturn = emotinator(content)
-  emotionObject = emotionReturn[0]
-  emotionCount = emotionReturn[1]
+  title =  state.entries.selectedEntry.title;
+  content =   state.entries.selectedEntry.content;
+  user =   state.auth.user;
+  sentimentObject = sentiment(content);
+  emotionReturn = emotinator(content);
+  emotionObject = emotionReturn[0];
+  emotionCount = emotionReturn[1];
+
+  const initialValues = {
+    title,
+    content
+  }
 
   return {
     title,
@@ -22,7 +27,8 @@ const mapstate = (state) => {
     user,
     sentimentObject,
     emotionObject,
-    emotionCount
+    emotionCount,
+    initialValues
   }
 }
 

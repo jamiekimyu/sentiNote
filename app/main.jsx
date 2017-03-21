@@ -25,7 +25,7 @@ const ExampleApp = connect(
   <Navbar default collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a className='margTop8'><Link to="/home">Home</Link></a>
+        <Link to="/home" className='margTop8'>Home</Link>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
@@ -64,7 +64,7 @@ render (
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
-        <Router path={`/entry`} component={EntryContainer} />
+        <Route path={"/entry"} component={EntryContainer} />
       </Route>
     </Router>
   </Provider>,

@@ -15,25 +15,21 @@ class Entry extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, handleSubmit, user, emotionCount, entry} = this.props
+    let {submitting, sentimentObject, emotionObject, handleSubmit, user, emotionCount, content, title} = this.props
 
     return (
       <div className='container'>
-        <div className="row">
-             <h1 id='journalHeader'>Journal</h1>
+        <div className="row title">
+             <h1 id='journalHeader'>Journal Entry</h1>
         </div>
         <div className="row row-centered">
               <form className='journalForm' >
                   <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
-                  <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
                   <div><Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" /></div>
                   <Field name="user" type="hidden"  value={user} component={renderField} />
                 </form>
         </div>
         <div className="row row-centered">
-            <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart  emotionObject={emotionObject}/>
-            </div>
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
                 <PieChart  emotionObject={emotionObject}/>
             </div>
@@ -85,7 +81,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   {
     label==='Title'&&(
       <div className="">
-          <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
+          <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required readOnly/>
           {touched && error && <span>{error}</span>}
       </div>
     )
@@ -93,7 +89,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
  {
     label==='Content'&&(
       <div className="">
-          <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
+          <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required readOnly/>
           {touched && error && <span>{error}</span>}
       </div>
     )
