@@ -1,6 +1,38 @@
 import React from 'react';
 
 
+export function sentiMentatorSong(sentimentObject) {
+  let afinn = require('./AFINN')
+  let posWithVals = []
+  let negsWithVals = []
+  let orderedWordsRating = []
+  let totalScore = 0
+  
+  sentimentObject.positive.forEach(word=>posWithVals.push([ word, afinn[word] ]))
+  sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
+  sentimentObject.words.forEach(word=>{
+    totalScore += afinn[word]
+    orderedWordsRating.push(  {word,  totalScore}     )
+  })
+  return {negsWithVals, posWithVals, orderedWordsRating}
+}
+
+
+export function sentiMentatorJournal(sentimentObject) {
+  let afinn = require('./AFINN')
+  let posWithVals = []
+  let negsWithVals = []
+  let orderedWordsRating = []
+  let totalScore = 0
+  
+  sentimentObject.positive.forEach(word=>posWithVals.push([ word, afinn[word] ]))
+  sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
+  sentimentObject.words.reverse().forEach(word=>{
+    totalScore += afinn[word]
+    orderedWordsRating.push(  {word,  totalScore}     )
+  })
+  return {negsWithVals, posWithVals, orderedWordsRating}
+}
 
 export function emotinator(content) {
   let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')

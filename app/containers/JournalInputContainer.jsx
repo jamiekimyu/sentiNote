@@ -3,7 +3,7 @@ import {Field, reduxForm, reset} from 'redux-form';
 import {connect} from 'react-redux'
 import {addEntry} from '../reducers/entry'
 import sentiment from 'sentiment'
-import { emotinator, validateJournal } from "../utils";
+import { emotinator, validateJournal, sentiMentatorJournal } from "../utils";
 
 
 let title, content, user, sentimentObject,emotionObject, emotionReturn, emotionCount
@@ -16,13 +16,19 @@ const mapstate = (state) => {
   emotionObject = emotionReturn[0]
   emotionCount = emotionReturn[1]
 
+  let {posWithVals, negsWithVals, orderedWordsRating} = sentiMentatorJournal(sentimentObject)
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
+  sentimentObject = Object.assign({},sentimentObject,{posWithVals,negsWithVals,orderedWordsRating,totalPositive,totalNegative})
+
+
   return {
     title,
     content,
     user,
     sentimentObject,
     emotionObject,
-    emotionCount
+    emotionCount,
   }
 }
 
