@@ -16,10 +16,9 @@ export default function BarGraph ({sentimentObject}) {
 
       return sentimentArray;
     };
-
         
   return (
-    <VictoryChart domainPadding={40}>
+    <VictoryChart domainPadding={40} theme={VictoryTheme.material}>
         <VictoryBar
             data={dataRange(sentimentObject)}
             x="sentiment"
@@ -40,7 +39,6 @@ export default function BarGraph ({sentimentObject}) {
                 </VictoryPortal>
             }
         />
-        <VictoryAxis/>
     </VictoryChart>
   );
 
