@@ -9,22 +9,12 @@ import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
-const sentimentArray = [];
-
 class JournalInput extends Component {
 
   constructor(props) {
     super(props);
     this.state = {alertShow:false};
   }
-
-  componentDidUpdate(prevProps){
-    const tokens = this.props.sentimentObject.tokens
-    const score = this.props.sentimentObject.score
-    if(prevProps.sentimentObject.tokens.length !== this.props.sentimentObject.tokens.length){
-      sentimentArray.push({NumberofWords: tokens.length, totalScore: score, currentWord: tokens[tokens.length-2]})
-    };
-  };
 
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
@@ -53,7 +43,7 @@ class JournalInput extends Component {
           <div>
             <BarGraph sentimentObject={sentimentObject} />
           </div>
-            <LineGraph sentimentObject={sentimentObject} sentimentArray={sentimentArray}/> 
+            <LineGraph sentimentObject={sentimentObject} /> 
           <div>
         </div>
           <div className="row">
