@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { VictoryChart, VictoryLine, VictoryTheme, VictoryLabel, VictoryAxis, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
 
 export default function LineGraph ({sentimentObject, sentimentArray}) {
@@ -16,26 +16,33 @@ export default function LineGraph ({sentimentObject, sentimentArray}) {
         />
     </VictoryChart>
     );
-};
-
-/*import React, { Component } from 'react';
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryLabel, VictoryAxis, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
-
-export default function LineGraph ({sentimentObject, sentimentArray}) {
-    console.log('sentimentArray', sentimentArray)
-
-    //data is in the sentimentArray: {NumberofWords: tokens.length, totalScore: score, currentWord: tokens[tokens.length-1]}
-    return(
-    <VictoryChart containerComponent={<VictoryVoronoiContainer/>} theme={VictoryTheme.material}>
-        <VictoryLine
-            data={[
-                {month: "September", profit: 35000, loss: 2000},
-                {month: "October", profit: 42000, loss: 8000},
-                {month: "November", profit: 55000, loss: 5000}
-            ]}
-            x="month"
-            y={(datum) => datum.profit - datum.loss}
-        />
-    </VictoryChart>
-    );
 };*/
+
+import React, { Component } from 'react';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+
+const data = [
+      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+];
+
+export default function SimpleLineChart({sentimentObject, sentimentArray}) {
+
+  	return (
+    	<LineChart width={600} height={300} data={sentimentArray}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+       <XAxis dataKey="NumberofWords"/>
+       <YAxis dataKey="totalScore"/>
+       <CartesianGrid strokeDasharray="3 3"/>
+       <Tooltip/>
+       <Legend />
+       <Line type="monotone" dataKey="totalScore" stroke="#8884d8" activeDot={{r: 8}}/>
+       {/*<Line type="monotone" dataKey="uv" stroke="#82ca9d" />*/}
+      </LineChart>
+    );
+};
