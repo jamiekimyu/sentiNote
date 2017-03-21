@@ -18,47 +18,14 @@ class JournalInput extends Component {
 
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
-
+    console.log('sent',sentimentObject)
 
     return (
-      <div className='container content'>
-        <div className="row">
+      <div className='container'>
+        <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
         <div className="row row-centered">
-              <form className='journalForm' onSubmit={addEntry}>
-                  <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
-                  <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
-                  <div><Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" /></div>
-                  <Field name="user" type="hidden"  value={user} component={renderField} />
-                </form>
-        </div>
-        <div className="row row-centered">
-            <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-            </div>
-            <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-            </div>
-            <div className="row">
-              <TagCloud
-                minSize={1}
-                maxSize={2}
-                tags={emotionCount.concat([])}
-                renderer={customRenderer}
-                shuffle={false}
-                onClick={
-                  tag => {
-                    emotionWord=tag.value
-                    emotionInstances=tag.count
-                    array = (emotion[tag.value])
-                    this.setState({alertShow:true})
-                  }
-                }
-              />
-            </div>
-        </div>
-        <div>
           <form className='journalForm' onSubmit={addEntry}>
             <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
             <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
