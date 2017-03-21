@@ -15,7 +15,6 @@ module.exports = require('express').Router()
     )
     .catch(next)})
   .get('/:user_id', (req, res, next) => {
-
   	Entry.findAll({
   		where: {
   			user_id: req.params.user_id
@@ -24,5 +23,9 @@ module.exports = require('express').Router()
   	.then( entries => {
   		res.send(entries);
   	})
+  })
+  .get('/entry/:entry_id', (req, res, next) => {
+    Entry.findById(req.params.entry_id)
+    .then( entry => res.json(entry))
   })
 
