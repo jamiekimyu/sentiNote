@@ -15,10 +15,9 @@ class JournalInput extends Component {
     this.state = {alertShow:false}
   }
   
- 
-
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
+    console.log('sent',sentimentObject)
     
     return (
       <div className='container'>
@@ -84,7 +83,6 @@ class JournalInput extends Component {
 
 export default JournalInput;
 
-
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (
   <div className="content">
@@ -106,25 +104,3 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   }
   </div>
 )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
