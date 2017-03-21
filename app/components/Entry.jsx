@@ -7,7 +7,7 @@ import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
-class JournalInput extends Component {
+class Entry extends Component {
 
   constructor(props) {
     super(props)
@@ -15,7 +15,7 @@ class JournalInput extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
+    let {submitting, sentimentObject, emotionObject, handleSubmit, user, emotionCount, entry} = this.props
 
     return (
       <div className='container'>
@@ -23,7 +23,7 @@ class JournalInput extends Component {
              <h1 id='journalHeader'>Journal</h1>
         </div>
         <div className="row row-centered">
-              <form className='journalForm' onSubmit={addEntry}>
+              <form className='journalForm' >
                   <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
                   <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
                   <div><Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" /></div>
@@ -32,10 +32,10 @@ class JournalInput extends Component {
         </div>
         <div className="row row-centered">
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+                <PieChart  emotionObject={emotionObject}/>
             </div>
             <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-                <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+                <PieChart  emotionObject={emotionObject}/>
             </div>
             <div className="row">
               <TagCloud
@@ -76,7 +76,7 @@ class JournalInput extends Component {
   }
 }
 
-export default JournalInput;
+export default Entry;
 
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {

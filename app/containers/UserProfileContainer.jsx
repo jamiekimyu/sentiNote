@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatch = dispatch => { //lets have someone look at this
+const mapDispatch = dispatch => {
 	return {
 		handleClick: (e, entry_id) => {
 			  dispatch(selectEntryById(entry_id));

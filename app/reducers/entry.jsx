@@ -41,7 +41,6 @@ export const addEntry = (entry) => dispatch => {
 }
 
 export const selectEntryById = (entry_id) => dispatch => {
-	console.log("about to send axios request");
 	axios.get(`/api/entries/entry/${entry_id}`)
 	.then( res => {
 		dispatch(selectEntryToState(res.data))

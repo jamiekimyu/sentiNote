@@ -13,7 +13,7 @@ import UserProfileContainer from './containers/UserProfileContainer'
 import EditProfileContainer from './containers/EditProfileContainer'
 import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
-import Entry from './components/Entry';
+import EntryContainer from './containers/EntryContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 
@@ -64,7 +64,7 @@ render (
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
-        <Router path={`/entries/:entry_id`} component={Entry} />
+        <Router path={`/entry`} component={EntryContainer} />
       </Route>
     </Router>
   </Provider>,
