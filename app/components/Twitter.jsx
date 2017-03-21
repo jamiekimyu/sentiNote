@@ -44,7 +44,7 @@ export class Twitter extends React.Component{
 
   handleTopicSubmit(event){
     event.preventDefault();
-    this.props.getTopicTweets(this.state.twitterTopic)
+    this.props.getTopicTweets(this.state.twitterTopic);
   }
 
   render(){
@@ -54,17 +54,15 @@ export class Twitter extends React.Component{
           <h1>Welcome To SentiNote Twitter</h1>
           <form onSubmit={(event) => this.handleSubmit(event)} className='col-xs-6 col-md-4'>
             <div className="form-group">
-                  <label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
-                  <div className="col-sm-10">
-                    <input onChange={(event) => this.handleChange(event)} value={this.state.twitterHandle} name="twitterHandle" type="text" className="form-control" />
-                  </div>
-                </div>
-
-                <div className="col-sm-offset-2 col-sm-10">
-                  <button type="submit" className="btn btn-primary">submit</button>
-               </div>
+              <label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
+              <div className="col-sm-10">
+                <input onChange={(event) => this.handleChange(event)} value={this.state.twitterHandle} name="twitterHandle" type="text" className="form-control" />
+              </div>
+            </div>
+            <div className="col-sm-offset-2 col-sm-10">
+              <button type="submit" className="btn btn-primary">submit</button>
+            </div>
           </form>
-
           <form onSubmit={(event) => this.handleSearchSubmit(event)} className='col-xs-6 col-md-4'>
             <div className="form-group">
               <label htmlFor="name" className="col-sm-2 control-label">Twitter Search Term:</label>
@@ -72,26 +70,23 @@ export class Twitter extends React.Component{
                 <input onChange={(event) => this.handleChange(event)} value={this.state.twitterSearchTerm} name="twitterSearchTerm" type="text" className="form-control" />
               </div>
             </div>
-
             <div className="col-sm-offset-2 col-sm-10">
               <button type="submit" className="btn btn-primary">submit</button>
             </div>
           </form>
-
-        <form onSubmit={(event) => this.handleTopicSubmit(event)} className='col-xs-6 col-md-4' >
-          <div className="form-group">
-            <label htmlFor="name" className="col-sm-2 control-label">Twitter Search Topic:</label>
-            <div className="col-sm-10">
-              <input onChange={(event) => this.handleChange(event)} value={this.state.twitterTopic} name="twitterTopic" type="text" className="form-control" />
+          <form onSubmit={(event) => this.handleTopicSubmit(event)} className='col-xs-6 col-md-4' >
+            <div className="form-group">
+              <label htmlFor="name" className="col-sm-2 control-label">Twitter Search Topic:</label>
+              <div className="col-sm-10">
+                <input onChange={(event) => this.handleChange(event)} value={this.state.twitterTopic} name="twitterTopic" type="text" className="form-control" />
+              </div>
             </div>
-          </div>
-
-          <div className="col-sm-offset-2 col-sm-10">
-            <button type="submit" className="btn btn-primary">submit</button>
-          </div>
-        </form>
-      </div>
-        <Footer />
+            <div className="col-sm-offset-2 col-sm-10">
+              <button type="submit" className="btn btn-primary">submit</button>
+            </div>
+          </form>
+        </div>
+          <Footer />
       </div>
     );
   }
