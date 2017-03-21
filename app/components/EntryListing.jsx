@@ -8,7 +8,6 @@ const EntryListing = ({entry, handleClick}) => {
       <p className='text-warning'>{entry.title}</p>
       <button onClick={ (e) => handleClick(e, entry.id)}> Check it out! </button>
       <PieChart emotionObject={entry.emotion} />
-      {/*<Link to="/">Go to home!</Link>*/}
     </div>
 );
 }

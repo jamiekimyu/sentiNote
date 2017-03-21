@@ -19,7 +19,6 @@ class JournalInput extends Component {
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
 
-    console.log('sent',sentimentObject)
 
     return (
       <div className='container content'>
