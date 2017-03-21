@@ -13,15 +13,9 @@ const twitterClient = new Twit({
 	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-router.get('/', (req, res, next) => {
-	console.log('====================here');
-	res.json('HERE');
-});
-
 router.get('/user/:screenName', (req, res, next) => {
 	twitterClient.get('statuses/user_timeline', { screen_name: req.params.screenName, count: 200 })
 					 .then((tweets) => {
-						 console.log('HERE', tweets);
 						 res.json(tweets.data);
 					 })
 					 .catch(next);
@@ -30,7 +24,6 @@ router.get('/user/:screenName', (req, res, next) => {
 router.get('/search/:term', (req, res, next) => {
 	twitterClient.get('search/tweets', { q: req.params.term, count: 100 })
 					 .then((tweets) => {
-						 console.log(tweets.data.statuses.length);
 						 res.json(tweets.data.statuses);
 					 })
 					 .catch(next);
@@ -43,7 +36,6 @@ const getTopicTweets = (topic, results) => {
 	});
 	setTimeout(() => {
 		stream.stop();
-		console.log(results.length);
 	}, 5000);
 
 	stream.on('error', (error) => {
@@ -58,5 +50,11 @@ router.get('/track/:topic', (req, res, next) => {
 		res.json(results);
 	}, 5100);
 });
+
+//get all userTweets
+router.get('/experimental/:screenName', (req, res, next) => {
+
+});
+
 
 module.exports = router;
