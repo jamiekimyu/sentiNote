@@ -13,6 +13,7 @@ import UserProfileContainer from './containers/UserProfileContainer'
 import EditProfileContainer from './containers/EditProfileContainer'
 import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
+import EntryContainer from './containers/EntryContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 
@@ -24,7 +25,7 @@ const ExampleApp = connect(
   <Navbar default collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a className='margTop8'><Link to="/home">Home</Link></a>
+        <Link to="/home" className='margTop8'>Home</Link>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
@@ -63,6 +64,7 @@ render (
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} />
       </Route>
     </Router>
   </Provider>,

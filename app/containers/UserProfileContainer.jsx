@@ -1,6 +1,10 @@
 
 import User from '../components/UserProfile';
 import { connect } from 'react-redux';
+import { selectEntryById } from '../reducers/entry';
+
+
+
 
 const mapStateToProps = (state) => {
   return {
@@ -10,6 +14,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatch = dispatch => {
 	return {
+		handleClick: (e, entry_id) => {
+			e.preventDefault();
+			dispatch(selectEntryById(entry_id));
+
+		}
 	}
 }
 
