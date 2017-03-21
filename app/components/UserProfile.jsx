@@ -35,7 +35,7 @@ export default function User (props) {
             <div className='row'>
               {
                 myEntries.slice(-4).map( entry => {
-                  return <Link to='/entry' key={entry.id}><EntryListing entry={entry} handleClick={handleClick}/></Link>
+                  return <EntryListing entry={entry} key={entry.id} handleClick={handleClick}/>
                 })
               }
             </div>

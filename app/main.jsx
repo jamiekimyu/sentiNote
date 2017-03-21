@@ -64,7 +64,7 @@ render (
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
-        <Route path={"/entry"} component={EntryContainer} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} />
       </Route>
     </Router>
   </Provider>,

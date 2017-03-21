@@ -5,6 +5,7 @@ import { selectEntryById } from '../reducers/entry';
 
 
 
+
 const mapStateToProps = (state) => {
   return {
   	user: state.auth
@@ -14,8 +15,9 @@ const mapStateToProps = (state) => {
 const mapDispatch = dispatch => {
 	return {
 		handleClick: (e, entry_id) => {
-			  dispatch(selectEntryById(entry_id));
-			  e.preventDefault();
+			e.preventDefault();
+			dispatch(selectEntryById(entry_id));
+
 		}
 	}
 }
