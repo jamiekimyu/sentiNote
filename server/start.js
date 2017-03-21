@@ -6,6 +6,7 @@ const {resolve, join} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
+
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
@@ -13,6 +14,7 @@ const finalHandler = require('finalhandler')
 // saying require('APP/whatever').
 //
 // This next line requires our root index.js:
+////////////////////
 
 
 const pkg = require('APP')
