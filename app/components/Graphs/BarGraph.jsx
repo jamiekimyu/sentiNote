@@ -7,12 +7,12 @@ export default function BarGraph ({sentimentObject}) {
     //example sentimentObject: {score: 3, comparative: 3, negative: , positive, }
     const dataRange = (sentimentObj) => {
       const sentimentArray = [];
-      const positiveWordAmount = sentimentObj.positive.length;
-      const negativeWordAmount = sentimentObj.negative.length;
+      const positiveWordScore = sentimentObj.totalPositive;
+      const negativeWordScore = sentimentObj.totalNegative;
 
-      sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
-      sentimentArray.push({sentiment: "Negative", score: -negativeWordAmount });
-      sentimentArray.push({sentiment: "Overall", score: positiveWordAmount-negativeWordAmount });
+      sentimentArray.push({sentiment: "Positive", score: positiveWordScore });
+      sentimentArray.push({sentiment: "Negative", score: negativeWordScore });
+      sentimentArray.push({sentiment: "Overall", score: sentimentObj.score });
 
       return sentimentArray;
     };

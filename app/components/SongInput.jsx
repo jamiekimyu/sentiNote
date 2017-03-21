@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
+import sentiment from 'sentiment';
+import PieChartEmotion from './Graphs/PieChartEmotion';
+import PieChartPolarity from './Graphs/PieChartPolarity';
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
-import { customRenderer } from '../utils'
+import { customRenderer } from '../utils';
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 
@@ -47,10 +48,10 @@ class SongInput extends Component {
       
         <div className="row row-centered">
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <PieChartEmotion emotionObject={emotionObject} />
           </div>  
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <PieChartPolarity sentimentObject={sentimentObject} />
           </div> 
           <div className="row">
             <TagCloud 

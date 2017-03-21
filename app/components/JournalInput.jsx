@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import PieChart from './Graphs/PieChart';
-import PieChart2 from './Graphs/PieChart2';
+import PieChartEmotion from './Graphs/PieChartEmotion';
+import PieChartPolarity from './Graphs/PieChartPolarity';
 import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
 import Footer from './Footer';
@@ -9,13 +9,23 @@ import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
+const sentimentArray = [];
+
 class JournalInput extends Component {
 
   constructor(props) {
     super(props);
     this.state = {alertShow:false};
   }
-  
+
+  componentDidUpdate(prevProps){
+    const tokens = this.props.sentimentObject.tokens
+    const score = this.props.sentimentObject.score
+    if(prevProps.sentimentObject.tokens.length !== this.props.sentimentObject.tokens.length){
+      sentimentArray.push({NumberofWords: tokens.length, totalScore: score, currentWord: tokens[tokens.length-2]})
+    };
+  };
+
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
     console.log('sent',sentimentObject)
@@ -35,15 +45,15 @@ class JournalInput extends Component {
         </div>
         <div className="row row-centered">
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart emotionObject={emotionObject} />
+            <PieChartEmotion emotionObject={emotionObject} />
           </div>  
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart2 sentimentObject={sentimentObject} />
+            <PieChartPolarity sentimentObject={sentimentObject} />
           </div>
           <div>
             <BarGraph sentimentObject={sentimentObject} />
           </div>
-            <LineGraph /> 
+            <LineGraph sentimentObject={sentimentObject} sentimentArray={sentimentArray}/> 
           <div>
         </div>
           <div className="row">
