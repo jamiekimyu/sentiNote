@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
  
-export default function PieChart ({emotionObject}) {
+export default function PieChartEmotion ({emotionObject}) {
 
   //example emotionObject: {anticipation: 3, joy: 3, positive: 3, trust: 3}
   const dataRange = (emotionObject) => {
