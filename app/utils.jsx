@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function sentiMentatorSong(sentimentObject) {
+export function sentiMentatorOther(sentimentObject) {
   let afinn = require('./AFINN')
   let posWithVals = []
   let negsWithVals = []
@@ -11,9 +11,11 @@ export function sentiMentatorSong(sentimentObject) {
   sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
   sentimentObject.words.forEach(word=>{
     totalScore += afinn[word]
-    orderedWordsRating.push(  {word,  totalScore}     )
+    orderedWordsRating.push( {word, totalScore}  )
   })
-  return {negsWithVals, posWithVals, orderedWordsRating}
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
+  return {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}
 }
 
 export function sentiMentatorJournal(sentimentObject) {
@@ -29,7 +31,9 @@ export function sentiMentatorJournal(sentimentObject) {
     totalScore += afinn[word]
     orderedWordsRating.push(  {word,  totalScore}     )
   })
-  return {negsWithVals, posWithVals, orderedWordsRating}
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
+  return {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}
 }
 
 export function emotinator(content) {

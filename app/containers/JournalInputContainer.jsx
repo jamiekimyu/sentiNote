@@ -6,21 +6,14 @@ import sentiment from 'sentiment'
 import { emotinator, validateJournal, sentiMentatorJournal } from "../utils";
 
 
-let title, content, user, sentimentObject,emotionObject, emotionReturn, emotionCount
+let title, content, user, emotionReturn
 const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
-  sentimentObject = sentiment(content)
-  emotionReturn = emotinator(content)
-  emotionObject = emotionReturn[0]
-  emotionCount = emotionReturn[1]
-
-  let {posWithVals, negsWithVals, orderedWordsRating} = sentiMentatorJournal(sentimentObject)
-  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
-  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
-  sentimentObject = Object.assign({},sentimentObject,{posWithVals,negsWithVals,orderedWordsRating,totalPositive,totalNegative})
-
+  let sentimentObject = sentiment(content)
+  let [emotionObject, emotionCount] = emotinator(content)
+  sentimentObject = Object.assign({}, sentimentObject, sentiMentatorJournal(sentimentObject)) 
 
   return {
     title,
@@ -28,7 +21,7 @@ const mapstate = (state) => {
     user,
     sentimentObject,
     emotionObject,
-    emotionCount,
+    emotionCount
   }
 }
 
