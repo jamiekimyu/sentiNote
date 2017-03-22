@@ -4,6 +4,7 @@ import PieChartEmotion from './Graphs/PieChartEmotion';
 import PieChartPolarity from './Graphs/PieChartPolarity';
 import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
+import GraphCarousel from './Graphs';
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
@@ -34,6 +35,9 @@ class JournalInput extends Component {
           </form>
         </div>
         <div className="row row-centered">
+          <div>
+            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+          </div>
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
             <PieChartEmotion emotionObject={emotionObject} />
           </div>
