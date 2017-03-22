@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import sentiment from 'sentiment'
 import PieChartEmotion from './Graphs/PieChartEmotion'
 import PieChartPolarity from './Graphs/PieChartPolarity'
-import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer } from '../utils'
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
@@ -82,7 +81,6 @@ class MovieInput extends Component {
             )
           }
         </div>    
-        <Footer/>
       </div>
     )
   }

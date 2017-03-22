@@ -1,5 +1,4 @@
 import React from 'react';
-
 import UserTweets from './UserTweets';
 import SearchTweets from './SearchTweets';
 
@@ -11,3 +10,4 @@ export default function Twitter(){
 		</div>
 	);
 };
+

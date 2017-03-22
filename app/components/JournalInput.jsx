@@ -5,13 +5,11 @@ import PieChartPolarity from './Graphs/PieChartPolarity';
 import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
 import GraphCarousel from './Graphs';
-import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
-import { customRenderer, emotinator } from "../utils";
+import { journalRenderField, customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 class JournalInput extends Component {
-
   constructor(props) {
     super(props);
     this.state = {alertShow:false};
@@ -23,17 +21,20 @@ class JournalInput extends Component {
 
     return (
       <div className='container'>
+        
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
+        
         <div className="row row-centered">
           <form className='journalForm' onSubmit={addEntry}>
-            <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
+            <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
             <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
-            <div><Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" /></div>
-            <Field name="user" type="hidden"  value={user} component={renderField} />
+            <div><Field name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
+            <Field name="user" type="hidden"  value={user} component={journalRenderField} />
           </form>
         </div>
+        
         <div className="row row-centered">
           <div>
             <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject}/>
@@ -51,23 +52,11 @@ class JournalInput extends Component {
             <LineGraph sentimentObject={sentimentObject} />
           </div>
         </div>
+        
         <div className="row">
-            <TagCloud
-              minSize={1}
-              maxSize={2}
-              tags={emotionCount.concat([])}
-              renderer={customRenderer}
-              shuffle={false}
-              onClick={
-                tag => {
-                  emotionWord=tag.value
-                  emotionInstances=tag.count
-                  array = (emotion[tag.value])
-                  this.setState({alertShow:true})
-                }
-              }
-            />
-          </div>
+            <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
+        </div>
+        
         <div className='row'>
           {
             this.state.alertShow&&(
@@ -81,7 +70,6 @@ class JournalInput extends Component {
             )
           }
         </div>
-        <Footer/>
       </div>
     );
   };
@@ -89,24 +77,4 @@ class JournalInput extends Component {
 
 export default JournalInput;
 
-const renderField = ({ input, label, type, meta: {touched, error} }) => {
-  return (
-  <div className="content">
-    {
-      label==='Title'&&(
-        <div className="">
-            <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
-            {touched && error && <span>{error}</span>}
-        </div>
-      )
-    }
-    {
-        label==='Content'&&(
-          <div className="">
-              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
-              {touched && error && <span>{error}</span>}
-          </div>
-        )
-      }
-  </div>
-)};
+

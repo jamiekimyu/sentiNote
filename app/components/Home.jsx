@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
 import {Link} from 'react-router'
 
 
@@ -47,7 +46,6 @@ const Home = () => (
 				</div> 
 			</Link>
 		</div> 
-		<Footer/>
 	</div>
 	);
 export default Home;
