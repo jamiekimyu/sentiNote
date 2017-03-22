@@ -14,6 +14,8 @@ import UserProfileContainer from './containers/UserProfileContainer'
 import EditProfileContainer from './containers/EditProfileContainer'
 import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
+import UserHistoryTweets from './components/UserHistoryTweets';
+import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
 import {fetchMovieLinks} from './reducers/movie'
@@ -67,7 +69,9 @@ render (
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
-        <Route path="/twitter" component={Twitter} />
+				<Route path="/twitter" component={Twitter} />
+				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} />
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
       </Route>
     </Router>
