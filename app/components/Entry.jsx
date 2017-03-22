@@ -30,7 +30,7 @@ class Entry extends Component {
                 </form>
         </div>
         <div className="row row-centered">
-            <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+            <div className="col-xs-12 col-md-6 col-centered pieBox1">
                 <PieChart  emotionObject={emotionObject}/>
             </div>
             <div className="row">
