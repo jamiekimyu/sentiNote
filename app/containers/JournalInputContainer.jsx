@@ -11,9 +11,8 @@ const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
-  let sentimentObject = sentiment(content)
   let [emotionObject, emotionCount] = emotinator(content)
-  sentimentObject = Object.assign({}, sentimentObject, sentiMentatorJournal(sentimentObject)) 
+  let sentimentObject =  sentiMentatorJournal(sentiment(content))
 
   return {
     title,

@@ -15,7 +15,7 @@ export function sentiMentatorOther(sentimentObject) {
   })
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
-  return {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}
+  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
 }
 
 export function sentiMentatorJournal(sentimentObject) {
@@ -33,7 +33,7 @@ export function sentiMentatorJournal(sentimentObject) {
   })
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
-  return {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}
+  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
 }
 
 export function emotinator(content) {

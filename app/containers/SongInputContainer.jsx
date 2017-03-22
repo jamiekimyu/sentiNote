@@ -15,8 +15,7 @@ const mapstate = (state) => {
   let emotionReturn = emotinator(lyrics)
   let emotionObject = lyrics === ERRORSTRING ? {} : emotionReturn[0]
   let emotionCount = lyrics === ERRORSTRING ? [] : emotionReturn[1]
-  let sentimentObject = lyrics === ERRORSTRING ? {} : sentiment(lyrics)
-  sentimentObject = Object.assign({}, sentimentObject, sentiMentatorOther(sentimentObject)) 
+  let sentimentObject = lyrics === ERRORSTRING ? {} : sentiMentatorOther(sentiment(lyrics))
 
   return {
     song_title,

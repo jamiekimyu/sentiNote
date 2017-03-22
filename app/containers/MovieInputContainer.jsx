@@ -9,8 +9,7 @@ const mapstate = (state) => {
   let movieArray = state.movies.linksAndTitles
   let currentScript = state.movies.currentMovieScript
   let [emotionObject, emotionCount] = emotinator(currentScript)
-  let sentimentObject = sentiment(currentScript)
-  sentimentObject = Object.assign({}, sentimentObject, sentiMentatorOther(sentimentObject)) 
+  let sentimentObject =  sentiMentatorOther(sentiment(currentScript))
 
   return {
     movieArray,
