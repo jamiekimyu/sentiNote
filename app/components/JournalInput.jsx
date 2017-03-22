@@ -22,9 +22,11 @@ class JournalInput extends Component {
 
     return (
       <div className='container'>
+        
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
+        
         <div className="row row-centered">
           <form className='journalForm' onSubmit={addEntry}>
             <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
@@ -33,14 +35,11 @@ class JournalInput extends Component {
             <Field name="user" type="hidden"  value={user} component={renderField} />
           </form>
         </div>
+        
         <div className="row row-centered">
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
             <PieChartEmotion emotionObject={emotionObject} />
-          </div>  
-
-            <PieChart emotionObject={emotionObject} />
           </div>
-
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
             <PieChartPolarity sentimentObject={sentimentObject} />
           </div>
@@ -50,7 +49,9 @@ class JournalInput extends Component {
             <LineGraph sentimentObject={sentimentObject} /> 
           <div>
         </div>
-          <div className="row">
+        
+          
+        <div className="row">
             <TagCloud
               minSize={1}
               maxSize={2}
@@ -68,6 +69,8 @@ class JournalInput extends Component {
             />
           </div>
         </div>
+
+        
         <div className='row'>
           {
             this.state.alertShow&&(

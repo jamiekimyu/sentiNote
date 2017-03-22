@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
+import PieChartEmotion from './Graphs/PieChartEmotion'
+import PieChartPolarity from './Graphs/PieChartPolarity'
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer } from '../utils'
@@ -44,10 +45,10 @@ class MovieInput extends Component {
 
         <div className="row row-centered">
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <PieChartEmotion sentimentObject={sentimentObject} emotionObject={emotionObject}/>
           </div>  
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <PieChartPolarity sentimentObject={sentimentObject} emotionObject={emotionObject}/>
           </div> 
           <div className="row">
             <TagCloud 

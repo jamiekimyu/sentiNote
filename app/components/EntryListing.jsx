@@ -1,5 +1,5 @@
 import React from 'react';
-import PieChart from './Graphs/PieChart';
+import PieChartEmotion from './Graphs/PieChartEmotion';
 import Link from 'react-router';
 
 const EntryListing = ({entry, handleClick}) => {
