@@ -23,6 +23,7 @@ const getTopicTweets = (topic, results) => {
 	});
 };
 
+//get all userTweets if pages = 16, a page = about 200 tweets
 const getUserTweetHistory = (screenName, pages) => {
 	let userTweetHistory = new Promise((resolve, reject) => {
 		if(pages < 1){

@@ -4,15 +4,18 @@ import axios from 'axios';
 const GET_USER_TWEETS = 'GET_USER_TWEETS';
 const GET_SEARCH_TWEETS = 'GET_SEARCH_TWEETS';
 const GET_TOPIC_TWEETS = 'GET_TOPIC_TWEETS';
+const GET_USER_HISTORY_TWEETS = 'GET_USER_HISTORY_TWEETS';
 /* ------------   ACTION CREATORS     ------------------ */
 export const getUserTweetsAction = (userTweets) => ({type: GET_USER_TWEETS, userTweets});
 export const getSearchTweetsAction = (searchTweets) => ({type: GET_SEARCH_TWEETS, searchTweets});
 export const getTopicTweetsAction = (topicTweets) => ({type: GET_TOPIC_TWEETS, topicTweets});
+export const getUserHistoryTweetsAction = (historyTweets) => ({type: GET_USER_HISTORY_TWEETS, historyTweets});
 /* ------------       REDUCER     ------------------ */
 const initialState = {
 	userTweets: [],
 	searchTweets: [],
-	topicTweets: []
+	topicTweets: [],
+	historyTweets: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -26,6 +29,9 @@ export const reducer = (state = initialState, action) => {
 			break;
 		case GET_TOPIC_TWEETS:
 			newState.topicTweets = action.topicTweets;
+			break;
+		case GET_USER_HISTORY_TWEETS:
+			newState.historyTweets = action.historyTweets;
 			break;
 		default:
 			return state;
@@ -61,6 +67,17 @@ export const getTopicTweets = (topic) => {
          .then(response => response.data)
          .then((topicTweetData) => {
            dispatch(getTopicTweetsAction(topicTweetData));
+         })
+				 .catch(err => console.error(err));
+  };
+};
+
+export const getUserHistoryTweets = (screenName, pages) => {
+  return dispatch => {
+    axios.get(`/api/twitter/history/${screenName}/${pages}`)
+         .then(response => response.data)
+         .then((tweetData) => {
+           dispatch(getUserHistoryTweetsAction(tweetData));
          })
 				 .catch(err => console.error(err));
   };
