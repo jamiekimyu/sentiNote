@@ -322,6 +322,10 @@ input:-webkit-autofill {
   text-align: center
 }
 
+#movieSelect {
+  height:40px;
+}
+
 
 
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import PieChart from './Graphs/PieChart';
-import PieChart2 from './Graphs/PieChart2';
+import PieChartEmotion from './Graphs/PieChartEmotion';
+import PieChartPolarity from './Graphs/PieChartPolarity';
 import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
 import Footer from './Footer';
@@ -34,19 +34,20 @@ class JournalInput extends Component {
           </form>
         </div>
         <div className="row row-centered">
-          <div  className="col-xs-12 col-md-6 col-centered pieBox1">
-            <PieChart emotionObject={emotionObject} />
+          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+            <PieChartEmotion emotionObject={emotionObject} />
           </div>
-          <div  className="col-xs-12 col-md-6 col-centered pieBox1">
-            <PieChart2 sentimentObject={sentimentObject} />
+          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+            <PieChartPolarity sentimentObject={sentimentObject} />
           </div>
           <div>
             <BarGraph sentimentObject={sentimentObject} />
           </div>
-            <LineGraph />
           <div>
+            <LineGraph sentimentObject={sentimentObject} />
+          </div>
         </div>
-          <div className="row">
+        <div className="row">
             <TagCloud
               minSize={1}
               maxSize={2}
@@ -63,7 +64,6 @@ class JournalInput extends Component {
               }
             />
           </div>
-        </div>
         <div className='row'>
           {
             this.state.alertShow&&(
@@ -77,10 +77,8 @@ class JournalInput extends Component {
             )
           }
         </div>
-
         <Footer/>
       </div>
-
     );
   };
 };
