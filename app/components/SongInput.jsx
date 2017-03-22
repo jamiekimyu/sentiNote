@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
+import sentiment from 'sentiment';
+import PieChartEmotion from './Graphs/PieChartEmotion';
+import PieChartPolarity from './Graphs/PieChartPolarity';
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
-import { customRenderer } from '../utils'
+import { customRenderer } from '../utils';
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 
@@ -18,12 +19,12 @@ class SongInput extends Component {
 
   handleClick(e) {
     this.props.analyzeSong(e)
-  }  
+  }
 
   render(){
     let {submitting, sentimentObject, emotionObject, emotionCount} = this.props
-  
-    console.log('sentiment rating:',sentimentObject); 
+
+    console.log('sentiment rating:',sentimentObject);
     console.log('emotion analysis:', emotionObject )
     console.log('emotion count:', emotionCount )
 
@@ -31,9 +32,9 @@ class SongInput extends Component {
     return (
       <div className='container'>
         <div className="row ">
-          <h1 id='songHeading'>Analyze Song Lyrics</h1>
+          <h1 id='songHeading' className='title'>Analyze Song Lyrics</h1>
         </div>
-      
+
         <div className="row row-centered">
           <form className='journalForm' onSubmit={this.handleClick}>
             <Field name="song_title" type="text" className="" component={renderField} label="Title" />
@@ -44,16 +45,16 @@ class SongInput extends Component {
               <textarea  cols='160' value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
             </div>
         </div>
-      
+
         <div className="row row-centered">
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-          </div>  
+            <PieChartEmotion emotionObject={emotionObject} />
+          </div>
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChart sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-          </div> 
+            <PieChartPolarity sentimentObject={sentimentObject} />
+          </div>
           <div className="row">
-            <TagCloud 
+            <TagCloud
               minSize={1}
               maxSize={2}
               tags={emotionCount.concat([])}
@@ -62,15 +63,15 @@ class SongInput extends Component {
               onClick={
                 tag => {
                   emotionWord=tag.value
-                  emotionInstances=tag.count 
+                  emotionInstances=tag.count
                   array = (emotion[tag.value])
                   this.setState({alertShow:true})
                 }
-              }          
+              }
               />
             </div>
           </div>
-          
+
           <div className='row'>
             {
               this.state.alertShow&&(
@@ -83,7 +84,7 @@ class SongInput extends Component {
                 </div>
               )
             }
-          </div>     
+          </div>
           <Footer/>
       </div>
     )
@@ -100,7 +101,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
           <input {...input} placeholder={label} type='textarea' className="form-control field" id={"song"+label} required/>
           {touched && error && <span>{error}</span>}
           </div>
-      </div>  
+      </div>
   </div>
 )}
 
@@ -108,7 +109,7 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
 
 
 
-              
+
 
 
 

@@ -1,4 +1,5 @@
 'use strict'
+import axios from 'axios';
 import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory, Link} from 'react-router'
 import {render} from 'react-dom'
@@ -15,43 +16,47 @@ import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
 import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
+import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
-
+import {fetchMovieLinks} from './reducers/movie'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 ) (
   ({ user, children }) =>
   <div>
-  <Navbar default collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <Link to="/home" className='margTop8'>Home</Link>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <NavItem eventKey={1} className='margTop8' ><Link to="/journalInput">Journal</Link></NavItem>
-        <NavItem eventKey={2} className='margTop8' ><Link to="/twitter">Tweets</Link></NavItem>
-        <NavItem eventKey={3} className='margTop8' ><Link to="/SongInput">Songs</Link></NavItem>
-        <NavItem eventKey={4} id={user.user ? 'dashBoardText' : ''} className='margTop8' ><Link to={user.user ? '/user' : "/signup"}>{user.user ? <span className='text-danger'>My Dashboard</span> : 'Signup'}</Link></NavItem>
-        <NavItem eventKey={5} className='inline right' >{user.user&&<Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link>}</NavItem>
-      </Nav>
+    <Navbar default collapseOnSelect>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a className='margTop8'><Link to="/home">Home</Link></a>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem eventKey={1} className='margTop8' ><Link to="/journalInput">Journal</Link></NavItem>
+          <NavItem eventKey={2} className='margTop8' ><Link to="/twitter">Tweets</Link></NavItem>
+          <NavItem eventKey={3} className='margTop8' ><Link to="/SongInput">Songs</Link></NavItem>
+          <NavItem eventKey={4} className='margTop8' ><Link to="/movies">Movies</Link></NavItem>
+          <NavItem eventKey={5} id={user.user ? 'dashBoardText' : ''} className='margTop8' ><Link to={user.user ? '/user' : "/signup"}>{user.user ? <span className='text-danger'>My Dashboard</span> : 'Signup'}</Link></NavItem>
+          <NavItem eventKey={6} className='inline right' >{user.user&&<Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link>}</NavItem>
+        </Nav>
 
-      <Nav pullRight>
-        { user.user ? <NavItem eventKey={1} > <WhoAmI/> </NavItem> : <Login/> }
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-  <div className='abs'>
-   {children}
-  </div>
-
-
+        <Nav pullRight>
+          { user.user ? <NavItem eventKey={1} > <WhoAmI/> </NavItem> : <Login/> }
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    <div className='abs'>
+     {children}
+    </div>
   </div>
 
 )
+
+const onMovieEnter = () => {
+  return store.dispatch(fetchMovieLinks())
+}
 
 render (
   <Provider store={store}>
@@ -67,6 +72,7 @@ render (
 				<Route path="/twitter" component={Twitter} />
 				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
         <Route path={"/entry/:entryId"} component={EntryContainer} />
+				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
       </Route>
     </Router>
   </Provider>,

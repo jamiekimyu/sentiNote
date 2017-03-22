@@ -60,6 +60,7 @@ export function emotinator(content) {
  for(let key in preData) {
     emotionInstances.push({value: key, count: preData[key][1]})
   }
+  emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50)  //sort and return top 50
   return [emotionObject, emotionInstances]
 }
 
