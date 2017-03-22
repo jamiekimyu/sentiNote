@@ -40,7 +40,7 @@ export default function SimpleLineChart({sentimentObject}) {
 
   	return (
     	<LineChart width={600} height={300} data={dataRange(sentimentObject)}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+            margin={{top: 5, right: 30, left: 20, bottom: 30}}>
        <XAxis dataKey="currentWord"/>
        <YAxis dataKey="Polarity"/>
        <CartesianGrid strokeDasharray="3 3"/>
