@@ -119,4 +119,34 @@ export function validateJournal(values) {
   return error
 }
 
+//Twitter Util Functions
+/* tweetsToParagraph takes an array of twitter objects and returns
+ * the text of the tweets as one block of text
+*/
+export const tweetsToParagraph = (tweetsData) => {
+	let tweetsParagraph = '';
+	tweetsData.forEach((tweetData) => {
+		tweetsParagraph += tweetData.text + ' ';
+	});
+	return tweetsParagraph;
+};
 
+/* takes an array of twitter objects and pulls off several fields of interest
+ * and returns an array of condensed twitter objects.
+*/
+export const parseTweets = (tweetsData) => {
+	const parsedTweets = [];
+	tweetsData.forEach((tweetData) => {
+		parsedTweets.push(
+			{
+				id: tweetData.id,
+				date: tweetData.created_at,
+				text: tweetData.text,
+				username: tweetData.user.name,
+				screenName: tweetData.user.screen_name,
+				userDescription: tweetData.user.description
+			}
+		);
+	});
+	return parsedTweets;
+};

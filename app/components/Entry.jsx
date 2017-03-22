@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
@@ -29,9 +28,6 @@ class Entry extends Component {
                 </form>
         </div>
         <div className="row row-centered">
-            <div className="col-xs-12 col-md-6 col-centered pieBox1">
-                <PieChart  emotionObject={emotionObject}/>
-            </div>
             <div className="row">
               <TagCloud
                 minSize={1}
