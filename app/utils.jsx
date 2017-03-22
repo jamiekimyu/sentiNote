@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export function sentiMentatorSong(sentimentObject) {
   let afinn = require('./AFINN')
   let posWithVals = []
@@ -16,7 +15,6 @@ export function sentiMentatorSong(sentimentObject) {
   })
   return {negsWithVals, posWithVals, orderedWordsRating}
 }
-
 
 export function sentiMentatorJournal(sentimentObject) {
   let afinn = require('./AFINN')
@@ -63,6 +61,28 @@ export function emotinator(content) {
   emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50)  //sort and return top 50
   return [emotionObject, emotionInstances]
 }
+
+export const journalRenderField = ({ input, label, type, meta: {touched, error} }) => {
+  return (
+  <div className="content">
+    {
+      label==='Title'&&(
+        <div className="">
+            <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
+            {touched && error && <span>{error}</span>}
+        </div>
+      )
+    }
+    {
+        label==='Content'&&(
+          <div className="">
+              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
+              {touched && error && <span>{error}</span>}
+          </div>
+        )
+      }
+  </div>
+)};
 
 export const customRenderer = (tag, size, color) => (
   <span key={tag.value}

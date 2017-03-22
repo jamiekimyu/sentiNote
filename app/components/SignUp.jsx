@@ -1,6 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
-
 
 export  function Signup ({signup}){
   return (
@@ -27,7 +25,6 @@ export  function Signup ({signup}){
         <button type="submit" value="Signup" className="btn btn-primary">Sign Up </button>
       </form>
     </div>
-    <Footer />
   </div>
     );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
 import {connect} from 'react-redux';
 import {getTweets, getSearchTweets, getTopicTweets} from '../reducers/twitter';
 
@@ -85,9 +84,8 @@ export class Twitter extends React.Component{
               <button type="submit" className="btn btn-primary">submit</button>
             </div>
           </form>
-        </div>
-          <Footer />
       </div>
+    </div> 
     );
   }
 }

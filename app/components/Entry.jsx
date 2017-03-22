@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
 import PieChart from './Graphs/PieChart'
-import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
@@ -64,10 +63,7 @@ class Entry extends Component {
             )
           }
         </div>
-
-        <Footer/>
       </div>
-
     )
   }
 }

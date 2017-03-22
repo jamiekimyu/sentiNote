@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import Footer from './Footer';
 import { Field, reduxForm } from 'redux-form'
 const { DOM: { input, select, textarea } } = React
 
@@ -62,7 +61,6 @@ class ProfileForm extends Component {
             <Link to="/user"><button className='btn-warning'>Cancel</button></Link>
           </form>
         </div>
-        <Footer />
       </div>
 
     );
