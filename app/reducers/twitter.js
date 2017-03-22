@@ -1,16 +1,16 @@
 import axios from 'axios';
 
 /* -----------------    ACTIONS     ------------------ */
-const GET_TWEETS = 'GET_TWEETS';
+const GET_USER_TWEETS = 'GET_USER_TWEETS';
 const GET_SEARCH_TWEETS = 'GET_SEARCH_TWEETS';
 const GET_TOPIC_TWEETS = 'GET_TOPIC_TWEETS';
 /* ------------   ACTION CREATORS     ------------------ */
-export const getTweetsAction = (tweets) => ({type: GET_TWEETS, tweets});
+export const getUserTweetsAction = (userTweets) => ({type: GET_USER_TWEETS, userTweets});
 export const getSearchTweetsAction = (searchTweets) => ({type: GET_SEARCH_TWEETS, searchTweets});
 export const getTopicTweetsAction = (topicTweets) => ({type: GET_TOPIC_TWEETS, topicTweets});
 /* ------------       REDUCER     ------------------ */
 const initialState = {
-	tweets: [],
+	userTweets: [],
 	searchTweets: [],
 	topicTweets: []
 };
@@ -18,14 +18,14 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
 	const newState = Object.assign({}, state);
 	switch (action.type){
-		case GET_TWEETS:
-			newState.tweets = action.tweets.slice();
+		case GET_USER_TWEETS:
+			newState.userTweets = action.userTweets;
 			break;
 		case GET_SEARCH_TWEETS:
-			newState.searchTweets = action.searchTweets.slice();
+			newState.searchTweets = action.searchTweets;
 			break;
 		case GET_TOPIC_TWEETS:
-			newState.topicTweets = action.topicTweets.slice();
+			newState.topicTweets = action.topicTweets;
 			break;
 		default:
 			return state;
@@ -33,12 +33,12 @@ export const reducer = (state = initialState, action) => {
 	return newState;
 };
 /* ------------       DISPATCHERS     ------------------ */
-export const getTweets = (screenName) => {
+export const getUserTweets = (screenName) => {
   return dispatch => {
     axios.get(`/api/twitter/user/${screenName}`)
          .then(response => response.data)
          .then((tweetData) => {
-           dispatch(getTweetsAction(tweetData));
+           dispatch(getUserTweetsAction(tweetData));
          })
 				 .catch(err => console.error(err));
   };
