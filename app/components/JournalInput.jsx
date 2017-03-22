@@ -19,15 +19,15 @@ class JournalInput extends Component {
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
     console.log('sent',sentimentObject)
-    
+
     return (
       <div className='container'>
-        <div className="row">
+        <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
         <div className="row row-centered">
           <form className='journalForm' onSubmit={addEntry}>
-            <Field name="title" type="text" className="" component={renderField} id="title" label="Title" /> 
+            <Field name="title" type="text" className="" component={renderField} id="title" label="Title" />
             <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
             <div><Field name="content" type="text" className="form-control field" component={renderField} id="content" label="Content" /></div>
             <Field name="user" type="hidden"  value={user} component={renderField} />
@@ -37,17 +37,21 @@ class JournalInput extends Component {
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
             <PieChartEmotion emotionObject={emotionObject} />
           </div>  
+
+            <PieChart emotionObject={emotionObject} />
+          </div>
+
           <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
             <PieChartPolarity sentimentObject={sentimentObject} />
           </div>
           <div>
             <BarGraph sentimentObject={sentimentObject} />
-          </div>
+         </div>
             <LineGraph sentimentObject={sentimentObject} /> 
           <div>
         </div>
           <div className="row">
-            <TagCloud 
+            <TagCloud
               minSize={1}
               maxSize={2}
               tags={emotionCount.concat([])}
@@ -56,14 +60,14 @@ class JournalInput extends Component {
               onClick={
                 tag => {
                   emotionWord=tag.value
-                  emotionInstances=tag.count 
+                  emotionInstances=tag.count
                   array = (emotion[tag.value])
                   this.setState({alertShow:true})
                 }
-              }            
+              }
             />
-          </div>     
-        </div> 
+          </div>
+        </div>
         <div className='row'>
           {
             this.state.alertShow&&(
@@ -76,7 +80,7 @@ class JournalInput extends Component {
               </div>
             )
           }
-        </div> 
+        </div>
 
         <Footer/>
       </div>
