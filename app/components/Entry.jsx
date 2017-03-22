@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import sentiment from 'sentiment'
-import PieChart from './Graphs/PieChart'
+// import PieChart from './Graphs/PieChart'
 import Footer from './Footer';
 import { TagCloud } from "react-tagcloud";
 import { customRenderer, emotinator } from "../utils";
@@ -30,9 +30,9 @@ class Entry extends Component {
                 </form>
         </div>
         <div className="row row-centered">
-            <div className="col-xs-12 col-md-6 col-centered pieBox1">
+{/*            <div className="col-xs-12 col-md-6 col-centered pieBox1">
                 <PieChart  emotionObject={emotionObject}/>
-            </div>
+            </div>*/}
             <div className="row">
               <TagCloud
                 minSize={1}

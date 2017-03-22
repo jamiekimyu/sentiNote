@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PieChart from './Graphs/PieChart';
+// import PieChart from './Graphs/PieChart';
 import {getUserHistoryTweets} from '../reducers/twitter';
 import {emotinator, tweetsToParagraph} from '../utils';
 

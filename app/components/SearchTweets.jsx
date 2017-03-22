@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PieChart from './Graphs/PieChart';
+// import PieChart from './Graphs/PieChart';
 import {getSearchTweets} from '../reducers/twitter';
 import {emotinator, tweetsToParagraph} from '../utils';
 
@@ -58,7 +58,7 @@ export class SearchTweets extends React.Component{
 				</form>
 
 				<div id="pieBox1" className="col-xs-12 col-md-6 col-centered">
-					<PieChart emotionObject={emotinator(tweetsToParagraph(this.props.searchTweets))[0]} />
+{/*					<PieChart emotionObject={emotinator(tweetsToParagraph(this.props.searchTweets))[0]} />*/}
 				</div>
 
 		</div>
