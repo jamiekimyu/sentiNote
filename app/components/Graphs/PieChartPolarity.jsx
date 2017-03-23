@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
- 
+
 export default function PieChartPolarity ({sentimentObject}) {
 
   const dataRange = (sentimentObj) => {
@@ -9,8 +9,8 @@ export default function PieChartPolarity ({sentimentObject}) {
     let positiveWordAmount = sentimentObj.positive.length;
     let negativeWordAmount = sentimentObj.negative.length;
 
-    if(sentimentObj.positive.length) sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
-    if(sentimentObj.negative.length) sentimentArray.push({sentiment: "Negative", score: negativeWordAmount });
+    if(sentimentObj.positive.length) sentimentArray.push({sentiment: "Pos", score: positiveWordAmount });
+    if(sentimentObj.negative.length) sentimentArray.push({sentiment: "Neg", score: negativeWordAmount });
 
     return sentimentArray;
   };
@@ -23,12 +23,16 @@ export default function PieChartPolarity ({sentimentObject}) {
       style={{
         data: {
           fill: (data) => {
-            if(data.x === "Positive"){
+            if(data.x === "Pos"){
               return "green"
-            } else if(data.x === "Negative"){
+            } else if(data.x === "Neg"){
               return "red"
             }
           }
+        },
+        labels: {
+          fill: 'silver',
+          fontSize: 12
         }
       }}
     />
