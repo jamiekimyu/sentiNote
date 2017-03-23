@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatch = dispatch => {
 	return {
 		handleClick: (e, entry_id) => {
+			console.log("Ive triggered handleClick", e);
 			e.preventDefault();
 			dispatch(selectEntryById(entry_id));
 

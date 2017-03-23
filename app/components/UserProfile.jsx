@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import EntryListing from './EntryListing';
+import GraphCarousel from './Graphs';
+import EntriesCarousel from './Graphs/EntriesCarousel';
 
 
 
@@ -14,7 +16,7 @@ export default function User (props) {
       <div className="content">
         <h2 className="title">User Info</h2>
         <div className="userInfo">
-          
+
           <div className='row'>
             <div className="col-xs-12 col-md-6">
               <p className='userName'>{user.name}</p>
@@ -28,14 +30,12 @@ export default function User (props) {
           </div>
 
           <div>
-            <h2> Recent Entries </h2>
-            
+            <h2> Previous Entries </h2>
             <div className='row'>
-              {
-                myEntries.slice(-4).map( entry => {
-                  return <EntryListing entry={entry} key={entry.id} handleClick={handleClick}/>
-                })
-              }
+
+               <EntriesCarousel entries={myEntries} handleClick={handleClick}/>
+
+
             </div>
 
           </div>
