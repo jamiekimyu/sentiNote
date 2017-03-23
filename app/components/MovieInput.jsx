@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import sentiment from 'sentiment'
-import PieChartEmotion from './Graphs/PieChartEmotion'
-import PieChartPolarity from './Graphs/PieChartPolarity'
+import PieChartEmotion from './Graphs/PieChartEmotion';
+import PieChartPolarity from './Graphs/PieChartPolarity';
 import { TagCloud } from "react-tagcloud";
-import { customRenderer } from '../utils'
+import { customRenderer } from '../utils';
+import GraphCarousel from './Graphs';
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 
@@ -17,15 +18,15 @@ class MovieInput extends Component {
 
   handleClick(e) {
     this.props.analyzeMovieScript(e)
-  }  
+  }
 
   render(){
     let {submitting, sentimentObject, emotionObject, emotionCount, movieArray} = this.props
     return (
       <div className='container'>
-        
+
         <div className="row ">
-          <h1 id='songHeading'>Analyze Movie Scripts</h1>
+          <h1 className='title'>Analyze Movie Scripts</h1>
         </div>
 
         <div className="row row-centered">
@@ -43,14 +44,9 @@ class MovieInput extends Component {
         </div>
 
         <div className="row row-centered">
-          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChartEmotion sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-          </div>  
-          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChartPolarity sentimentObject={sentimentObject} emotionObject={emotionObject}/>
-          </div> 
           <div className="row">
-            <TagCloud 
+            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+            <TagCloud
               minSize={1}
               maxSize={2}
               tags={emotionCount.concat([])}
@@ -59,11 +55,11 @@ class MovieInput extends Component {
               onClick={
                 tag => {
                   emotionWord=tag.value
-                  emotionInstances=tag.count 
+                  emotionInstances=tag.count
                   array = (emotion[tag.value])
                   this.setState({alertShow:true})
                 }
-              }          
+              }
             />
           </div>
         </div>
@@ -72,6 +68,7 @@ class MovieInput extends Component {
           {
             this.state.alertShow&&(
               <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
+
                 <a className="close" aria-label="close">&times;</a>
                 <h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
                 <p>Instances: {emotionInstances} </p>
@@ -80,7 +77,7 @@ class MovieInput extends Component {
               </div>
             )
           }
-        </div>    
+        </div>
       </div>
     )
   }
@@ -91,7 +88,7 @@ export default MovieInput;
 
 
 
-              
+
 
 
 
