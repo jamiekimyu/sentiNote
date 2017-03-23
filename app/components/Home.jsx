@@ -34,10 +34,10 @@ const Home = () => (
 					<img  id='infoText' className='img-responsive' src='/songText.png'/>
 				</div>
 			</Link>
-			<Link to='/yelp'>
+			<Link to='/movies'>
 				<div id='box5' className="col-xs-6 col-md-4 col-centered">
-					<img id='yelp' className='img-responsive center' src='/yelp.png'/>
-					<img  id='yelpText' className='img-responsive' src='/yelpText.png'/>
+					<img id='movie' className='img-responsive center' src='/movieReel.png'/>
+					<img  id='yelpText' className='img-responsive' src='/movieText.png'/>
 				 </div> 
 			</Link>
 			<Link to='/aboutUs'>
