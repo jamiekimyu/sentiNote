@@ -21,29 +21,32 @@ class SongInput extends Component {
     let {submitting, sentimentObject, emotionObject, emotionCount} = this.props
     return (
       <div className='container'>
-        
+
         <div className="row ">
           <h1 id='songHeading' className='title'>Analyze Song Lyrics</h1>
         </div>
 
         <div className="row row-centered">
-          <form className='journalForm' onSubmit={this.handleClick}>
-            <Field name="song_title" type="text" className="" component={renderField} label="Title" />
-            <Field name="song_artist" type="text" className="" component={renderField} label="Artist" />
-            <button type="submit" disabled={submitting} id='songSubmit' className="btn btn-success" onClick={e=>this.setState({alertShow:false})}>Analyze Song</button>
-          </form>
-          
-          <div className='row row-centered' id='pT'>
-            <textarea  cols='160' value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
-          </div>
-        
+
+            <form className='journalForm' onSubmit={this.handleClick}>
+              <div className='col-xs-4 col-sm-3'>
+                <Field name="song_title" type="text"  component={renderField} label="Title" />
+                <Field name="song_artist" type="text" component={renderField} label="Artist" />
+                <button type="submit" disabled={submitting} id='songSubmit' className="btn btn-success" onClick={e=>this.setState({alertShow:false})}>Analyze Song</button>
+
+              </div>
+            </form>
+
+            <div className='col-xs-8'>
+              <textarea   value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
+            </div>
         </div>
 
         <div className="row row-centered">
           <div>
             <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
           </div>
-          
+
           <div className="row">
             <TagCloud
               minSize={1}
