@@ -10,7 +10,7 @@ export default function GraphCarousel({sentimentObject, emotionObject}) {
     return(
         <Carousel>
             <Carousel.Item>
-                <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+                <div className='pieBox1' className="col-xs-12 col-md-6 col-centered">
                     <PieChartEmotion emotionObject={emotionObject} />
                 </div>
                 <div className="row top-margin">

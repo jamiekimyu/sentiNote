@@ -249,9 +249,7 @@ input:-webkit-autofill {
 
 
 .pieBox1 {
-  background-color: #2a9fd6;
-  height: 300px;
-  border-radius: 70%;
+  border-radius: 100%;
 }
 
 .pieBox {
