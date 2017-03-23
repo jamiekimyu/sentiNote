@@ -287,18 +287,23 @@ input:-webkit-autofill {
 }
 
 #songTitle {
-  width: 250px;
-  margin-left: 15px
+  /*width: 250px;*/
+
+  margin-left: 10px;
+  margin-bottom: 2px;
 }
 
 #songArtist {
-  width: 250px;
-  margin-left: 15px
+  /*width: 250px;*/
+  margin-bottom: 2px;
+  margin-left: 10px
 }
 
 #lyricText {
  height:200px;
- margin-left: 30px;
+ width: 300px;
+ margin-left: 5px;
+ border-radius: 2%;
  float:left;
 
 }
@@ -313,7 +318,7 @@ input:-webkit-autofill {
 }
 
 #songHeading {
-  margin: 20px  0 55px 20px ;
+  margin: 20px  0 25px 20px ;
 }
 #journalHeader {
   margin: 20px  0 55px 30px ;
