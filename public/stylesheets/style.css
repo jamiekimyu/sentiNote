@@ -36,7 +36,11 @@ body {
   margin-top: 80px;
 }
 .margTop8{
-	margin-top: 8px;
+  margin-top: 8px;
+}
+
+.margTopBot20{
+	margin: 20px 0 20px 0;
 }
 
 

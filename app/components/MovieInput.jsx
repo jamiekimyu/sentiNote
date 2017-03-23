@@ -29,7 +29,7 @@ class MovieInput extends Component {
           <h1 className='title'>Analyze Movie Scripts</h1>
         </div>
 
-        <div className="row row-centered">
+        <div className="row margTopBot20">
           <form className='movieForm' onSubmit={this.handleClick}>
             <select name="movieScript" id='movieSelect'>
               {
@@ -44,7 +44,7 @@ class MovieInput extends Component {
         </div>
 
         <div className="row row-centered">
-          <div className="row">
+          <div className="row margTopBot20">
             <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
             <TagCloud
               minSize={1}
