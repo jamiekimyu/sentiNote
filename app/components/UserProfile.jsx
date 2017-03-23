@@ -16,7 +16,7 @@ export default function User (props) {
       <div className="content">
         <h2 className="title">User Info</h2>
         <div className="userInfo">
-          <div className='row'>
+          <div className='row row-centered'>
             <div className="col-xs-12 col-sm-6">
               <p className='userName'>{user.name}</p>
               <img className='profilePhoto' src={user.photoURL} />
