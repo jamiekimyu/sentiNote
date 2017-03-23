@@ -16,29 +16,23 @@ export default function User (props) {
       <div className="content">
         <h2 className="title">User Info</h2>
         <div className="userInfo">
-
           <div className='row'>
-            <div className="col-xs-12 col-md-6">
+            <div className="col-xs-12 col-sm-6">
               <p className='userName'>{user.name}</p>
               <img className='profilePhoto' src={user.photoURL} />
               <p>#Journal Entries: {myEntries.length} <Link to="/editUser"><button className='btn-info'>Edit Profile</button></Link></p>
             </div>
-            <div className="col-xs-12 col-md-6">
+            <div className="col-xs-12 col-sm-6 ">
               <h2>Description: </h2>
               <p> {user.description} </p>
             </div>
-          </div>
-
-          <div>
-            <h2> Previous Entries </h2>
-            <div className='row'>
-
-               <EntriesCarousel entries={myEntries} handleClick={handleClick}/>
-
-
+            <div className="col-xs-12 col-sm-12">
+              <h2> Previous Entries </h2>
+              <EntriesCarousel entries={myEntries} handleClick={handleClick}/>
             </div>
-
           </div>
+
+
         </div>
       </div>
     </div>

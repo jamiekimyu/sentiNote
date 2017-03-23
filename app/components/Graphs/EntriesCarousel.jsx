@@ -11,7 +11,7 @@ export default function GraphCarousel({entries, handleClick}) {
     return(
         <Carousel>
             {
-                entries.map( entry => (
+                entries.slice(0).reverse().map( entry => (
                     <Carousel.Item key={entry.id}>
                         <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
                             <EntryListing entry={entry} handleClick={handleClick}/>

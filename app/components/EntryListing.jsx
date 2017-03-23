@@ -4,7 +4,7 @@ import Link from 'react-router';
 
 const EntryListing = ({entry, handleClick}) => {
   return(
-	  <div className='pieBox1' onClick={handleClick}>{
+	  <div className='pieBox1' onClick={(e) => handleClick(e, entry.id)}>{
 	    <PieChartEmotion  emotionObject={entry.emotion} />}
 	  </div>
 	);
