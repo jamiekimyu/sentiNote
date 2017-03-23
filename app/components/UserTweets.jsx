@@ -1,8 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import PieChart from './Graphs/PieChart';
+import GraphCarousel from './Graphs';
 import {getUserTweets} from '../reducers/twitter';
-import {emotinator, tweetsToParagraph} from '../utils';
+import {emotinator, tweetsToParagraph, sentiMentator} from '../utils';
+import sentiment from 'sentiment'
+import { TagCloud } from "react-tagcloud";
+import { customRenderer } from '../utils';
+let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -37,29 +41,67 @@ export class UserTweets extends React.Component{
 	}
 
 	render(){
+		let content = tweetsToParagraph(this.props.userTweets)
+		let sentimentObject = sentiMentator(sentiment(content))
+		let [emotionObject, emotionCount] = emotinator(content)
+
 		return (
 			<div>
-				<form onSubmit={(event) => this.handleSubmit(event)}>
-					<div className="form-group">
-						<label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
-						<div className="col-sm-10">
-							<input
-								onChange={(event) => this.handleChange(event)}
-								value={this.state.twitterHandle} name="twitterHandle"
-								type="text"
-								className="form-control"
-							/>
+				<div className="row">
+					<form onSubmit={(event) => this.handleSubmit(event)}>
+						<div className="form-group">
+							<label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
+							<div className="col-sm-10">
+								<input
+									onChange={(event) => this.handleChange(event)}
+									value={this.state.twitterHandle} name="twitterHandle"
+									type="text"
+									className="form-control"
+								/>
+							</div>
 						</div>
-					</div>
-
-					<div className="col-sm-offset-2 col-sm-10">
-						<button type="submit" className="btn btn-primary">submit</button>
-					</div>
-				</form>
-
-				<div id="pieBox1" className="col-xs-12 col-md-6 col-centered">
-{/*					<PieChart emotionObject={emotinator(tweetsToParagraph(this.props.userTweets))[0]} />*/}
+						<div className="col-sm-offset-2 col-sm-10">
+							<button type="submit" className="btn btn-primary">submit</button>
+						</div>
+					</form>
 				</div>
+
+				<div className="row row-centered">
+					<div className="row">
+						<GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+						<TagCloud
+							minSize={1}
+							maxSize={2}
+							tags={emotionCount.concat([])}
+							renderer={customRenderer}
+							shuffle={false}
+							onClick={
+								tag => {
+								emotionWord=tag.value
+								emotionInstances=tag.count
+								array = (emotion[tag.value])
+								this.setState({alertShow:true})
+								}
+							}
+						/>
+					</div>
+				</div>
+
+				<div className='row'>
+				{
+					this.state.alertShow&&(
+					<div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
+
+						<a className="close" aria-label="close">&times;</a>
+						<h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
+						<p>Instances: {emotionInstances} </p>
+						<span>Associated Emotions: </span>
+						{ array.map(emotion=>(<span>{emotion + " "}</span>)) }
+					</div>
+					)
+				}
+				</div>
+
 			</div>
 		);
 	}
