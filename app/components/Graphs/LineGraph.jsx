@@ -8,7 +8,7 @@ export default function LineGraph ({sentimentObject, sentimentArray}) {
     return(
     <VictoryChart containerComponent={<VictoryVoronoiContainer/>} theme={VictoryTheme.material}>
         <VictoryLine
-            data={sentimentArray} 
+            data={sentimentArray}
             x="NumberofWords"
             y={(datum) => datum.totalScore}
             labelComponent={<VictoryTooltip/>}
@@ -30,7 +30,8 @@ export default function SimpleLineChart({sentimentObject}) {
         let sentimentArray = [];
 
         const words = sentimentObject.orderedWordsRating
-        words.forEach( word => {
+        words.forEach( (word, i) => {
+            console.log('making iteration ', i, 'in lineChart')
             sentimentArray.push({ currentWord: word.word, Polarity: word.totalScore, })
         })
 
