@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import PieChart from './Graphs/PieChart';
+//import PieChart from './Graphs/PieChart';
+import sentiment from 'sentiment'
 import {getSearchTweets} from '../reducers/twitter';
-import {emotinator, tweetsToParagraph} from '../utils';
+import {emotinator, tweetsToParagraph, sentiMentator} from '../utils';
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -37,6 +38,12 @@ export class SearchTweets extends React.Component{
 	}
 
 	render(){
+		let content = tweetsToParagraph(this.props.searchTweets)
+		let sentimentObject = sentiMentator(sentiment(content))
+		let [emotionObject, emotionCount] = emotinator(content)
+		
+		console.log('emoObj', emotionObject, 'emoCount', emotionCount)
+		console.log('sentiment object for tweets', sentimentObject)
 		return (
 			<div>
 				<form onSubmit={(event) => this.handleSubmit(event)}>

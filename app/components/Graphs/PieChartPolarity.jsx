@@ -6,12 +6,9 @@ export default function PieChartPolarity ({sentimentObject}) {
 
   const dataRange = (sentimentObj) => {
     let sentimentArray = [];
-    let positiveWordAmount = sentimentObj.positive.length;
-    let negativeWordAmount = sentimentObj.negative.length;
-
-    if(sentimentObj.positive.length) sentimentArray.push({sentiment: "Positive", score: positiveWordAmount });
-    if(sentimentObj.negative.length) sentimentArray.push({sentiment: "Negative", score: negativeWordAmount });
-
+    
+    if(sentimentObj.totalPositive>0) sentimentArray.push({sentiment: "Positive", score: sentimentObj.totalPositive });
+    if(sentimentObj.totalNegative<0) sentimentArray.push({sentiment: "Negative", score: Math.abs(sentimentObj.totalNegative) });
     return sentimentArray;
   };
 
