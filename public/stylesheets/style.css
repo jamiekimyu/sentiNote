@@ -160,10 +160,10 @@ input:-webkit-autofill {
   margin-top: 55px;
 }
 
-#yelp {
+#movie {
   height:120px;
   width:180px;
-  margin-top: 19px
+  margin-top: 29px
 }
 
 #about {
@@ -216,7 +216,7 @@ input:-webkit-autofill {
   margin-top: 26px;
 }
 
-#yelpText {
+#movieText {
   margin-top: 20px;
 
 }
