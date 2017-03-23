@@ -21,11 +21,11 @@ class JournalInput extends Component {
 
     return (
       <div className='container'>
-        
+
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
-        
+
         <div className="row row-centered">
           <form className='journalForm' onSubmit={addEntry}>
             <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
@@ -34,29 +34,17 @@ class JournalInput extends Component {
             <Field name="user" type="hidden"  value={user} component={journalRenderField} />
           </form>
         </div>
-        
+
         <div className="row row-centered">
           <div>
             <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject}/>
           </div>
-          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChartEmotion emotionObject={emotionObject} />
-          </div>
-          <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
-            <PieChartPolarity sentimentObject={sentimentObject} />
-          </div>
-          <div>
-            <BarGraph sentimentObject={sentimentObject} />
-          </div>
-          <div>
-            <LineGraph sentimentObject={sentimentObject} />
-          </div>
         </div>
-        
+
         <div className="row center">
             <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
         </div>
-        
+
         <div className='row'>
           {
             this.state.alertShow&&(
