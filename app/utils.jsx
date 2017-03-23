@@ -3,8 +3,11 @@ const afinn = require('./AFINN'), emotion = require('./emotion')
 
 export function sentiMentator(sentimentObject, identifier) {
   let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = []
-  sentimentObject.positive.forEach(word=>posWithVals.push([ word, afinn[word] ]))
-  sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
+  sentimentObject.words.forEach(word=>{
+    let score = afinn[word]
+    if(score>0){posWithVals.push([word, score])}
+    else{ negsWithVals.push([word, score]) }
+  })
   let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
   sentimentArray.forEach(word=>{
     totalScore += afinn[word]
