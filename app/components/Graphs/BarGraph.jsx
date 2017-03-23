@@ -56,8 +56,7 @@ export default function SimpleBarChart({sentimentObject}) {
 
         if(sentimentObj.totalPositive) sentimentArray.push({sentiment: "Positive", score: sentimentObj.totalPositive });
         if(sentimentObj.totalNegative) sentimentArray.push({sentiment: "Negative", score: sentimentObj.totalNegative });
-        if(sentimentObj.score) sentimentArray.push({sentiment: "Overall", score: sentimentObj.score });
-
+        if(sentimentObj.score) sentimentArray.push({sentiment: "Overall", score: sentimentObj.totalPositive + sentimentObj.totalNegative });
         return sentimentArray;
     };
 	
