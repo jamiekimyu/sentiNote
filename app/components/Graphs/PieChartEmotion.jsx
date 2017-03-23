@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
- 
+
 export default function PieChartEmotion ({emotionObject}) {
 
   //example emotionObject: {anticipation: 3, joy: 3, positive: 3, trust: 3}
@@ -9,7 +9,7 @@ export default function PieChartEmotion ({emotionObject}) {
     let emotionArray = [];
     for(var emotion in emotionObject){
       if(emotion !== "positive" && emotion !== "negative"){
-        emotionArray.push({emotion: emotion, intensity: emotionObject[emotion]}); 
+        emotionArray.push({emotion: emotion, intensity: emotionObject[emotion]});
       };
     };
     return emotionArray;
@@ -43,6 +43,10 @@ export default function PieChartEmotion ({emotionObject}) {
               return "white"
             }
           }
+        },
+        labels: {
+          fontSize: 12,
+          fill:  'silver'
         }
       }}
     />
