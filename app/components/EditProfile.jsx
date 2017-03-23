@@ -37,7 +37,6 @@ const renderField = ({ input, label, type, meta: {touched, error} }) => {
   </div>
 )}
 
-
 class ProfileForm extends Component {
   render() {
     const { handleSubmit, name, photoURL, description} = this.props;

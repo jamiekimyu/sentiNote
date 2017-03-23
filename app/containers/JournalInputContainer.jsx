@@ -3,16 +3,18 @@ import {Field, reduxForm, reset} from 'redux-form';
 import {connect} from 'react-redux'
 import {addEntry} from '../reducers/entry'
 import sentiment from 'sentiment'
-import { emotinator, validateJournal, sentiMentatorJournal } from "../utils";
+import { emotinator, validateJournal, sentiMentator } from "../utils";
 
-
-let title, content, user, emotionReturn
+let title, content, user, sentimentObject, emotionObject, emotionCount
 const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
-  let [emotionObject, emotionCount] = emotinator(content)
-  let sentimentObject =  sentiMentatorJournal(sentiment(content))
+  let emotionReturn = emotinator(content)
+  emotionObject = emotionReturn[0];
+  emotionCount = emotionReturn[1];
+  console.log('eeemocount',emotionCount)
+  sentimentObject =  sentiMentator( sentiment(content) , 'journal' )
 
   return {
     title,
