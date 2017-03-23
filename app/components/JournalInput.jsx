@@ -17,7 +17,7 @@ class JournalInput extends Component {
 
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
-    console.log('sent',sentimentObject)
+    console.log('emmocount',emotionCount)
 
     return (
       <div className='container'>
@@ -53,8 +53,8 @@ class JournalInput extends Component {
           </div>
         </div>
         
-        <div className="row">
-            <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
+        <div className="row center">
+            <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
         </div>
         
         <div className='row'>

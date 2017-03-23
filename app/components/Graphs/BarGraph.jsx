@@ -1,4 +1,4 @@
-/*import React, { Component } from 'react';
+/*import React, { Component } from 'react';//
 import { render } from 'react-dom';
 import { VictoryBar, VictoryStack, VictoryChart, VictoryPortal, VictoryLabel, VictoryAxis, VictoryTheme } from 'victory';
  

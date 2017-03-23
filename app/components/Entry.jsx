@@ -29,21 +29,7 @@ class Entry extends Component {
         </div>
         <div className="row row-centered">
             <div className="row">
-              <TagCloud
-                minSize={1}
-                maxSize={2}
-                tags={emotionCount.concat([])}
-                renderer={customRenderer}
-                shuffle={false}
-                onClick={
-                  tag => {
-                    emotionWord=tag.value
-                    emotionInstances=tag.count
-                    array = (emotion[tag.value])
-                    this.setState({alertShow:true})
-                  }
-                }
-              />
+              <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count;array = (emotion[tag.value]);this.setState({alertShow:true})}}/>
             </div>
         </div>
         <div className='row'>
@@ -65,7 +51,6 @@ class Entry extends Component {
 }
 
 export default Entry;
-
 
 const renderField = ({ input, label, type, meta: {touched, error} }) => {
   return (

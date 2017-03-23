@@ -1,35 +1,14 @@
 import React from 'react';
+const afinn = require('./AFINN'), emotion = require('./emotion')
 
-export function sentiMentatorOther(sentimentObject) {
-  let afinn = require('./AFINN')
-  let posWithVals = []
-  let negsWithVals = []
-  let orderedWordsRating = []
-  let totalScore = 0
-  
+export function sentiMentator(sentimentObject, identifier) {
+  let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = []
   sentimentObject.positive.forEach(word=>posWithVals.push([ word, afinn[word] ]))
   sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
-  sentimentObject.words.forEach(word=>{
+  let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
+  sentimentArray.forEach(word=>{
     totalScore += afinn[word]
-    orderedWordsRating.push( {word, totalScore}  )
-  })
-  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
-  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
-  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
-}
-
-export function sentiMentatorJournal(sentimentObject) {
-  let afinn = require('./AFINN')
-  let posWithVals = []
-  let negsWithVals = []
-  let orderedWordsRating = []
-  let totalScore = 0
-  
-  sentimentObject.positive.forEach(word=>posWithVals.push([ word, afinn[word] ]))
-  sentimentObject.negative.forEach(word=>negsWithVals.push([ word, afinn[word] ]))
-  sentimentObject.words.reverse().forEach(word=>{
-    totalScore += afinn[word]
-    orderedWordsRating.push(  {word,  totalScore}     )
+    orderedWordsRating.push( {word,totalScore} )
   })
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
@@ -38,55 +17,22 @@ export function sentiMentatorJournal(sentimentObject) {
 
 export function emotinator(content) {
   let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
-  let emotionObject = {}
-  let preData = {}
-  let emotionInstances = []
-  let emotion = require('./emotion')
-
+  let emotionObject = {}, preData = {}, emotionInstances = []
   wordArray.forEach(word=>{
     if(emotion[word]){
-      if(!preData[word]){
-        preData[word]=[emotion[word],1]
-      }else{
-        preData[word][1]=preData[word][1]+1
-      }
+      preData[word] =  preData[word] ? [preData[word][0], preData[word][1]+1] : [emotion[word],1]
       emotion[word].forEach(match=>{
-        if (!emotionObject[match]) {
-          emotionObject[match]=1
-        }else{
-          emotionObject[match] = emotionObject[match] + 1
-        }
+        emotionObject[match] = emotionObject[match] ? emotionObject[match] + 1 : 1
       })
     }
   })
+
  for(let key in preData) {
     emotionInstances.push({value: key, count: preData[key][1]})
   }
   emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50)  //sort and return top 50
   return [emotionObject, emotionInstances]
 }
-
-export const journalRenderField = ({ input, label, type, meta: {touched, error} }) => {
-  return (
-  <div className="content">
-    {
-      label==='Title'&&(
-        <div className="">
-            <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
-            {touched && error && <span>{error}</span>}
-        </div>
-      )
-    }
-    {
-        label==='Content'&&(
-          <div className="">
-              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
-              {touched && error && <span>{error}</span>}
-          </div>
-        )
-      }
-  </div>
-)};
 
 export const customRenderer = (tag, size, color) => (
   <span key={tag.value}
@@ -123,11 +69,8 @@ export function validateJournal(values) {
   return error
 }
 
-//Twitter Util Functions
-/* tweetsToParagraph takes an array of twitter objects and returns
- * the text of the tweets as one block of text
-*/
-export const tweetsToParagraph = (tweetsData) => {
+export const tweetsToParagraph = (tweetsData) => {      //Twitter Util Functions tweetsToParagraph takes an array of twitter objects and returns the text of the tweets as one block of text
+
 	let tweetsParagraph = '';
 	tweetsData.forEach((tweetData) => {
 		tweetsParagraph += tweetData.text + ' ';
@@ -135,10 +78,8 @@ export const tweetsToParagraph = (tweetsData) => {
 	return tweetsParagraph;
 };
 
-/* takes an array of twitter objects and pulls off several fields of interest
- * and returns an array of condensed twitter objects.
-*/
-export const parseTweets = (tweetsData) => {
+export const parseTweets = (tweetsData) => {        // takes an array of twitter objects and pulls off several fields of interest and returns an array of condensed twitter objects.
+
 	const parsedTweets = [];
 	tweetsData.forEach((tweetData) => {
 		parsedTweets.push(
@@ -154,3 +95,25 @@ export const parseTweets = (tweetsData) => {
 	});
 	return parsedTweets;
 };
+
+export const journalRenderField = ({ input, label, type, meta: {touched, error} }) => {
+  return (
+  <div className="content">
+    {
+      label==='Title'&&(
+        <div className="">
+            <input {...input} placeholder={label} type='text' className="form-control field" id="journalTitle" required/>
+            {touched && error && <span>{error}</span>}
+        </div>
+      )
+    }
+    {
+        label==='Content'&&(
+          <div className="">
+              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
+              {touched && error && <span>{error}</span>}
+          </div>
+        )
+      }
+  </div>
+)};
