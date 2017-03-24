@@ -64,6 +64,19 @@ OAuth.setupStrategy({
   passport
 });
 
+// Twitter needs the TWITTER_CONSUMER_KEY AND TWITTER_CLIENT_SECRET
+// environment variables.
+OAuth.setupStrategy({
+  provider: 'twitter',
+  strategy: require('passport-twitter').Strategy,
+  config: {
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: `${app.baseUrl}/api/auth/login/twitter`,
+  },
+  passport
+});
+
 // Github needs the GITHUB_CLIENT_ID AND GITHUB_CLIENT_SECRET
 // environment variables.
 OAuth.setupStrategy({

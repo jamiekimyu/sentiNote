@@ -14,6 +14,7 @@ export const Login = ({ login }) => (
       <Button id='loginButton' className='btn btn-info btn-xs'  type="submit">Login</Button>
 			<a href="http://localhost:1337/api/auth/login/facebook" className="btn btn-info btn-xs">Login With Facebook</a>
 			<a href="http://localhost:1337/api/auth/login/google" className="btn btn-info btn-xs">Login With Google</a>
+			<a href="http://localhost:1337/api/auth/login/twitter" className="btn btn-info btn-xs">Login With Twitter</a>
     </div>
     </Navbar.Form>
   </form>
