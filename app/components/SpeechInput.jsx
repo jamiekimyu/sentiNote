@@ -66,7 +66,7 @@ const SpeechInput = ({transcription, setTranscript}) => {
           listening = !listening;
           toggle(listening);
         }}>
-          <i className="glyphicons glyphicons-microphone"></i>
+          <i className="glyphicons glyphicons-microphone">Start or Stop</i>
         </button>
         <div id="result"></div>
     </div>
