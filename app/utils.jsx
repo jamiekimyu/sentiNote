@@ -99,7 +99,7 @@ export const parseTweets = (tweetsData) => {        // takes an array of twitter
 	return parsedTweets;
 };
 
-export const journalRenderField = ({ input, label, type, meta: {touched, error} }) => {
+export const JournalRenderField = ({ onChangePostText, transcript, input, label, type, meta: {touched, error} }) => {
   return (
   <div className="content">
     {
@@ -113,7 +113,7 @@ export const journalRenderField = ({ input, label, type, meta: {touched, error} 
     {
         label==='Content'&&(
           <div className="">
-              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
+              <textarea {...input} value={transcript} onChange={onChangePostText} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
               {touched && error && <span>{error}</span>}
           </div>
         )
