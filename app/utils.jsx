@@ -9,10 +9,25 @@ export function sentiMentator(sentimentObject, identifier) {
     else{ negsWithVals.push([word, score]) }
   })
   let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
-  sentimentArray.forEach(word=>{
-    totalScore += afinn[word]
-    orderedWordsRating.push( {word,totalScore} )
-  })
+  //if the sentimentArray has more than 25 values, takes evenly spaced out nth values in the array so that we get 20 values
+  if(sentimentArray.length > 25){
+    console.log('hit the if statement to see if more than 25')
+    let shorterArray = [];
+    let maximumNumberOfValues = 25;
+    let delta = Math.floor( sentimentArray.length / maximumNumberOfValues );
+    for(let i =0; i<sentimentArray.length;i=i+delta){
+      shorterArray.push(sentimentArray[i])
+    }
+    shorterArray.forEach(word=>{
+      totalScore += afinn[word]
+      orderedWordsRating.push( {word,totalScore} )
+    })
+  } else { 
+    sentimentArray.forEach(word=>{
+      totalScore += afinn[word]
+      orderedWordsRating.push( {word,totalScore} )
+    })
+  }
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
   return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
