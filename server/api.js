@@ -11,5 +11,6 @@ api
   .use('/twitter', require('./twitter'))
   .use('/songs', require('./songs'))
   .use('/movies', require('./movies'))
+  .use('/teachJournal', require('./teach'))
 
 api.use((req, res) => res.status(404).end())

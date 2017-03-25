@@ -7,6 +7,7 @@
 const User = require('./user')
 const OAuth = require('./oauth')
 const Entry = require('./entry');
+const TeachDoc = require('./teachDoc');
 
 
 OAuth.belongsTo(User)
@@ -14,5 +15,6 @@ User.hasOne(OAuth)
 
 Entry.belongsTo(User);
 User.hasMany(Entry);
+User.hasOne(TeachDoc)
 
 module.exports = {User, Entry}

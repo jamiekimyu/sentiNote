@@ -16,8 +16,8 @@ class JournalInput extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount} = this.props
-    console.log('emmocount',emotionCount)
+    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount, smartObject} = this.props
+    console.log('smartObject',smartObject)
 
     return (
       <div className='container'>
@@ -37,7 +37,7 @@ class JournalInput extends Component {
 
         <div className="row row-centered">
           <div>
-            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject}/>
+            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject} smartObject={smartObject}/>
           </div>
         </div>
 

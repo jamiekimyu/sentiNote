@@ -4,6 +4,9 @@ import {connect} from 'react-redux'
 import {addEntry} from '../reducers/entry'
 import sentiment from 'sentiment'
 import { emotinator, validateJournal, sentiMentator } from "../utils";
+import Lexed from "lexed";
+let BayesClassifier = require('bayes-classifier');
+let classifier = new BayesClassifier();
 
 let title, content, user, sentimentObject, emotionObject, emotionCount
 const mapstate = (state) => {
@@ -16,13 +19,41 @@ const mapstate = (state) => {
   console.log('eeemocount',emotionCount)
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' )
 
+  let sentenceArray = new Lexed(content).sentenceLevel()
+  
+  let teachDoc = state.teachDoc.currentTeachDoc
+  let smartObject = {}
+  
+  for(let key in teachDoc){
+    if(Array.isArray(teachDoc[key])&&teachDoc[key].length){
+      classifier.addDocuments(teachDoc[key], key)
+    }
+  }
+   classifier.train()
+
+  sentenceArray.forEach(sentence=>{
+    let arrayOfEmotions = classifier.getClassifications(sentence)
+    console.log('arrr', arrayOfEmotions)
+    arrayOfEmotions.forEach(obj=>{
+      if(smartObject[obj.label]){
+        smartObject[obj.label] = smartObject[obj.label] + obj.value
+        console.log(obj.label, smartObject[obj.label])
+      }else {
+        smartObject[obj.label] = obj.value
+      }
+    })
+  })
+
+
+
   return {
     title,
     content,
     user,
     sentimentObject,
     emotionObject,
-    emotionCount
+    emotionCount,
+    smartObject
   }
 }
 

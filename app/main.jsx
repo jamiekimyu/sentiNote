@@ -19,6 +19,8 @@ import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
 import {fetchMovieLinks} from './reducers/movie'
+import {fetchTeachDoc} from './reducers/teachJournal'
+import {whoami} from './reducers/auth'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -58,20 +60,26 @@ const onMovieEnter = () => {
   return store.dispatch(fetchMovieLinks())
 }
 
+const onJournalEnter = (user) => {
+  store.dispatch(whoami()) 
+  let userId =  store.getState().auth.user.id
+  return store.dispatch(fetchTeachDoc(userId))
+}
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/JournalInput" component={JournalInputContainer} />
+        <Route path="/JournalInput" component={JournalInputContainer} onEnter={onJournalEnter}/>
         <Route path="/SongInput" component={SongInputContainer} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
 				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
-        <Route path={"/entry/:entryId"} component={EntryContainer} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onJournalEnter}/>
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
       </Route>
     </Router>

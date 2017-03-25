@@ -10,7 +10,8 @@ const rootReducer = combineReducers({
   signup: require('./signup').default,
   twitter: require('./twitter').default,
   songs: require('./song').default,
-  movies: require('./movie').default
+  movies: require('./movie').default,
+  teachDoc: require('./teachJournal').default
 });
 
   
