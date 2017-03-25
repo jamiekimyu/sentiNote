@@ -36,7 +36,6 @@ const mapstate = (state) => {
     arrayOfEmotions.forEach(obj=>{
       if(smartObject[obj.label]){
         smartObject[obj.label] = smartObject[obj.label] + obj.value
-        console.log(obj.label, smartObject[obj.label])
       }else {
         smartObject[obj.label] = obj.value
       }

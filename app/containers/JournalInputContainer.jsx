@@ -16,7 +16,6 @@ const mapstate = (state) => {
   let emotionReturn = emotinator(content)
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
-  console.log('eeemocount',emotionCount)
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' )
 
   let sentenceArray = new Lexed(content).sentenceLevel()
@@ -33,7 +32,6 @@ const mapstate = (state) => {
 
   sentenceArray.forEach(sentence=>{
     let arrayOfEmotions = classifier.getClassifications(sentence)
-    console.log('arrr', arrayOfEmotions)
     arrayOfEmotions.forEach(obj=>{
       if(smartObject[obj.label]){
         smartObject[obj.label] = smartObject[obj.label] + obj.value
