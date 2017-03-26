@@ -50,7 +50,7 @@ export class UserTweets extends React.Component{
 				<div className="row">
 					<form onSubmit={(event) => this.handleSubmit(event)}>
 						<div className="form-group">
-							<label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
+							<label htmlFor="name" className="col-sm-2 control-label">Handle:</label>
 							<div className="col-sm-10">
 								<input
 									onChange={(event) => this.handleChange(event)}

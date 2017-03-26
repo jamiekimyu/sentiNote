@@ -44,7 +44,7 @@ export class SearchTweets extends React.Component{
 		let content = tweetsToParagraph(this.props.searchTweets)
 		let sentimentObject = sentiMentator(sentiment(content))
 		let [emotionObject, emotionCount] = emotinator(content)
-		
+
 		console.log('emoObj', emotionObject, 'emoCount', emotionCount)
 		console.log('sentiment object for tweets', sentimentObject)
 		return (
@@ -52,7 +52,7 @@ export class SearchTweets extends React.Component{
 				<div className="row">
 					<form onSubmit={(event) => this.handleSubmit(event)}>
 						<div className="form-group">
-							<label htmlFor="name" className="col-sm-2 control-label">Twitter Search Term:</label>
+							<label htmlFor="name" className="col-sm-2 control-label">Search Term:</label>
 							<div className="col-sm-10">
 								<input
 									onChange={(event) => this.handleChange(event)}
