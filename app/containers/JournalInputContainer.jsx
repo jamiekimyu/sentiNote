@@ -26,13 +26,13 @@ const mapstate = (state) => {
   }
 }
 
-const mapDisptachToProps = (dispatch,ownProps) => {
+const mapDisptachToProps = (dispatch, ownProps) => {
   return {
      addEntry (e) {
       e.preventDefault()
       dispatch(addEntry({title,content,sent:sentimentObject,emotion:emotionObject,user_id:user.id}))
       dispatch(reset('journalForm'))
-      window.location.replace('http://localhost:1337/user')
+      window.location.replace('/user')
     }
   }
 }
