@@ -265,6 +265,9 @@ input:-webkit-autofill {
   background-color: #2a9fd6;
   width: 600px;
 }
+br {
+  color: white;
+}
 
 /*.journalForm {
   width: 1000px;
@@ -304,9 +307,7 @@ input:-webkit-autofill {
 #lyricText {
  height:200px;
  width: 300px;
- margin-left: 5px;
  border-radius: 2%;
- float:left;
 
 }
 
