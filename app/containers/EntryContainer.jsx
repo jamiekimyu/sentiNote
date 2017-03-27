@@ -15,9 +15,8 @@ const mapstate = (state) => {
   user =   state.auth.user;
 
   let [emotionObject, emotionCount] = emotinator(content)
-  sentimentObject = sentiment(content);
+  sentimentObject = sentiMentator( sentiment(content), 'journal');
   let sentenceArray = new Lexed(content).sentenceLevel()
-  
   let teachDoc = state.teachDoc.currentTeachDoc
   let smartObject = {}
   
@@ -39,13 +38,7 @@ const mapstate = (state) => {
       }
     })
   })
-
-
-  console.log('yoheyhoeyoeyheoye', smartObject)
-
-  let [emotionObject, emotionCount] = emotinator(content);
-  sentimentObject = sentiMentator( sentiment(content), 'journal');
-
+ 
   const initialValues = {
     title,
     content
@@ -72,11 +65,6 @@ const mapDisptachToProps = (dispatch, ownProps) => {
   }
 }
 
-const mapDisptachToProps = (dispatch, ownProps) => {
-  return {
-  
-  }
-}
 
 const JournalForm = reduxForm({
   form: 'journalForm',
