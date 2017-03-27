@@ -11,7 +11,7 @@ export  function Signup ({signup}){
           evt.preventDefault()
           signup(evt.target.username.value, evt.target.email.value, evt.target.password.value)}}>
           <div className="form-group">
-            <label>Name:       </label>
+            <label>Name:</label>
             <input name="username" placeholder="name"/>
           </div>
           <div className="form-group">

@@ -93,8 +93,14 @@ footer {
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
-  background-color: black;
+  background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
+
 }
+
+.abs {
+    background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
+}
+
 #container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -102,7 +108,7 @@ body {
   padding: 10px;
   width: 800px;
   height: 800px;
-  background-color: #fff;
+
 }
 
 .twitter{
