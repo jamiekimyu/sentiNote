@@ -17,6 +17,7 @@ export function sentiMentator(sentimentObject, identifier) {
     let delta = Math.floor( sentimentArray.length / maximumNumberOfValues );
     for(let i =0; i<sentimentArray.length;i=i+delta){
       shorterArray.push(sentimentArray[i])
+      shorterArray.push(sentimentArray[sentimentArray.length-1])
     }
     shorterArray.forEach(word=>{
       totalScore += afinn[word]
