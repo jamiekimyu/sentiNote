@@ -1,7 +1,6 @@
 //CONSTANTS
 const SET_TRANSCRIPT = 'SET_TRANSCRIPT';
 
-
 //ACTION CREATORS
 export const setTranscript = (text) => ({
   type: SET_TRANSCRIPT,

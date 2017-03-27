@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  transcript: state.transcription,
+  transcript: state.transcription
 });
 
 

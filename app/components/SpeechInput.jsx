@@ -5,17 +5,17 @@ import { setTranscript } from '../reducers/transcription';
 const mapDispatchToProps = (dispatch) => ({
   setTranscript: (text) => {
     dispatch(setTranscript(text));
-  },
+  }
 });
 
 const mapStateToProps = (state) => ({
-  transcript: state.transcription.transcript,
+  transcription: state.transcription
 });
 
 
 
 const SpeechInput = ({transcription, setTranscript}) => {
-
+console.log('transcription', transcription)
     //initializes speech recognition object
     if (!'webkitSpeechRecognition' in window){
     upgrade();
@@ -37,6 +37,7 @@ const SpeechInput = ({transcription, setTranscript}) => {
         return;
 
         } else if (listeningOn) {
+        console.log('toggling on')
         speechRecognizer.start();
 
         var finalTranscripts = '';
@@ -44,31 +45,30 @@ const SpeechInput = ({transcription, setTranscript}) => {
         speechRecognizer.onresult = function(event){
             var interimTranscripts = '';
             for(var i = event.resultIndex; i < event.results.length; i++){
-            var transcript = event.results[i][0].transcript;
+            let transcript = event.results[i][0].transcript;
             transcript.replace("\n", "<br>");
             if(event.results[i].isFinal){
                 finalTranscripts += transcript;
-            }else{
+            } else {
                 interimTranscripts += transcript;
             }
             }
             holder.innerHTML = finalTranscripts + interimTranscripts;
-            setTranscript(finalTranscripts + interimTranscripts)
+            setTranscript(transcription + finalTranscripts + interimTranscripts)
         };
 
         }
     };
 
   let listening = false;
-
   return (
     <div>
       <h4>Click on the microphone and begin speaking</h4>
-        <button className="btn btn-start" onClick={() => {
+        <button className="btn btn-primary" onClick={() => {
           listening = !listening;
           toggle(listening);
         }}>
-          <i className="glyphicons glyphicons-microphone">Start or Stop</i>
+          <span className="glyphicon glyphicon-microphone"></span>
         </button>
         <div id="result"></div>
     </div>
