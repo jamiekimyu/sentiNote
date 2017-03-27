@@ -9,15 +9,19 @@ import { teachEmotion, fetchTeachDoc } from "../reducers/teachJournal";
 let BayesClassifier = require('bayes-classifier');
 let classifier = new BayesClassifier();
 let title, content, user, sentimentObject
-const mapstate = (state) => {
+
+const mapstate = (state, ownProps) => {
+
   title =  state.entries.selectedEntry.title;
-  content =   state.entries.selectedEntry.content;
+  content =   state.entries.selectedEntry.content || '';
   user =   state.auth.user;
+
 
   let [emotionObject, emotionCount] = emotinator(content)
   sentimentObject = sentiMentator( sentiment(content), 'journal');
   let sentenceArray = new Lexed(content).sentenceLevel()
   let teachDoc = state.teachDoc.currentTeachDoc
+  console.log('tteachdoc', teachDoc)
   let smartObject = {}
   
   for(let key in teachDoc){
@@ -38,7 +42,6 @@ const mapstate = (state) => {
       }
     })
   })
- 
   const initialValues = {
     title,
     content
@@ -52,9 +55,11 @@ const mapstate = (state) => {
     emotionObject,
     emotionCount,
     initialValues,
-    smartObject
+    smartObject,
+    content
   }
 }
+
 
 const mapDisptachToProps = (dispatch, ownProps) => {
   return {
@@ -68,7 +73,7 @@ const mapDisptachToProps = (dispatch, ownProps) => {
 const JournalForm = reduxForm({
   form: 'journalForm',
   validateJournal
-})(Entry);
+}, mapstate)(Entry);
 
 export default connect(mapstate, mapDisptachToProps)(JournalForm);
 

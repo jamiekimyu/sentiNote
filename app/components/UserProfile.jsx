@@ -9,7 +9,6 @@ import EntriesCarousel from './Graphs/EntriesCarousel';
 export default function User (props) {
   const user = props.user.user
   const myEntries = props.user.myEntries
-  const handleClick = props.handleClick
 
   if(user) return (
     <div className="container">
@@ -28,7 +27,7 @@ export default function User (props) {
             </div>
             <div className="col-xs-12 col-sm-12">
               <h2> Previous Entries </h2>
-              <EntriesCarousel entries={myEntries} handleClick={handleClick}/>
+              <EntriesCarousel entries={myEntries} />
             </div>
           </div>
 

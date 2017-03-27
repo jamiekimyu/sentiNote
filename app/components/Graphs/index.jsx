@@ -52,7 +52,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
-            {/*<Carousel.Item>
+            <Carousel.Item>
                 <div id='graphBox' className="col-centered">
                     <LineGraph sentimentObject={sentimentObject} />
                 </div>
@@ -62,7 +62,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </div>
-            </Carousel.Item>*/}
+            </Carousel.Item>
         </Carousel>
     );
 };
