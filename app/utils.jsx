@@ -3,32 +3,23 @@ const afinn = require('./AFINN'), emotion = require('./emotion')
 
 export function sentiMentator(sentimentObject, identifier) {
   let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = []
+  sentimentObject.words = sentimentObject.words.filter(word => word !== "")
   sentimentObject.words.forEach(word=>{
     let score = afinn[word]
     if(score>0){posWithVals.push([word, score])}
     else{ negsWithVals.push([word, score]) }
   })
   let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
-  //if the sentimentArray has more than 25 values, takes evenly spaced out nth values in the array so that we get 25 values
-  if(sentimentArray.length > 25){
-    console.log('hit the if statement to see if more than 25')
-    let shorterArray = [];
-    let maximumNumberOfValues = 25;
-    let delta = Math.floor( sentimentArray.length / maximumNumberOfValues );
-    for(let i =0; i<sentimentArray.length;i=i+delta){
-      shorterArray.push(sentimentArray[i])
-      shorterArray.push(sentimentArray[sentimentArray.length-1])
-    }
-    shorterArray.forEach(word=>{
+    sentimentArray.forEach( (word, index) =>{
       totalScore += afinn[word]
-      orderedWordsRating.push( {word,totalScore} )
+      if(sentimentArray.length<100){
+        orderedWordsRating.push( {word,totalScore} )
+      } else {
+        if(index===0 || index === sentimentArray.length-1 || index%20 === 0){
+          orderedWordsRating.push( {word,totalScore} )
+        }
+      }
     })
-  } else { 
-    sentimentArray.forEach(word=>{
-      totalScore += afinn[word]
-      orderedWordsRating.push( {word,totalScore} )
-    })
-  }
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
   return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
