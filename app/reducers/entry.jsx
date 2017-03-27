@@ -43,9 +43,9 @@ export const addEntry = (entry) => dispatch => {
 export const selectEntryById = (entry_id) => dispatch => {
 	axios.get(`/api/entries/entry/${entry_id}`)
 	.then( res => {
+		console.log('Entry has been retrieved: ', res.data);
 		dispatch(selectEntryToState(res.data));
 	})
-	.then( () => browserHistory.push(`/entry/${entry_id}`))
 	.catch( err => console.error(err));
 }
 

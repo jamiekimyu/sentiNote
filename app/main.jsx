@@ -18,7 +18,8 @@ import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
-import {fetchMovieLinks} from './reducers/movie'
+import {fetchMovieLinks} from './reducers/movie';
+import { selectEntryById } from './reducers/entry';
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -54,8 +55,12 @@ const ExampleApp = connect(
 
 )
 
-const onMovieEnter = () => {
+const onMovieEnter = (ownProps) => {
   return store.dispatch(fetchMovieLinks())
+}
+
+const onEntryEnter = (ownProps) => {
+  store.dispatch(selectEntryById(ownProps.params.entryId));
 }
 
 render (
@@ -71,7 +76,7 @@ render (
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} />
 				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
-        <Route path={"/entry/:entryId"} component={EntryContainer} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
       </Route>
     </Router>
