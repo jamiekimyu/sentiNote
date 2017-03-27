@@ -9,6 +9,11 @@
     text-align: center;
 }
 
+label {
+  color: silver;
+  margin-right: 10px;
+}
+
 .flex-container > * {
     padding: 15px;
     -webkit-flex: 1 100%;
