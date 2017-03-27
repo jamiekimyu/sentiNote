@@ -12,10 +12,12 @@ export function sentiMentator(sentimentObject, identifier) {
   let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words;
   sentimentArray.forEach( (word, index) =>{
     totalScore += afinn[word];
-    if(sentimentArray.length<100){
+    if(sentimentArray.length<75){
       orderedWordsRating.push( {word,totalScore} );
     } else {
-      if(index===0 || index === sentimentArray.length-1 || index%20 === 0){
+      let maximumNumberofValues = 50;
+      let delta = Math.floor( sentimentArray.length / maximumNumberofValues );
+      if(index===0 || index === sentimentArray.length-1 || index%delta === 0){
         orderedWordsRating.push( {word,totalScore} );
       }
     }
@@ -63,7 +65,7 @@ export function validateSong(values) {
   if (!values.song_artist) {
     error.song_artist = 'Artist is  Required';
   };
-  console.log('Errors======>', error);
+  console.log('Errors======>', error)
   return error;
 };
 
