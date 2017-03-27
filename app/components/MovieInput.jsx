@@ -24,8 +24,7 @@ class MovieInput extends Component {
     let {submitting, sentimentObject, emotionObject, emotionCount, movieArray} = this.props
     return (
       <div className='container'>
-
-        <div className="row ">
+        <div>
           <h1 className='title'>Analyze Movie Scripts</h1>
         </div>
 

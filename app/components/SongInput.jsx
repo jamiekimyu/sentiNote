@@ -33,8 +33,6 @@ class SongInput extends Component {
               <br />
               <br />
               <Field name="song_artist" type="text" component={renderField} label="Artist" />
-              <br />
-              <br />
               <button type="submit" disabled={submitting} id='songSubmit' className="btn btn-success" onClick={e=>this.setState({alertShow:false})}>Analyze Song</button>
               <br />
               <br />
