@@ -65,7 +65,6 @@ const mapDisptachToProps = (dispatch, ownProps) => {
   }
 }
 
-
 const JournalForm = reduxForm({
   form: 'journalForm',
   validateJournal
