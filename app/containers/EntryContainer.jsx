@@ -4,18 +4,16 @@ import {connect} from 'react-redux'
 import {addEntry} from '../reducers/entry'
 import sentiment from 'sentiment'
 import Lexed from "lexed";
-import { emotinator, validateJournal } from "../utils";
+import { emotinator, validateJournal, sentiMentator } from "../utils";
 import { teachEmotion, fetchTeachDoc } from "../reducers/teachJournal";
 let BayesClassifier = require('bayes-classifier');
 let classifier = new BayesClassifier();
-
-
-
 let title, content, user, sentimentObject
 const mapstate = (state) => {
   title =  state.entries.selectedEntry.title;
   content =   state.entries.selectedEntry.content;
   user =   state.auth.user;
+
   let [emotionObject, emotionCount] = emotinator(content)
   sentimentObject = sentiment(content);
   let sentenceArray = new Lexed(content).sentenceLevel()
@@ -43,13 +41,15 @@ const mapstate = (state) => {
   })
 
 
-   console.log('yoheyhoeyoeyheoye', smartObject)
-   //console.log( classifier.classify('I heard the mexican restaurant is great!'))
+  console.log('yoheyhoeyoeyheoye', smartObject)
+
+  let [emotionObject, emotionCount] = emotinator(content);
+  sentimentObject = sentiMentator( sentiment(content), 'journal');
 
   const initialValues = {
     title,
     content
-  }
+  };
 
   return {
     title,
@@ -72,10 +72,16 @@ const mapDisptachToProps = (dispatch, ownProps) => {
   }
 }
 
+const mapDisptachToProps = (dispatch, ownProps) => {
+  return {
+  
+  }
+}
+
 const JournalForm = reduxForm({
   form: 'journalForm',
   validateJournal
-})(Entry)
+})(Entry);
 
 export default connect(mapstate, mapDisptachToProps)(JournalForm);
 

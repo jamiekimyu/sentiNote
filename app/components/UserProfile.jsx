@@ -12,7 +12,7 @@ export default function User (props) {
   const handleClick = props.handleClick
 
   if(user) return (
-    <div className="flex-container">
+    <div className="container">
       <div className="content">
         <h2 className="title">User Info</h2>
         <div className="userInfo">

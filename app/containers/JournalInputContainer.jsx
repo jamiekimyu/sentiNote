@@ -1,25 +1,22 @@
 import JournalInput from '../components/JournalInput';
 import {Field, reduxForm, reset} from 'redux-form';
-import {connect} from 'react-redux'
-import {addEntry} from '../reducers/entry'
-import sentiment from 'sentiment'
+import {connect} from 'react-redux';
+import {addEntry} from '../reducers/entry';
+import sentiment from 'sentiment';
 import { emotinator, validateJournal, sentiMentator } from "../utils";
 import Lexed from "lexed";
 let BayesClassifier = require('bayes-classifier');
 let classifier = new BayesClassifier();
-
 let title, content, user, sentimentObject, emotionObject, emotionCount
 const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
-  let emotionReturn = emotinator(content)
+  let emotionReturn = emotinator(content);
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
-  sentimentObject =  sentiMentator( sentiment(content) , 'journal' )
-
+  sentimentObject =  sentiMentator( sentiment(content) , 'journal' );
   let sentenceArray = new Lexed(content).sentenceLevel()
-  
   let teachDoc = state.teachDoc.currentTeachDoc
   let smartObject = {}
   
@@ -42,8 +39,6 @@ const mapstate = (state) => {
     })
   })
 
-
-
   return {
     title,
     content,
@@ -55,13 +50,13 @@ const mapstate = (state) => {
   }
 }
 
-const mapDisptachToProps = (dispatch,ownProps) => {
+const mapDisptachToProps = (dispatch, ownProps) => {
   return {
      addEntry (e) {
       e.preventDefault()
       dispatch(addEntry({title,content,sent:sentimentObject,emotion:emotionObject,user_id:user.id}))
       dispatch(reset('journalForm'))
-      window.location.replace('http://localhost:1337/user')
+      window.location.replace('/user')
     }
   }
 }
