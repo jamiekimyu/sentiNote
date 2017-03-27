@@ -6,7 +6,6 @@ import LineGraph from './LineGraph';
 import { Carousel } from 'react-bootstrap'
 
 export default function GraphCarousel({sentimentObject, emotionObject}) {
-
     return(
         <Carousel>
             <Carousel.Item>
