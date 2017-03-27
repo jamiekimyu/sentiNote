@@ -18,7 +18,6 @@ class Entry extends Component {
   render(){
     let {submitting, handleSubmit, user, content, title, initialValues} = this.props;
 
-    console.log('initialValues: ', initialValues)
     if(content){
       var [emotionObject, emotionCount] = emotinator(content);
       var sentimentObject = sentiMentator( sentiment(content),'journal');
@@ -68,7 +67,6 @@ class Entry extends Component {
 export default Entry;
 
 const renderField = ({ input, label, title, content, type, meta: {touched, error} }) => {
-  console.log('input:', input);
   return (
   <div className="content">
   {
