@@ -16,15 +16,17 @@ const mapStateToProps = (state) => ({
 
 const SpeechInput = ({transcription, setTranscript}) => {
 
-        if (!'webkitSpeechRecognition' in window){
-        upgrade();
-        } else {
-        var speechRecognizer = new webkitSpeechRecognition();
-        speechRecognizer.continuous = true;
-        speechRecognizer.interimResults = true;
-        speechRecognizer.lang = 'en-IN';
-        }    
+    //initializes speech recognition object
+    if (!'webkitSpeechRecognition' in window){
+    upgrade();
+    } else {
+    var speechRecognizer = new webkitSpeechRecognition();
+    speechRecognizer.continuous = true;
+    speechRecognizer.interimResults = true;
+    speechRecognizer.lang = 'en-IN';
+    }    
     
+    //toggling function 
     const toggle = (listeningOn) => {
 
         let holder = document.getElementById('result');
