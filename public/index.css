@@ -88,6 +88,7 @@ footer {
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
+  background-color: black;
 }
 #container {
   -webkit-box-sizing: border-box;
