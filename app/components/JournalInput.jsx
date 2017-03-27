@@ -10,11 +10,11 @@ import { TagCloud } from "react-tagcloud";
 import { JournalRenderField, customRenderer, emotinator, SpeechInputContainer } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion');
 import SpeechInput from './SpeechInput';
-import {setTranscript} from '../reducers/transcription'
+import {setTranscript, onChangePostText} from '../reducers/transcription';
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => ({
   onChangePostText: (event) => dispatch(setTranscript(event.target.value))
-};
+});
 
 const mapStateToProps = (state) => ({
   transcript: state.transcription,

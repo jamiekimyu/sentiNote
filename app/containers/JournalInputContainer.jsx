@@ -13,7 +13,6 @@ const mapstate = (state) => {
   let emotionReturn = emotinator(content)
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
-  console.log('eeemocount',emotionCount)
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' )
 
   return {
