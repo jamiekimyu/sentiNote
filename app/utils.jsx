@@ -9,7 +9,7 @@ export function sentiMentator(sentimentObject, identifier) {
     else{ negsWithVals.push([word, score]) }
   })
   let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
-  //if the sentimentArray has more than 25 values, takes evenly spaced out nth values in the array so that we get 20 values
+  //if the sentimentArray has more than 25 values, takes evenly spaced out nth values in the array so that we get 25 values
   if(sentimentArray.length > 25){
     console.log('hit the if statement to see if more than 25')
     let shorterArray = [];
