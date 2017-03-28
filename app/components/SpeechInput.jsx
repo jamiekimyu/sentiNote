@@ -71,7 +71,7 @@ class SpeechInput extends Component {
     };
 
     return (
-      <button className="btn btn-primary" onClick={() => {
+      <button className="btn btn-primary microphone" onClick={() => {
         this.listening = !this.listening;
         toggle(this.listening);
       }}>

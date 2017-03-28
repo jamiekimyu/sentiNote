@@ -27,7 +27,7 @@ class SongInput extends Component {
         </div>
 
         <div className='row centered'>
-          <div className="col-xs-12 col-lg-6">
+          <div className="col-xs-12 col-md-6">
             <form onSubmit={this.handleClick}>
               <Field name="song_title" type="text"  component={renderField} label="Title" />
               <br />
@@ -36,12 +36,10 @@ class SongInput extends Component {
               <button type="submit" disabled={submitting} id='songSubmit' className="btn btn-success" onClick={e=>this.setState({alertShow:false})}>Analyze Song</button>
               <br />
               <br />
-            </form>
-            <div className='col-xs-12'>
               <textarea   value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
-            </div>
+            </form>
           </div>
-          <div className="col-xs-12 col-lg-6">
+          <div className="col-xs-12 col-md-6">
             <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
             <TagCloud
               minSize={1}
