@@ -20,9 +20,12 @@ label {
     flex: 1 100%;
 }
 
-
+textarea {
+  width: 300px;
+  height: 250px !important;
+}
 .userInfo{
-    padding: 10%;
+    padding: 5%;
     margin: 5%;
 }
 
