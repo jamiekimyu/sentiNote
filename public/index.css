@@ -101,6 +101,10 @@ footer {
     footer {-webkit-order:3;order:3;}
 }
 
+select{
+  color: black;
+}
+
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
