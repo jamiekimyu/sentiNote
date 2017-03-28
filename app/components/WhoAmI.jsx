@@ -4,12 +4,7 @@ import { NavItem} from 'react-bootstrap';
 
 export const WhoAmI = ({ user, logout }) => (
   <div className='row'>
-  	<NavItem className='inline' eventKey={1} >
-  		<Link to="/user">
-			<p  className="whoami-user-name text-success floatLeft margTop8"  >Hello, {user.user && user.user.name}!</p> 
-		</Link>
-		<button id='margLeft15' className="inline logout btn btn-info btn-xs " onClick={logout}>Logout</button>
-	</NavItem>
+		<button id='margLeft25' className="inline logout btn btn-info btn-xs " onClick={logout}>Logout</button>
   </div>
 )
 
