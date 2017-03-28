@@ -18,7 +18,7 @@ class SongInput extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, emotionCount} = this.props
+    let {submitting, sentimentObject, emotionObject, emotionCount, smartObject} = this.props
     return (
       <div className='container'>
 
@@ -42,7 +42,7 @@ class SongInput extends Component {
             </div>
           </div>
           <div className="col-xs-12 col-lg-6">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
             <TagCloud
               minSize={1}
               maxSize={2}

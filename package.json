@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
+    "bayes-classifier": "0.0.3",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
@@ -52,6 +53,7 @@
     "enzyme": "^2.5.1",
     "express": "^4.14.0",
     "finalhandler": "^1.0.0",
+    "lexed": "^1.0.10",
     "lyrics-fetcher": "^1.0.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

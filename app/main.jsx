@@ -18,8 +18,11 @@ import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
+import {fetchTeachDoc, fetchAllTeachDocs} from './reducers/teachJournal'
+import {whoami} from './reducers/auth'
 import {fetchMovieLinks} from './reducers/movie';
 import { selectEntryById } from './reducers/entry';
+
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -55,12 +58,28 @@ const ExampleApp = connect(
 
 )
 
-const onMovieEnter = (ownProps) => {
+const onMovieEnter = () => {
+  store.dispatch(fetchAllTeachDocs())
   return store.dispatch(fetchMovieLinks())
+}
+
+const onJournalEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
+}
+
+const onSongEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
+}
+
+const onTwitterEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
 }
 
 const onEntryEnter = (ownProps) => {
   store.dispatch(selectEntryById(ownProps.params.entryId));
+  store.dispatch(whoami())
+  let userId =  store.getState().auth.user.id
+  return store.dispatch(fetchAllTeachDocs())
 }
 
 render (
@@ -69,13 +88,14 @@ render (
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/JournalInput" component={JournalInputContainer} />
-        <Route path="/SongInput" component={SongInputContainer} />
+        <Route path="/JournalInput" component={JournalInputContainer} onEnter={onJournalEnter} />
+        <Route path="/SongInput" component={SongInputContainer} onEnter={onSongEnter}/>
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
-				<Route path="/twitter" component={Twitter} />
+				<Route path="/twitter" component={Twitter} onEnter={onTwitterEnter}/>
 				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
+        <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
         <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
       </Route>

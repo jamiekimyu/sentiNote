@@ -3,9 +3,11 @@ import {Field, reduxForm, reset} from 'redux-form';
 import {connect} from 'react-redux';
 import {addEntry} from '../reducers/entry';
 import sentiment from 'sentiment';
-import { emotinator, validateJournal, sentiMentator } from "../utils";
+import { emotinator, validateJournal, sentiMentator, bayesinator } from "../utils";
+
 
 let title, content, user, sentimentObject, emotionObject, emotionCount
+
 const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
@@ -14,6 +16,8 @@ const mapstate = (state) => {
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' );
+  let teachDocs = state.teachDoc.allTeachDocs
+  let [smartObject] = bayesinator(teachDocs, content)
 
   return {
     title,
@@ -21,7 +25,8 @@ const mapstate = (state) => {
     user,
     sentimentObject,
     emotionObject,
-    emotionCount
+    emotionCount,
+    smartObject
   }
 }
 

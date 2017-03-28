@@ -2,10 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import GraphCarousel from './Graphs';
 import {getSearchTweets} from '../reducers/twitter';
-import {emotinator, tweetsToParagraph, sentiMentator} from '../utils';
+import { emotinator, tweetsToParagraph, sentiMentator, bayesinator, customRenderer } from '../utils';
 import sentiment from 'sentiment'
 import { TagCloud } from "react-tagcloud";
-import { customRenderer } from '../utils';
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 
 const mapDispatchToProps = (dispatch) => {
@@ -18,7 +17,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    searchTweets: state.twitter.searchTweets
+    searchTweets: state.twitter.searchTweets,
+    teachDocs: state.teachDoc.allTeachDocs
   };
 };
 
@@ -44,6 +44,8 @@ export class SearchTweets extends React.Component{
     let content = tweetsToParagraph(this.props.searchTweets)
     let sentimentObject = sentiMentator(sentiment(content))
     let [emotionObject, emotionCount] = emotinator(content)
+    let teachDocs = this.props.teachDocs 
+    let [smartObject] = bayesinator(teachDocs, content)
 
 
     return (
@@ -69,7 +71,7 @@ export class SearchTweets extends React.Component{
 
         <div className="row row-centered">
           <div className="row">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
             <TagCloud
               minSize={1}
               maxSize={2}

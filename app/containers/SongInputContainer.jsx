@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux'
 import {fetchSong} from '../reducers/song' 
 import sentiment from 'sentiment'
-import { emotinator, validateSong, sentiMentator } from "../utils";
+import { emotinator, validateSong, sentiMentator, bayesinator } from "../utils";
 
 let song_title, song_artist, lyrics
 const ERRORSTRING = "Sorry, We don't have lyrics for this song yet."
@@ -16,6 +16,8 @@ const mapstate = (state) => {
   let emotionObject = lyrics === ERRORSTRING ? {} : emotionReturn[0]
   let emotionCount = lyrics === ERRORSTRING ? [] : emotionReturn[1]
   let sentimentObject = lyrics === ERRORSTRING ? {} : sentiMentator(sentiment(lyrics))
+  let teachDocs = state.teachDoc.allTeachDocs
+  let [smartObject] = bayesinator(teachDocs, lyrics)
 
   return {
     song_title,
@@ -23,7 +25,8 @@ const mapstate = (state) => {
     lyrics,
     sentimentObject,
     emotionObject,
-    emotionCount
+    emotionCount,
+    smartObject
   }
 }
 
