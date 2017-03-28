@@ -37,16 +37,17 @@ class JournalInput extends Component {
       <div className='container'>
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
-          <SpeechInput />
+
         </div>
 
         <div className="row">
           <div className="col-xs-12 col-lg-6">
             <form className='journalForm' onSubmit={addEntry}>
-              <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
+              <Field name="title" type="text" className="" component={JournalRenderField} id="title" label="Title" />
+              <SpeechInput />
               <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
-              <div><Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
-              <Field name="user" type="hidden"  value={user} component={journalRenderField} />
+              <div><Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={JournalRenderField} id="content" label="Content" /></div>
+              <Field name="user" type="hidden"  value={user} component={JournalRenderField} />
             </form>
           </div>
 

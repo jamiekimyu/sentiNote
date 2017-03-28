@@ -29,7 +29,7 @@ class SpeechInput extends Component {
     this.speechRecognizer.continuous = true;
     this.speechRecognizer.interimResults = true;
     this.speechRecognizer.lang = 'en-IN';
-    }  
+    }
   }
 
   componentWillUnmount(){
@@ -38,8 +38,8 @@ class SpeechInput extends Component {
 
   render(){
     const {transcription, setTranscript} = this.props;
-    
-    //toggling function 
+
+    //toggling function
     const toggle = (listening) => {
 
         if (!listening) {
@@ -71,16 +71,12 @@ class SpeechInput extends Component {
     };
 
     return (
-      <div>
-        <h4>Click on the microphone and begin speaking</h4>
-          <button className="btn btn-primary" onClick={() => {
-            this.listening = !this.listening;
-            toggle(this.listening);
-          }}>
-            <span className="glyphicon glyphicon-microphone"></span>
-          </button>
-      </div>
-    );
+      <button className="btn btn-primary" onClick={() => {
+        this.listening = !this.listening;
+        toggle(this.listening);
+      }}>
+        <img className="glyphicon" src='/android-microphone.png'/>
+      </button>    );
   }
 };
 

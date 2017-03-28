@@ -31,6 +31,16 @@ textarea {
 
 .title{
   color: silver;
+  margin-left: 25px;
+}
+
+.glyphicon{
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.btn-primary{
+  margin-left: 10px;
 }
 
 .userName{
