@@ -9,15 +9,23 @@
     text-align: center;
 }
 
+label {
+  color: silver;
+  margin-right: 10px;
+}
+
 .flex-container > * {
     padding: 15px;
     -webkit-flex: 1 100%;
     flex: 1 100%;
 }
 
-
+textarea {
+  width: 300px;
+  height: 250px !important;
+}
 .userInfo{
-    padding: 10%;
+    padding: 5%;
     margin: 5%;
 }
 
@@ -88,7 +96,18 @@ footer {
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
+  background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
+
 }
+
+input {
+  margin-bottom: 7px;
+}
+
+.abs {
+    background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
+}
+
 #container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -96,7 +115,7 @@ body {
   padding: 10px;
   width: 800px;
   height: 800px;
-  background-color: #fff;
+
 }
 
 .twitter{

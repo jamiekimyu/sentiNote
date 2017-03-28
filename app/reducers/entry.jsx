@@ -45,7 +45,6 @@ export const selectEntryById = (entry_id) => dispatch => {
 	.then( res => {
 		dispatch(selectEntryToState(res.data));
 	})
-	.then( () => browserHistory.push(`/entry/${entry_id}`))
 	.catch( err => console.error(err));
 }
 

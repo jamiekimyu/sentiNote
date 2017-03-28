@@ -1,26 +1,38 @@
 import React from 'react';
-const afinn = require('./AFINN'), emotion = require('./emotion')
+import Lexed from "lexed";
+const afinn = require('./AFINN'), emotion = require('./emotion');
+let BayesClassifier = require('bayes-classifier');
+let classifier = new BayesClassifier();
 
 export function sentiMentator(sentimentObject, identifier) {
-  let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = []
+  let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = [];
+  sentimentObject.words = sentimentObject.words.filter(word => word !== "");
   sentimentObject.words.forEach(word=>{
-    let score = afinn[word]
+    let score = afinn[word];
     if(score>0){posWithVals.push([word, score])}
     else{ negsWithVals.push([word, score]) }
-  })
-  let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words
-  sentimentArray.forEach(word=>{
-    totalScore += afinn[word]
-    orderedWordsRating.push( {word,totalScore} )
-  })
-  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0)
-  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0)
-  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative}) 
+  });
+  let sentimentArray = identifier === 'journal' ?  sentimentObject.words.reverse() :  sentimentObject.words;
+  sentimentArray.forEach( (word, index) =>{
+    totalScore += afinn[word];
+    if(sentimentArray.length<75){
+      orderedWordsRating.push( {word,totalScore} );
+    } else {
+      let maximumNumberofValues = 50;
+      let delta = Math.floor( sentimentArray.length / maximumNumberofValues );
+      if(index===0 || index === sentimentArray.length-1 || index%delta === 0){
+        orderedWordsRating.push( {word,totalScore} );
+      }
+    }
+  });
+  let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0);
+  let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0);
+  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative});
 }
 
 export function emotinator(content) {
   let wordArray = content.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").split(' ')
-  let emotionObject = {}, preData = {}, emotionInstances = []
+  let emotionObject = {}, preData = {}, emotionInstances = [];
   wordArray.forEach(word=>{
     if(emotion[word]){
       preData[word] =  preData[word] ? [preData[word][0], preData[word][1]+1] : [emotion[word],1]
@@ -28,14 +40,52 @@ export function emotinator(content) {
         emotionObject[match] = emotionObject[match] ? emotionObject[match] + 1 : 1
       })
     }
-  })
+  });
 
  for(let key in preData) {
-    emotionInstances.push({value: key, count: preData[key][1]})
-  }
-  emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50)  //sort and return top 50
-  return [emotionObject, emotionInstances]
+    emotionInstances.push({value: key, count: preData[key][1]});
+  };
+  emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50);  //sort and return top 50
+  return [emotionObject, emotionInstances];
+};
+
+export function bayesinator(teachDocs, content) {
+  let smartObject = {}
+  let sentenceArray = new Lexed(content).sentenceLevel()  
+  teachDocs.forEach(teachDoc=>{
+    for(let key in teachDoc){
+      if(Array.isArray(teachDoc[key])&&teachDoc[key].length){
+        classifier.addDocuments(teachDoc[key], key)
+      }
+    }
+  })
+  classifier.train()
+  sentenceArray.forEach(sentence=>{
+    let arrayOfEmotions = classifier.getClassifications(sentence)
+    arrayOfEmotions.forEach(obj=>{
+      if(smartObject[obj.label]){
+        smartObject[obj.label] = smartObject[obj.label] + obj.value
+      }else {
+        smartObject[obj.label] = obj.value
+      }
+    })
+  })
+  return [smartObject, sentenceArray]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const customRenderer = (tag, size, color) => (
   <span key={tag.value}
@@ -49,28 +99,28 @@ export const customRenderer = (tag, size, color) => (
 );
 
 export function validateSong(values) {
-  const error = {}
+  const error = {};
   if (!values.song_title) {
-    error.song_title = 'A Song Title is Required'
-  }
+    error.song_title = 'A Song Title is Required';
+  };
   if (!values.song_artist) {
-    error.song_artist = 'Artist is  Required'
-  }
+    error.song_artist = 'Artist is  Required';
+  };
   console.log('Errors======>', error)
-  return error
-}
+  return error;
+};
 
 export function validateJournal(values) {
-  const error = {}
+  const error = {};
   if (!values.title) {
-    error.title = 'A Title is Required'
-  }
+    error.title = 'A Title is Required';
+  };
   if (!values.content) {
-    error.content = 'Content is Required'
-  }
-  console.log('Errors======>', error)
-  return error
-}
+    error.content = 'Content is Required';
+  };
+  console.log('Errors======>', error);
+  return error;
+};
 
 export const tweetsToParagraph = (tweetsData) => {      //Twitter Util Functions tweetsToParagraph takes an array of twitter objects and returns the text of the tweets as one block of text
 

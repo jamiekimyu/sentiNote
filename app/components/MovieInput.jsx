@@ -21,15 +21,13 @@ class MovieInput extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, emotionCount, movieArray} = this.props
+    let {submitting, sentimentObject, emotionObject, smartObject, emotionCount, movieArray} = this.props
     return (
       <div className='container'>
-
-        <div className="row ">
+        <div>
           <h1 className='title'>Analyze Movie Scripts</h1>
         </div>
-
-        <div className="row margTopBot20">
+        <div className="margTopBot20">
           <form className='movieForm' onSubmit={this.handleClick}>
             <select name="movieScript" id='movieSelect'>
               {
@@ -43,9 +41,9 @@ class MovieInput extends Component {
           </form>
         </div>
 
-        <div className="row row-centered">
-          <div className="row margTopBot20">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+        <div>
+          <div className="margTopBot20">
+            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
             <TagCloud
               minSize={1}
               maxSize={2}
@@ -64,7 +62,7 @@ class MovieInput extends Component {
           </div>
         </div>
 
-        <div className='row'>
+        <div>
           {
             this.state.alertShow&&(
               <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>

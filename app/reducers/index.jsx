@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   songs: require('./song').default,
   movies: require('./movie').default,
   transcription: require('./transcription').default,
-
+  teachDoc: require('./teachJournal').default
 });
 
   

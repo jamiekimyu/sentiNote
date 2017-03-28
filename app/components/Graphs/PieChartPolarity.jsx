@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { VictoryPie, VictoryTheme } from 'victory';
 
 export default function PieChartPolarity ({sentimentObject}) {
-
   const dataRange = (sentimentObj) => {
     let sentimentArray = [];
 

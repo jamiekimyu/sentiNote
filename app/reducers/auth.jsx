@@ -54,8 +54,10 @@ export const whoami = () =>
       .then(response => {
         const user = response.data
         dispatch(authenticated(user))
-        dispatch(getUserEntries(user.id))
-
+        return user.id
+      })
+      .then( user_id => {
+        if(user_id) dispatch(getUserEntries(user_id))
       })
       .catch(failed => dispatch(authenticated(null)))
 

@@ -7,12 +7,10 @@ danger: #cc0000
 primary: 2a9fd6
 */
 #main {
-	background-color: black
+	background-color: slate
 }
 
-body {
-  margin: 0;
-}
+
 
 .black {
 	background-color: black
@@ -265,6 +263,9 @@ input:-webkit-autofill {
   background-color: #2a9fd6;
   width: 600px;
 }
+br {
+  color: white;
+}
 
 /*.journalForm {
   width: 1000px;
@@ -304,15 +305,13 @@ input:-webkit-autofill {
 #lyricText {
  height:200px;
  width: 300px;
- margin-left: 5px;
  border-radius: 2%;
- float:left;
 
 }
 
 #songSubmit {
-  margin-left: 10px;
-  float: left;
+  margin-left: 15px;
+
 }
 
 #pT {

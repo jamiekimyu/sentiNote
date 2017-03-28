@@ -1,44 +1,38 @@
 import Entry from '../components/Entry';
 import {Field, reduxForm, reset} from 'redux-form';
 import {connect} from 'react-redux'
+import { validateJournal } from "../utils";
 import {addEntry} from '../reducers/entry'
-import sentiment from 'sentiment'
-import { emotinator, validateJournal } from "../utils";
+import { teachEmotion, fetchAllTeachDocs } from "../reducers/teachJournal";
+let user
 
-let title, content, user, sentimentObject
-const mapstate = (state) => {
-  title =  state.entries.selectedEntry.title;
-  content =   state.entries.selectedEntry.content;
-  user =   state.auth.user;
-  let [emotionObject, emotionCount] = emotinator(content)
-  sentimentObject = sentiment(content);
-
-  const initialValues = {
-    title,
-    content
-  }
-
+const mapstate = (state, ownProps) => {
+  let title = state.entries.selectedEntry.title;
+  let content = state.entries.selectedEntry.content || '';
+  user = state.auth.user;
+  let teachDocs = state.teachDoc.allTeachDocs
+  
   return {
     title,
-    content,
     user,
-    sentimentObject,
-    emotionObject,
-    emotionCount,
-    initialValues
+    content,
+    teachDocs
   }
 }
 
 const mapDisptachToProps = (dispatch, ownProps) => {
   return {
-
+    teachEmotion (sentence, emotion) {
+    dispatch(teachEmotion(sentence,emotion,user.id));
+    dispatch(fetchAllTeachDocs())
+    }
   }
 }
 
 const JournalForm = reduxForm({
   form: 'journalForm',
   validateJournal
-})(Entry)
+}, mapstate)(Entry);
 
 export default connect(mapstate, mapDisptachToProps)(JournalForm);
 
