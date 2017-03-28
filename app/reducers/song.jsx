@@ -30,7 +30,6 @@ export const reducer = (state = initState, action) => {
 export const fetchSong = (song) => dispatch => {
 	axios.post('/api/songs', song)
 	.then( res => {
-		console.log('res.data', res.data);
 		return dispatch(addLyrics(res.data))
 	})
 	.catch( err => console.error(err))
