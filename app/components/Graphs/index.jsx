@@ -41,8 +41,9 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 </div>
                 <div className="row top-margin">
                     <Carousel.Caption>
-                        <h3>Naive Bayes</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Naive Bayes Emotion</h3>
+                        <p>We've implemented some Machine Learning. See the analysis
+                           the emotions with the learning power of all our users!</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
@@ -53,7 +54,8 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div className="row top-margin">
                     <Carousel.Caption>
                         <h3>Polarity Magnitude</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <p>Here you can see your positivity and negativity side-by-side
+                           with the net polarity of the writing!</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
@@ -64,7 +66,8 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div className="row top-margin">
                     <Carousel.Caption>
                         <h3>Polarity Over Time</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <p>See how each word affects the polarity of the writing!
+                        Useful for longer text</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
