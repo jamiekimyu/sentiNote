@@ -10,7 +10,6 @@
 }
 
 label {
-  color: silver;
   margin-right: 10px;
 }
 
@@ -30,9 +29,9 @@ textarea {
 }
 
 .title{
-  color: silver;
   margin-left: 25px;
 }
+
 
 .glyphicon{
   max-width: 20px;
@@ -58,7 +57,6 @@ textarea {
 
 .content {
     text-align: left;
-    color: silver;
 }
 
 .min-height-600{
@@ -106,6 +104,7 @@ footer {
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
+  color: white;
   background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
 
 }

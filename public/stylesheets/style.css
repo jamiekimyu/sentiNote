@@ -285,8 +285,7 @@ br {
 }
 
 #journalSubmit {
-  margin: 0 0 20px 30px;
-  float:left;
+  margin-left: 10px;
 }
 
 #songTitle {
