@@ -9,7 +9,7 @@ const mapstate = (state) => {
   let movieArray = state.movies.linksAndTitles
   let currentScript = state.movies.currentMovieScript
   let [emotionObject, emotionCount] = emotinator(currentScript)
-  let sentimentObject =  sentiMentator(sentiment(currentScript))
+  let sentimentObject =  sentiMentator(sentiment(currentScript), 'movie')
   let teachDocs = state.teachDoc.allTeachDocs
   let [smartObject] = bayesinator(teachDocs, currentScript)
 

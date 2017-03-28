@@ -27,7 +27,7 @@ export function sentiMentator(sentimentObject, identifier) {
   });
   let totalPositive = posWithVals.reduce((a,b)=>a+b[1],0);
   let totalNegative = negsWithVals.reduce((a,b)=>a+b[1],0);
-  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative});
+  return Object.assign({}, sentimentObject, {negsWithVals, posWithVals, orderedWordsRating, totalPositive, totalNegative, identifier});
 }
 
 export function emotinator(content) {
@@ -173,5 +173,3 @@ export const journalRenderField = ({ onChangePostText, transcript, input, label,
       }
   </div>
 )};
-
-export const style = {color: 'black'}
