@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {addEntry} from '../reducers/entry';
 import sentiment from 'sentiment';
 import { emotinator, validateJournal, sentiMentator, bayesinator } from "../utils";
-import Lexed from "lexed";
+
 
 let title, content, user, sentimentObject, emotionObject, emotionCount
 
@@ -16,9 +16,8 @@ const mapstate = (state) => {
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' );
-  let sentenceArray = new Lexed(content).sentenceLevel()
   let teachDocs = state.teachDoc.allTeachDocs
-  let smartObject = bayesinator(teachDocs)
+  let [smartObject] = bayesinator(teachDocs, content)
 
   return {
     title,

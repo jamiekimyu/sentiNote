@@ -51,8 +51,7 @@ export function emotinator(content) {
 
 export function bayesinator(teachDocs, content) {
   let smartObject = {}
-  let sentenceArray = new Lexed(content).sentenceLevel()
-  
+  let sentenceArray = new Lexed(content).sentenceLevel()  
   teachDocs.forEach(teachDoc=>{
     for(let key in teachDoc){
       if(Array.isArray(teachDoc[key])&&teachDoc[key].length){
@@ -61,13 +60,11 @@ export function bayesinator(teachDocs, content) {
     }
   })
   classifier.train()
-
   sentenceArray.forEach(sentence=>{
     let arrayOfEmotions = classifier.getClassifications(sentence)
     arrayOfEmotions.forEach(obj=>{
       if(smartObject[obj.label]){
         smartObject[obj.label] = smartObject[obj.label] + obj.value
-        console.log(obj.label, smartObject[obj.label])
       }else {
         smartObject[obj.label] = obj.value
       }

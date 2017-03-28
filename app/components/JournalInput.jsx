@@ -17,11 +17,8 @@ class JournalInput extends Component {
 
   render(){
     let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount, smartObject} = this.props
-    console.log('smartObject',smartObject)
-
     return (
       <div className='container'>
-
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
         </div>
@@ -39,10 +36,9 @@ class JournalInput extends Component {
           <div className="col-xs-12 col-lg-6">
         <div className="row row-centered">
           <div>
-            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject} smartObject={smartObject}/>
+            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject} smartObject={smartObject} />
           </div>
         </div>
-            <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject}/>
             <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
 
             {

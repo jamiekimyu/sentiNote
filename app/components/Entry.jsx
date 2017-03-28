@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import sentiment from 'sentiment'
 import { TagCloud } from "react-tagcloud";
 import { ButtonToolbar, SplitButton, MenuItem } from 'react-bootstrap'
-import { customRenderer, emotinator, sentiMentator } from "../utils";
+import { customRenderer, emotinator, sentiMentator, bayesinator } from "../utils";
 let teach, emotionWord, emotionInstances, array= [], emotion = require('../emotion')
 import GraphCarousel from './Graphs';
 
@@ -15,7 +15,8 @@ class Entry extends Component {
   }
 
   render(){
-    let {submitting, user, sentenceArray, title, teachEmotion, content, smartObject} = this.props
+    let {submitting, user, title, teachEmotion, content, teachDocs} = this.props
+    let [smartObject,sentenceArray] = bayesinator(teachDocs, content)
     teach = teachEmotion
 
       if(content){
@@ -72,10 +73,4 @@ function renderDropdownButton(title, i) {
     </SplitButton>
   );
 }
-
-
-  
-
-
-
 

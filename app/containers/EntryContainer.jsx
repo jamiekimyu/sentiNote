@@ -1,50 +1,30 @@
 import Entry from '../components/Entry';
 import {Field, reduxForm, reset} from 'redux-form';
 import {connect} from 'react-redux'
+import { validateJournal } from "../utils";
 import {addEntry} from '../reducers/entry'
-import sentiment from 'sentiment'
-import { emotinator, validateJournal, sentiMentator, bayesinator } from "../utils";
-import { teachEmotion, fetchTeachDoc } from "../reducers/teachJournal";
-let BayesClassifier = require('bayes-classifier');
-let classifier = new BayesClassifier();
-let title, content, user, sentimentObject
+import { teachEmotion, fetchAllTeachDocs } from "../reducers/teachJournal";
+let user
 
 const mapstate = (state, ownProps) => {
-
-  title = state.entries.selectedEntry.title;
-  content = state.entries.selectedEntry.content || '';
+  let title = state.entries.selectedEntry.title;
+  let content = state.entries.selectedEntry.content || '';
   user = state.auth.user;
-
-
-  let [emotionObject, emotionCount] = emotinator(content)
-  sentimentObject = sentiMentator( sentiment(content), 'journal');
   let teachDocs = state.teachDoc.allTeachDocs
-  let [smartObject,sentenceArray] = bayesinator(teachDocs, content)
-
-  const initialValues = {
-    title,
-    content
-  };
-
+  
   return {
     title,
-    sentenceArray,
     user,
-    sentimentObject,
-    emotionObject,
-    emotionCount,
-    initialValues,
-    smartObject,
-    content
+    content,
+    teachDocs
   }
 }
-
 
 const mapDisptachToProps = (dispatch, ownProps) => {
   return {
     teachEmotion (sentence, emotion) {
     dispatch(teachEmotion(sentence,emotion,user.id));
-    dispatch(fetchTeachDoc(user.id))
+    dispatch(fetchAllTeachDocs())
     }
   }
 }

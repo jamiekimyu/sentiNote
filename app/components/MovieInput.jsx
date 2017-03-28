@@ -21,7 +21,7 @@ class MovieInput extends Component {
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, emotionCount, movieArray} = this.props
+    let {submitting, sentimentObject, emotionObject, smartObject, emotionCount, movieArray} = this.props
     return (
       <div className='container'>
         <div>
@@ -43,7 +43,7 @@ class MovieInput extends Component {
 
         <div>
           <div className="margTopBot20">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject}/>
+            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
             <TagCloud
               minSize={1}
               maxSize={2}

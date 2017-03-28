@@ -58,18 +58,28 @@ const ExampleApp = connect(
 
 )
 
-const onMovieEnter = (ownProps) => {
-  store.dispatch(fetchTeachDoc(userId))
+const onMovieEnter = () => {
+  store.dispatch(fetchAllTeachDocs())
   return store.dispatch(fetchMovieLinks())
+}
+
+const onJournalEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
+}
+
+const onSongEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
+}
+
+const onTwitterEnter = () => {
+  return store.dispatch(fetchAllTeachDocs())
 }
 
 const onEntryEnter = (ownProps) => {
   store.dispatch(selectEntryById(ownProps.params.entryId));
   store.dispatch(whoami())
-  store.dispatch(fetchAllTeachDocs())
   let userId =  store.getState().auth.user.id
-  console.log('==========>',userId)
-  return store.dispatch(fetchTeachDoc(userId))
+  return store.dispatch(fetchAllTeachDocs())
 }
 
 render (
@@ -78,12 +88,12 @@ render (
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/JournalInput" component={JournalInputContainer} />
-        <Route path="/SongInput" component={SongInputContainer} />
+        <Route path="/JournalInput" component={JournalInputContainer} onEnter={onJournalEnter} />
+        <Route path="/SongInput" component={SongInputContainer} onEnter={onSongEnter}/>
         <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
-				<Route path="/twitter" component={Twitter} />
+				<Route path="/twitter" component={Twitter} onEnter={onTwitterEnter}/>
 				<Route path="/UserHistoryTweets" component={UserHistoryTweets} />
         <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
         <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
