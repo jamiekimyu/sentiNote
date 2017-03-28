@@ -173,3 +173,5 @@ export const journalRenderField = ({ onChangePostText, transcript, input, label,
       }
   </div>
 )};
+
+export const style = {color: 'black'}
