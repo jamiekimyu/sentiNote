@@ -46,8 +46,7 @@ class JournalInput extends Component {
               <div>
                 <Field name="title" type="text" className="" component={JournalRenderField} id="title" label="Title" />
                 <SpeechInput className='speech'/>
-
-              <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
+                <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
               </div>
               <div>
                 <Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={JournalRenderField} id="content" label="Content" /></div>
