@@ -5,7 +5,8 @@ export default function SimpleLineChart({sentimentObject}) {
     const dataRange = (sentimentObj) => {
         let sentimentArray = [];
         const words = sentimentObject.orderedWordsRating
-        words.forEach( (word, i) => {
+        if(words) words.forEach(
+          (word, i) => {
             sentimentArray.push({ currentWord: word.word, Polarity: word.totalScore, })
         })
         return sentimentArray;

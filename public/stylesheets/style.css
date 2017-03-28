@@ -297,6 +297,10 @@ br {
   margin-bottom: 2px;
 }
 
+.microphone{
+  margin-left: 10px;
+}
+
 #songArtist {
   /*width: 250px;*/
   margin-bottom: 2px;
@@ -305,9 +309,9 @@ br {
 
 #lyricText {
  height:200px;
- width: 300px;
- border-radius: 2%;
-
+ width: 100%;
+ border-radius: 1%;
+ margin-left: 10px;
 }
 
 #songSubmit {
