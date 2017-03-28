@@ -11,7 +11,6 @@ const mapstate = (state) => {
   let [emotionObject, emotionCount] = emotinator(currentScript)
   let sentimentObject =  sentiMentator(sentiment(currentScript))
   let teachDocs = state.teachDoc.allTeachDocs
-  console.log('teachdocs', teachDocs)
   let [smartObject] = bayesinator(teachDocs, currentScript)
 
   return {
