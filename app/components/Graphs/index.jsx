@@ -14,8 +14,12 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 </div>
                 <div className="row top-margin">
                     <Carousel.Caption>
-                        <h3>Emotion Pie Chart</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Emotion</h3>
+                        <p>
+                            The AFINN sentiment analysis matches the words in your
+                            entry with an associated emotion. Check out the
+                            emotions of your writing!
+                        </p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
@@ -25,8 +29,9 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 </div>
                 <div className="row top-margin">
                     <Carousel.Caption>
-                        <h3>Polarity Pie Chart</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Polarity</h3>
+                        <p> The AFINN sentiment analysis can detect positive or negative words.
+                            See how polarizing your writing is!</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
