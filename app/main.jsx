@@ -12,12 +12,12 @@ import JournalInputContainer from './containers/JournalInputContainer'
 import SongInputContainer from './containers/SongInputContainer'
 import UserProfileContainer from './containers/UserProfileContainer'
 import EditProfileContainer from './containers/EditProfileContainer'
-import SignUp from './components/SignUp';
 import Twitter from './components/Twitter';
 import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import ModalContainer from './containers/ModalContainer'
+import ModalSignUpContainer from './containers/ModalSignUpContainer'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
 import {fetchTeachDoc, fetchAllTeachDocs} from './reducers/teachJournal'
 import {whoami} from './reducers/auth'
@@ -43,12 +43,13 @@ const ExampleApp = connect(
           <NavItem eventKey={2} className='margTop8' ><Link to="/twitter">Tweets</Link></NavItem>
           <NavItem eventKey={3} className='margTop8' ><Link to="/SongInput">Songs</Link></NavItem>
           <NavItem eventKey={4} className='margTop8' ><Link to="/movies">Movies</Link></NavItem>
-          <NavItem eventKey={5} id={user.user ? 'dashBoardText' : ''} className='margTop8' ><Link to={user.user ? '/user' : "/signup"}>{user.user ? <span className='text-danger'>My Dashboard</span> : 'Signup'}</Link></NavItem>
-          <NavItem eventKey={6} className='inline right' >{user.user&&(<Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link>) }</NavItem>
+          {user.user&&(<NavItem eventKey={5} id='dashBoardText' className='margTop8' ><Link to='/user'><span className='text-danger'>My Dashboard</span></Link></NavItem>)}
+          {user.user&&(<NavItem eventKey={6} className='inline right' ><Link to="/user"><img id='dashBoardIcon' className='img img-responsive' src='/dashBoard.png'/></Link></NavItem> )}
         </Nav>
 
         <Nav pullRight>
-          { !user.user ? <NavItem className='margTop8' eventKey={7} > <Link to='/showModal'><p id='showModal'>Login</p> </Link></NavItem> :  <WhoAmI/> }
+          { !user.user&&(<NavItem className='margTop8' eventKey={7}><Link className='floatLeft' to='/showModal'><p id='showModal'>Login</p> </Link></NavItem>)  }
+          { !user.user ? <NavItem className='margTop8' eventKey={8}><Link className='floatLeft' to='/showModalSignUp'><p id='showModal'>Sign Up</p> </Link></NavItem> : <WhoAmI/>  }
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -91,7 +92,6 @@ render (
         <Route path="/home" component={Home} />
         <Route path="/JournalInput" component={JournalInputContainer} onEnter={onJournalEnter} />
         <Route path="/SongInput" component={SongInputContainer} onEnter={onSongEnter}/>
-        <Route path="/signup" component={SignUp} />
         <Route path="/user" component={UserProfileContainer} />
         <Route path="/editUser" component={EditProfileContainer} />
 				<Route path="/twitter" component={Twitter} onEnter={onTwitterEnter}/>
@@ -100,6 +100,7 @@ render (
         <Route path={"/entry/:entryId"} component={EntryContainer} onEnter={onEntryEnter}/>
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
         <Route path='/showModal' component={ModalContainer} />
+        <Route path='/showModalSignUp' component={ModalSignUpContainer} />
       </Route>
     </Router>
   </Provider>,
