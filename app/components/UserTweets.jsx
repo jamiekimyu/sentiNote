@@ -60,7 +60,7 @@ export class UserTweets extends React.Component{
 								/>
 							</div>
 						</div>
-						<div className="col-sm-offset-2 col-sm-10">
+						<div className="col-sm-10">
 							<button type="submit" className="btn btn-primary">submit</button>
 						</div>
 					</form>

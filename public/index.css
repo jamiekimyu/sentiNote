@@ -97,6 +97,10 @@ body {
 
 }
 
+input {
+  margin-bottom: 7px;
+}
+
 .abs {
     background-image: url("http://buzzerg.com/wp-content/uploads/8589130511922-dark-starry-night-sky-wallpaper-hd.jpg");
 }
