@@ -33,4 +33,14 @@ describe('/api/movies', () => {
 				done();
 			});
 	});
+
+	it('posts a movie script', function(done) {
+		request(app)
+			.post('/api/movies/scripts')
+			.send({scriptLink: 'http://www.imsdb.com/scripts/10-Things-I-Hate-About-You.html'})
+			.then((response) => {
+				expect(response.body.text).to.be.a('string');
+				done();
+			});
+	});
 });

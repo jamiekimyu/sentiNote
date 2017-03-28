@@ -2,7 +2,6 @@ const request = require('supertest');
 const {expect} = require('chai');
 const app = require('./start');
 
-//app.listen(3000, () => {
 	describe('/api/twitter', () => {
 		it('get tweets for user', (done) => {
 			request(app)
@@ -49,5 +48,3 @@ const app = require('./start');
 				});
 		});
 	});
-
-//});
