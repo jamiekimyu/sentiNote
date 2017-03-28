@@ -28,7 +28,6 @@ export const reducer = (state = initState, action) => {
 }
 /* ------------       DISPATCHERS     ------------------ */
 export const fetchSong = (song) => dispatch => {
-	console.log('ssssong',song)
 	axios.post('/api/songs', song)
 	.then( res => {
 		return dispatch(addLyrics(res.data))
