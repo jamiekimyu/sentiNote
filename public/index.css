@@ -105,6 +105,14 @@ select{
   color: black;
 }
 
+textarea{
+  color: black;
+}
+
+input{
+  color: black;
+}
+
 /*default CSS from recharts piechart example*/
 body {
   margin: 0;
