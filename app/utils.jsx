@@ -1,5 +1,8 @@
 import React from 'react';
+import Lexed from "lexed";
 const afinn = require('./AFINN'), emotion = require('./emotion');
+let BayesClassifier = require('bayes-classifier');
+let classifier = new BayesClassifier();
 
 export function sentiMentator(sentimentObject, identifier) {
   let totalScore = 0, posWithVals = [], negsWithVals = [], orderedWordsRating = [];
@@ -45,6 +48,47 @@ export function emotinator(content) {
   emotionInstances = emotionInstances.sort((a,b)=> b.count - a.count).slice(0,50);  //sort and return top 50
   return [emotionObject, emotionInstances];
 };
+
+export function bayesinator(teachDocs, content) {
+  let smartObject = {}
+  let sentenceArray = new Lexed(content).sentenceLevel()
+  
+  teachDocs.forEach(teachDoc=>{
+    for(let key in teachDoc){
+      if(Array.isArray(teachDoc[key])&&teachDoc[key].length){
+        classifier.addDocuments(teachDoc[key], key)
+      }
+    }
+  })
+  classifier.train()
+
+  sentenceArray.forEach(sentence=>{
+    let arrayOfEmotions = classifier.getClassifications(sentence)
+    arrayOfEmotions.forEach(obj=>{
+      if(smartObject[obj.label]){
+        smartObject[obj.label] = smartObject[obj.label] + obj.value
+        console.log(obj.label, smartObject[obj.label])
+      }else {
+        smartObject[obj.label] = obj.value
+      }
+    })
+  })
+  return [smartObject, sentenceArray]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const customRenderer = (tag, size, color) => (
   <span key={tag.value}

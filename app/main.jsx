@@ -18,7 +18,7 @@ import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
-import {fetchTeachDoc} from './reducers/teachJournal'
+import {fetchTeachDoc, fetchAllTeachDocs} from './reducers/teachJournal'
 import {whoami} from './reducers/auth'
 import {fetchMovieLinks} from './reducers/movie';
 import { selectEntryById } from './reducers/entry';
@@ -59,13 +59,16 @@ const ExampleApp = connect(
 )
 
 const onMovieEnter = (ownProps) => {
+  store.dispatch(fetchTeachDoc(userId))
   return store.dispatch(fetchMovieLinks())
 }
 
 const onEntryEnter = (ownProps) => {
   store.dispatch(selectEntryById(ownProps.params.entryId));
-  store.dispatch(whoami()) 
+  store.dispatch(whoami())
+  store.dispatch(fetchAllTeachDocs())
   let userId =  store.getState().auth.user.id
+  console.log('==========>',userId)
   return store.dispatch(fetchTeachDoc(userId))
 }
 

@@ -20,11 +20,17 @@ module.exports = require('express').Router()
    		res.send(doc)
    ).catch(next)
   })
+
+  .get('/', (req, res, next) => {
+    TeachDoc.findAll()
+   .then(docs=>{
+      res.send(docs)
+   }).catch(next)
+ })
   
   .get('/:userId', (req, res, next) => {
     let emotion = req.body.emotion
     let sentence = req.body.sentence
-
     TeachDoc.find({where: {user_id: req.params.userId}})
    .then(doc=>{
    	  res.send(doc)

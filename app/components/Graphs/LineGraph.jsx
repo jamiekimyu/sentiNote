@@ -11,7 +11,6 @@ export default function SimpleLineChart({sentimentObject}) {
         return sentimentArray;
     };
 
-
   	return (
     	<LineChart width={600} height={300} data={dataRange(sentimentObject)}
             margin={{top: 5, right: 30, left: 20, bottom: 30}}>
