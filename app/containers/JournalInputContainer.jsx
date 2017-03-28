@@ -15,6 +15,7 @@ const mapstate = (state) => {
   let emotionReturn = emotinator(content);
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
+
   sentimentObject =  sentiMentator( sentiment(content) , 'journal' );
   let teachDocs = state.teachDoc.allTeachDocs
   let [smartObject] = bayesinator(teachDocs, content)

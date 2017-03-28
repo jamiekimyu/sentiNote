@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
   twitter: require('./twitter').default,
   songs: require('./song').default,
   movies: require('./movie').default,
+  transcription: require('./transcription').default,
   teachDoc: require('./teachJournal').default
 });
 
