@@ -149,7 +149,7 @@ export const parseTweets = (tweetsData) => {        // takes an array of twitter
 	return parsedTweets;
 };
 
-export const JournalRenderField = ({ onChangePostText, transcript, input, label, type, meta: {touched, error} }) => {
+export const journalRenderField = ({ onChangePostText, transcript, input, label, type, meta: {touched, error} }) => {
   // console.log('got onChangePostText', onChangePostText)
   // console.log('got transcript', transcript)
 
