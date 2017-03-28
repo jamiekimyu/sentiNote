@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 export default function SimpleLineChart({sentimentObject}) {
-    console.log('sentiment object', sentimentObject)
-
     const dataRange = (sentimentObj) => {
         let sentimentArray = [];
-
         const words = sentimentObject.orderedWordsRating
         words.forEach( (word, i) => {
-            console.log('making iteration ', i, 'in lineChart')
             sentimentArray.push({ currentWord: word.word, Polarity: word.totalScore, })
         })
-
         return sentimentArray;
     };
-
 
   	return (
     	<LineChart width={600} height={300} data={dataRange(sentimentObject)}

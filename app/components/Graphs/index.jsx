@@ -5,7 +5,7 @@ import BarGraph from './BarGraph';
 import LineGraph from './LineGraph';
 import { Carousel } from 'react-bootstrap'
 
-export default function GraphCarousel({sentimentObject, emotionObject}) {
+export default function GraphCarousel({sentimentObject, emotionObject, smartObject}) {
     return(
         <Carousel>
             <Carousel.Item>
@@ -26,6 +26,17 @@ export default function GraphCarousel({sentimentObject, emotionObject}) {
                 <div className="row top-margin">
                     <Carousel.Caption>
                         <h3>Polarity Pie Chart</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                </div>
+            </Carousel.Item>
+             <Carousel.Item>
+                <div id='pieBox1' className="col-xs-12 col-md-6 col-centered">
+                    <PieChartEmotion emotionObject={smartObject} />
+                </div>
+                <div className="row top-margin">
+                    <Carousel.Caption>
+                        <h3>Naive Bayes</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </div>
