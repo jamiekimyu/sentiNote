@@ -57,7 +57,7 @@ export const whoami = () =>
         return user.id
       })
       .then( user_id => {
-        if(user_id) dispatch(getUserEntries(user_id))
+        if(user_id){ dispatch(getUserEntries(user_id)) ; history.back() }
       })
       .catch(failed => dispatch(authenticated(null)))
 
