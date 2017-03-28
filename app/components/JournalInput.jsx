@@ -1,26 +1,43 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
 import PieChartEmotion from './Graphs/PieChartEmotion';
 import PieChartPolarity from './Graphs/PieChartPolarity';
 import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
 import GraphCarousel from './Graphs';
 import { TagCloud } from "react-tagcloud";
-import { journalRenderField, customRenderer, emotinator } from "../utils";
-let emotionWord, emotionInstances, array= [], emotion = require('../emotion')
+import { JournalRenderField, customRenderer, emotinator, SpeechInputContainer } from "../utils";
+let emotionWord, emotionInstances, array= [], emotion = require('../emotion');
+import SpeechInput from './SpeechInput';
+import {setTranscript, onChangePostText} from '../reducers/transcription';
+
+const mapDispatchToProps = (dispatch) => ({
+  onChangePostText: (event) => dispatch(setTranscript(event.target.value))
+});
+
+const mapStateToProps = (state) => ({
+  transcript: state.transcription
+});
+
 
 class JournalInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {alertShow:false};
+    this.state = {
+      alertShow:false,
+    };
   }
 
   render(){
-    let {submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount, smartObject} = this.props
+
+    let { onChangePostText, transcript, submitting, sentimentObject, emotionObject, handleSubmit, addEntry, user, emotionCount, smartObject} = this.props
+
     return (
       <div className='container'>
         <div className="row title">
           <h1 id='journalHeader'>Journal</h1>
+          <SpeechInput />
         </div>
 
         <div className="row">
@@ -28,7 +45,7 @@ class JournalInput extends Component {
             <form className='journalForm' onSubmit={addEntry}>
               <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
               <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
-              <div><Field name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
+              <div><Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
               <Field name="user" type="hidden"  value={user} component={journalRenderField} />
             </form>
           </div>
@@ -59,6 +76,6 @@ class JournalInput extends Component {
   };
 };
 
-export default JournalInput;
+export default connect(mapStateToProps, mapDispatchToProps)(JournalInput);
 
 
