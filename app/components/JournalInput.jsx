@@ -7,7 +7,7 @@ import BarGraph from './Graphs/BarGraph';
 import LineGraph from './Graphs/LineGraph';
 import GraphCarousel from './Graphs';
 import { TagCloud } from "react-tagcloud";
-import { JournalRenderField, customRenderer, emotinator, SpeechInputContainer } from "../utils";
+import { journalRenderField, customRenderer, emotinator, SpeechInputContainer } from "../utils";
 let emotionWord, emotionInstances, array= [], emotion = require('../emotion');
 import SpeechInput from './SpeechInput';
 import {setTranscript, onChangePostText} from '../reducers/transcription';

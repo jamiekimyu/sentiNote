@@ -34,7 +34,7 @@ export default class extends React.Component {
           aria-labelledby="contained-modal-title-lg"
         >
           <Modal.Header closeButton>
-            <Modal.Title className='center' id="contained-modal-title-lg">Login</Modal.Title>
+            <Modal.Title className='center' id="contained-modal-title-lg"><p className='text-primary'>Login</p></Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Login/>
