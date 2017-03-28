@@ -53,7 +53,7 @@ export class SearchTweets extends React.Component{
         <div className="row">
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <div className="form-group">
-              <label htmlFor="name" className="col-sm-2 control-label">Search Term:</label>
+              <label htmlFor="name" className="control-label">Search Term:</label>
               <div className="col-sm-10">
                 <input
                   onChange={(event) => this.handleChange(event)}
@@ -63,7 +63,7 @@ export class SearchTweets extends React.Component{
                 />
               </div>
             </div>
-            <div className="col-sm-offset-2 col-sm-10">
+            <div className="col-sm-10">
               <button type="submit" className="btn btn-primary">submit</button>
             </div>
           </form>

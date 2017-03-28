@@ -27,7 +27,7 @@ class JournalInput extends Component {
           <div className="col-xs-12 col-lg-6">
             <form className='journalForm' onSubmit={addEntry}>
               <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
-              <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Add This Entry to My Journal and Clear Graphs</button>
+              <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
               <div><Field name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
               <Field name="user" type="hidden"  value={user} component={journalRenderField} />
             </form>

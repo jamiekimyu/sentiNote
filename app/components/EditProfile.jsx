@@ -42,25 +42,41 @@ class ProfileForm extends Component {
     const { handleSubmit, name, photoURL, description} = this.props;
     console.log("I got name on props: ", this.props)
     return (
-      <div>
-        <div className='userInfo'>
-          <h2>Edit Your Profile!</h2>
-          <form onSubmit={handleSubmit} >
-            <div>
-              <Field name="name" value={name} component={renderField} label="name" placeholder={name} type="text"/>
-            </div>
-            <div>
-              <Field name="photoURL" value={photoURL} component={renderField} label="photoURL" type="url" />
-            </div>
-            <div>
-              <Field name="description" value={description} component={renderField} label="description" type="textarea" />
-            </div>
+      <div className='userInfo'>
+        <h2 className="title">Edit Your Profile!</h2>
+        <form onSubmit={handleSubmit} >
+          <div>
+            <Field
+              name="name"
+              value={name}
+              component={renderField}
+              label="name"
+              placeholder={name}
+              type="text"/>
+          </div>
+          <div>
+            <Field
+              name="photoURL"
+              value={photoURL}
+              component={renderField}
+              label="photoURL"
+              type="url" />
+          </div>
+          <div>
+            <Field
+              className='description'
+              name="description"
+              value={description}
+              component={renderField}
+              label="description"
+              type="textarea"/>
+          </div>
 
-            <button className='btn-success' type="submit">Submit</button>
-            <Link to="/user"><button className='btn-warning'>Cancel</button></Link>
-          </form>
-        </div>
+          <button className='btn-success' type="submit">Submit</button>
+          <Link to="/user"><button className='btn-warning'>Cancel</button></Link>
+        </form>
       </div>
+
 
     );
   }
