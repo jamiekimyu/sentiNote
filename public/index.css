@@ -13,6 +13,10 @@ label {
   margin-right: 10px;
 }
 
+.toggle{
+  background-color: black;
+}
+
 .flex-container > * {
     padding: 15px;
     -webkit-flex: 1 100%;
@@ -136,6 +140,18 @@ input {
   width: 800px;
   height: 800px;
 
+}
+.toggleTools {
+  width: 100%;
+  text-align: center;
+  margin: 2px;
+}
+
+.entryListing {
+  margin-left:10%;
+  margin-right:20%;
+  width: 80%;
+  text-align: center;
 }
 
 .twitter{

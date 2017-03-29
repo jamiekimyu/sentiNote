@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import EntryListing from './EntryListing';
-import GraphCarousel from './Graphs';
 import EntriesCarousel from './Graphs/EntriesCarousel';
-
+import EntryList from './EntriesList';
+import ReactPaginate from 'react-paginate';
 
 
 export default function User (props) {
@@ -27,7 +26,9 @@ export default function User (props) {
             </div>
             <div className="col-xs-12 col-sm-12">
               <h2> Previous Entries </h2>
-              <EntriesCarousel entries={myEntries} />
+              <div className='entriesBox'>
+                <EntryList entries={myEntries} />
+              </div>
             </div>
           </div>
 
