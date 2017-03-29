@@ -39,27 +39,29 @@ class SongInput extends Component {
               <textarea   value={this.props.lyrics} placeholder="Lyrics" id='lyricText' />
             </form>
           </div>
-          <div className="col-xs-12 col-md-6">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
-            <TagCloud
-              minSize={1}
-              maxSize={2}
-             tags={emotionCount.concat([])}
-              renderer={customRenderer}
-              shuffle={false}
-              onClick={tag => {emotionWord=tag.value; emotionInstances=tag.count; array = (emotion[tag.value]);this.setState({alertShow:true})}}
-            />
-            {
-               this.state.alertShow&&(
-               <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
-                  <a className="close" aria-label="close">&times;</a>
-                  <h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
-                 <p>Instances: {emotionInstances} </p>
-                 <span>Associated Emotions: </span>
-                 { array.map((emotion,i)=>(<span key={i}>{emotion + " "}</span>)) }
-               </div>
-              )
-            }
+          <div className="row row-centered">
+            <div className="col-xs-12 col-md-6">
+              <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
+              <TagCloud
+                minSize={1}
+                maxSize={2}
+              tags={emotionCount.concat([])}
+                renderer={customRenderer}
+                shuffle={false}
+                onClick={tag => {emotionWord=tag.value; emotionInstances=tag.count; array = (emotion[tag.value]);this.setState({alertShow:true})}}
+              />
+              {
+                this.state.alertShow&&(
+                <div className="alert alert-info" onClick={e=>{this.setState({alertShow:false})}}>
+                    <a className="close" aria-label="close">&times;</a>
+                    <h4 id='emotText'>{emotionWord[0].toUpperCase()+emotionWord.slice(1)}</h4>
+                  <p>Instances: {emotionInstances} </p>
+                  <span>Associated Emotions: </span>
+                  { array.map((emotion,i)=>(<span key={i}>{emotion + " "}</span>)) }
+                </div>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>

@@ -53,7 +53,7 @@ export class SearchTweets extends React.Component{
         <div className="row">
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <div className="form-group">
-              <label htmlFor="name" className="col-sm-2 control-label">Search Term:</label>
+              <label htmlFor="name" className="col-sm-3 control-label">Search Term:</label>
               <div className="col-sm-10">
                 <input
                   onChange={(event) => this.handleChange(event)}
@@ -70,24 +70,22 @@ export class SearchTweets extends React.Component{
         </div>
 
         <div className="row row-centered">
-          <div className="row">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
-            <TagCloud
-              minSize={1}
-              maxSize={2}
-              tags={emotionCount.concat([])}
-              renderer={customRenderer}
-              shuffle={false}
-              onClick={
-                tag => {
-                emotionWord=tag.value
-                emotionInstances=tag.count
-                array = (emotion[tag.value])
-                this.setState({alertShow:true})
-                }
+          <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
+          <TagCloud
+            minSize={1}
+            maxSize={2}
+            tags={emotionCount.concat([])}
+            renderer={customRenderer}
+            shuffle={false}
+            onClick={
+              tag => {
+              emotionWord=tag.value
+              emotionInstances=tag.count
+              array = (emotion[tag.value])
+              this.setState({alertShow:true})
               }
-            />
-          </div>
+            }
+          />
         </div>
 
         <div className='row'>
