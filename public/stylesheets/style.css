@@ -330,6 +330,10 @@ br {
   margin: 20px  0 55px 30px ;
 }
 
+.entryHeading {
+  margin: 0  0 20px 200px ;
+}
+
 #emotText {
   color: black;
 }
@@ -375,5 +379,36 @@ br {
   margin-right: 9px;
 }
 
+.dropDown {
+  display: inline-block;
+  padding: 10px;
+}
 
+.narrow {
+  margin: 0 200px 0 200px;
+}
+
+.maxW {
+  font-size:14px;
+}
+
+.top-margin50 {
+  top-margin: 400px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.margleft10 {
+  margin-left: 10px;
+}
+
+.topBot50{
+  margin: 50px 0;
+}
+
+.maxW1000 {
+  max-width: 800px
+}
 
