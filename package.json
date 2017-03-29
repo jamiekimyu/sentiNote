@@ -56,6 +56,7 @@
     "finalhandler": "^1.0.0",
     "lexed": "^1.0.10",
     "lyrics-fetcher": "^1.0.2",
+    "moment": "^2.18.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",

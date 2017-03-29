@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import { validateJournal } from "../utils";
 import {addEntry} from '../reducers/entry'
 import { teachEmotion, fetchAllTeachDocs } from "../reducers/teachJournal";
+const moment = require('moment')
+
 let user
 
 const mapstate = (state, ownProps) => {
@@ -11,12 +13,14 @@ const mapstate = (state, ownProps) => {
   let content = state.entries.selectedEntry.content || '';
   user = state.auth.user;
   let teachDocs = state.teachDoc.allTeachDocs
+  let date = moment(state.entries.selectedEntry.created_at).format('ll')
   
   return {
     title,
     user,
     content,
-    teachDocs
+    teachDocs,
+    date
   }
 }
 
