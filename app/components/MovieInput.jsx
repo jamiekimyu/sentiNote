@@ -42,23 +42,25 @@ class MovieInput extends Component {
         </div>
 
         <div>
-          <div className="margTopBot20">
-            <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
-            <TagCloud
-              minSize={1}
-              maxSize={2}
-              tags={emotionCount.concat([])}
-              renderer={customRenderer}
-              shuffle={false}
-              onClick={
-                tag => {
-                  emotionWord=tag.value
-                  emotionInstances=tag.count
-                  array = (emotion[tag.value])
-                  this.setState({alertShow:true})
+          <div className="row row-centered">
+            <div className="margTopBot20">
+              <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
+              <TagCloud
+                minSize={1}
+                maxSize={2}
+                tags={emotionCount.concat([])}
+                renderer={customRenderer}
+                shuffle={false}
+                onClick={
+                  tag => {
+                    emotionWord=tag.value
+                    emotionInstances=tag.count
+                    array = (emotion[tag.value])
+                    this.setState({alertShow:true})
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
 
