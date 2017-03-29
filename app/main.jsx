@@ -48,8 +48,8 @@ const ExampleApp = connect(
         </Nav>
 
         <Nav pullRight>
-          { !user.user&&(<NavItem className='margTop8' eventKey={7}><Link className='floatLeft' to='/showModal'><p id='showModal'>Login</p> </Link></NavItem>)  }
-          { !user.user ? <NavItem className='margTop8' eventKey={8}><Link className='floatLeft' to='/showModalSignUp'><p id='showModal'>Sign Up</p> </Link></NavItem> : <WhoAmI/>  }
+          { !user.user&&(<NavItem className='margTop8' eventKey={7}><Link to='/showModal'><p>Login</p> </Link></NavItem>)  }
+          { !user.user ? <NavItem className='margTop8' eventKey={8}><Link to='/showModalSignUp'><p>Sign Up</p> </Link></NavItem> : <WhoAmI/>  }
         </Nav>
       </Navbar.Collapse>
     </Navbar>
