@@ -2,8 +2,7 @@ import React from 'react';
 import store from '../store'
 import {hashHistory, Link} from 'react-router'
 import { Button, ButtonToolbar, Modal, Component } from 'react-bootstrap';
-import Login from './Login'
-
+import SignUp from '../components/SignUp';
 
 
 export default class extends React.Component {
@@ -28,10 +27,10 @@ export default class extends React.Component {
           aria-labelledby="contained-modal-title-lg"
         >
           <Modal.Header closeButton>
-            <Modal.Title className='center' id="contained-modal-title-lg"><p className='text-primary'>Login</p></Modal.Title>
+            <Modal.Title className='center' id="contained-modal-title-lg"><p className='text-primary'>Sign Up For a New Account</p></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Login/>
+            <SignUp/>
           </Modal.Body>
           <Modal.Footer>
             <Button className='button btn btn-danger' id='closeModal' onClick={this.hideModal}>Close</Button>

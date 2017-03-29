@@ -2,27 +2,24 @@ import React from 'react';
 
 export  function Signup ({signup}){
   return (
-    <div className="container">
-      <div className="row title">
-        <h1>Sign up for a new account</h1>
-      </div>
-      <div className='row'>
+    <div>
+      <div className='row center'>
         <form onSubmit={evt => {
           evt.preventDefault()
           signup(evt.target.username.value, evt.target.email.value, evt.target.password.value)}}>
           <div className="form-group">
-            <label>Name:</label>
-            <input name="username" placeholder="name"/>
+            <div><label>Name</label></div>
+            <input name="username" placeholder="name" required/>
           </div>
           <div className="form-group">
-            <label>Email:  </label>
-            <input name="email" placeholder="email" />
+            <div><label>Email  </label></div>
+            <input name="email" placeholder="email" required/>
           </div>
           <div className="form-group">
-            <label>Password:  </label>
-            <input name="password" type="password" placeholder="password"/>
+            <div><label>Password  </label></div>
+            <input name="password" type="password" placeholder="password" required/>
           </div>
-          <button type="submit" value="Signup" className="btn btn-primary">Sign Up </button>
+          <button type="submit" value="Signup" id='widerButton' className="btn btn-primary btn-sm">Sign Up </button>
         </form>
       </div>
 
