@@ -40,7 +40,7 @@ export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/login/local',
       {username, password})
-      .then(() => {browserHistory.push('/home'); dispatch(whoami())})
+      .then(() => {browserHistory.push('/home'); return dispatch(whoami())})
       .catch(() => dispatch(whoami()))
 
 export const logout = () =>
