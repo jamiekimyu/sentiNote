@@ -30,7 +30,6 @@ export default class User extends Component{
     const myEntries = this.state.myEntries.reverse().filter( entry => {
       return entry.title.match(this.state.filter) || entry.content.match(this.state.filter);
     });
-    console.log(user, myEntries);
     if(user) return (
       <div className="container">
         <div className="content">
