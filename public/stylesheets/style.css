@@ -416,8 +416,8 @@ br {
   margin-bottom: 70px;
 }
 
-.top225 {
-  margin-top:225px;
+.top265 {
+  margin-top:235px;
   width: 600px;
 }
 
@@ -435,3 +435,30 @@ br {
   width: 570px;
 }
 
+.twitBox {
+  height: 900px;
+}
+
+.maxH1000 {
+  height: 200px
+}
+
+.top100 {
+  margin-top:100px;
+}
+
+.margLeft20 {
+  margin-left: 20px;
+}
+
+.margBot30 {
+  margin-bottom: 30px;
+}
+
+.top40 {
+  margin-top: 40px;
+}
+
+.twitter {
+  margin: 20px 0 0 190px;
+}

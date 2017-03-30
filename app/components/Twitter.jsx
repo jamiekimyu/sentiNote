@@ -5,14 +5,14 @@ import SearchTweets from './SearchTweets';
 export default function Twitter(){
 	return (
 		<div className="container twitter">
-			<div className='row title'>
-				<h1 >Twitter Analysis</h1>
-			</div>
 			<div className='row'>
-				<div className="col-xs-12 col-lg-6">
+				<h1 className='margBot30' >Twitter Analysis</h1>
+			</div>
+			<div className='row twitBox'>
+				<div className="row">
 					<UserTweets />
 				</div>
-				<div className="col-xs-12 col-lg-6">
+				<div className="row top100">
 					<SearchTweets />
 				</div>
 			</div>

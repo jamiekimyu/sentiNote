@@ -18,7 +18,7 @@ export default function PieChartPolarity ({sentimentObject}) {
       data={dataRange(sentimentObject)}
       x="sentiment"
       y="score"
-      padding={{left:70,right:70, top:0}}
+      padding={{left:70,right:70}}
       style={{
         data: {
           fill: (data) => {
@@ -31,7 +31,7 @@ export default function PieChartPolarity ({sentimentObject}) {
         },
         labels: {
           fill: 'silver',
-          fontSize: 25
+          fontSize: 12
         }
       }}
     />

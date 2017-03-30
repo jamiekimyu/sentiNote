@@ -12,13 +12,13 @@ export default function SimpleBarChart({sentimentObject}) {
         return sentimentArray;
     };
 
-	const width = sentimentObject.identifier === 'movie' ? 700 : 600;
-    const right = sentimentObject.identifier === 'movie' ? 0 : 100;
-    const left = sentimentObject.identifier === 'movie' ? 175 : 5;
+	// const width = sentimentObject.identifier === 'movie' ? 700 : 600;
+ //    const right = sentimentObject.identifier === 'movie' ? 0 : 100;
+ //    const left = sentimentObject.identifier === 'movie' ? 175 : 5;
 
   	return (
-        <BarChart width={width} height={300} data={dataRange(sentimentObject)}
-            margin={{top: 5, right: right, left: left, bottom: 5}}>
+        <BarChart width={1000} height={500} data={dataRange(sentimentObject)}
+            margin={{top: 65, right: 100, left: 100, bottom: 5}}>
         <XAxis dataKey="sentiment"/>
         <YAxis />
         <CartesianGrid strokeDasharray="3 3"/>

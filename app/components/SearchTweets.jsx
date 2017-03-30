@@ -51,15 +51,16 @@ export class SearchTweets extends React.Component{
     return (
       <div>
         <div className="row">
-          <form onSubmit={(event) => this.handleSubmit(event)}>
+          <form onSubmit={(event) => this.handleSubmit(event)} className='margLeft20'>
             <div className="form-group">
-              <label htmlFor="name" className="col-sm-3 control-label">Search Term:</label>
+              <label htmlFor="name" className="col-sm-3 control-label">Search by Topic</label>
               <div className="col-sm-10">
                 <input
                   onChange={(event) => this.handleChange(event)}
                   value={this.state.twitterSearchTerm} name="twitterSearchTerm"
                   type="text"
                   className="form-control"
+                  placeholder="kittens"
                 />
               </div>
             </div>

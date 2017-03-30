@@ -14,7 +14,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                         <PieChartEmotion emotionObject={emotionObject} />
                     </div>
                 </div>
-                <div className="row top225">
+                <div className="row maxH1000">
                     <Carousel.Caption>
                         <h3>Emotion</h3>
                         <p>
@@ -31,11 +31,15 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div className="row center square">
                     <PieChartPolarity sentimentObject={sentimentObject} />
                 </div>
-                <div className="row top225">
+                <div className="row maxH1000">
                     <Carousel.Caption>
                         <h3>Polarity</h3>
-                        <p> The AFINN sentiment analysis can detect positive or negative words.
-                            See how polarizing your writing is!</p>
+                        <p> This chart was constructed by analyzing the content of
+                            the text relative to the AFINN word list. The list, created
+                            by Finn Arup Nielsen, is a list of words rated for valence with an integer
+                            between negative five and positive five. This chart represents the proportion
+                            of total positivity vs. total negativity. Words are analyzed individually-
+                            not contextually.</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
@@ -43,7 +47,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div className="row center square">
                     <PieChartEmotion emotionObject={smartObject} />
                 </div>
-                <div className="row top225">
+                <div className="row maxH1000 top40">
                     <Carousel.Caption>
                         <h3>Emotion- Machine Learning</h3>
                         <p>We are continually crowd-sourcing emotional analysis from our users.
@@ -59,11 +63,13 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div id='graphBox' className="row center">
                     <BarGraph sentimentObject={sentimentObject} />
                 </div>
-                <div className="row top150">
+                <div className="row maxH1000">
                     <Carousel.Caption>
                         <h3>Polarity Magnitude</h3>
-                        <p>Here you can see your positivity and negativity side-by-side
-                           with the net polarity of the writing!</p>
+                        <p>This chart, based on the AFINN word list, offers a clear visual representation
+                        of the total magnitude of positivity vs. negativity, as well as an overall score.
+                        Words are analyzed individually- not contextually.
+                        </p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
@@ -71,11 +77,12 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 <div id='graphBox' className="row center">
                     <LineGraph sentimentObject={sentimentObject} />
                 </div>
-                <div className="row top100">
+                <div className="row maxH1000">
                     <Carousel.Caption>
                         <h3>Polarity Over Time</h3>
-                        <p>See how each word affects the polarity of the writing!
-                        Useful for longer text</p>
+                        <p>This chart, based on the AFINN word list, shows how polarity changes
+                        from the beginning to the end of the document.
+                        Words are analyzed individually- not contextually.</p>
                     </Carousel.Caption>
                 </div>
             </Carousel.Item>
