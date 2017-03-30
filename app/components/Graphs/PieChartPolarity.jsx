@@ -7,8 +7,8 @@ export default function PieChartPolarity ({sentimentObject}) {
     let sentimentArray = [];
 
 
-    if(sentimentObj.totalPositive>0) sentimentArray.push({sentiment: "Pos", score: sentimentObj.totalPositive });
-    if(sentimentObj.totalNegative<0) sentimentArray.push({sentiment: "Neg", score: Math.abs(sentimentObj.totalNegative) });
+    if(sentimentObj.totalPositive>0) sentimentArray.push({sentiment: "Positive", score: sentimentObj.totalPositive });
+    if(sentimentObj.totalNegative<0) sentimentArray.push({sentiment: "Negative", score: Math.abs(sentimentObj.totalNegative) });
 
     return sentimentArray;
   };
@@ -18,12 +18,13 @@ export default function PieChartPolarity ({sentimentObject}) {
       data={dataRange(sentimentObject)}
       x="sentiment"
       y="score"
+      padding={{left:70,right:70}}
       style={{
         data: {
           fill: (data) => {
-            if(data.x === "Pos"){
+            if(data.x === "Positive"){
               return "green"
-            } else if(data.x === "Neg"){
+            } else if(data.x === "Negative"){
               return "red"
             }
           }

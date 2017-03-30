@@ -20,6 +20,7 @@ export default function PieChartEmotion ({emotionObject}) {
       data={dataRange(emotionObject)}
       x="emotion"
       y="intensity"
+      padding={{left:70,right:70}}
       style={{
         data: {
           fill: (data) => {
@@ -35,7 +36,7 @@ export default function PieChartEmotion ({emotionObject}) {
               return "#FFBC0B"
             } else if(data.x === "sadness"){
               return "#3DA6AB"
-            } else if(data.x === "surprise"){
+            } else if(data.x === "suprise"){
               return "#FCC530"
             } else if(data.x === "trust"){
               return "#47C5DA"

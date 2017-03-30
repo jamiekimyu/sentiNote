@@ -40,15 +40,16 @@ export class UserHistoryTweets extends React.Component{
 	render(){
 		return (
 			<div className='twitter'>
-				<form onSubmit={(event) => this.handleSubmit(event)}>
+				<form onSubmit={(event) => this.handleSubmit(event)} className='margLeft20'>
 					<div className="form-group">
-						<label htmlFor="name" className="col-sm-2 control-label">Twitter Handle:</label>
+						<label htmlFor="name" className="col-sm-2 control-label">Search by Handle</label>
 						<div className="col-sm-10">
 							<input
 								onChange={(event) => this.handleChange(event)}
 								value={this.state.twitterHandle} name="twitterHandle"
 								type="text"
 								className="form-control"
+								placeholder="@theRealDonald"
 							/>
 						</div>
 					</div>

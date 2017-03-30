@@ -25,7 +25,7 @@ class MovieInput extends Component {
     return (
       <div className='container'>
         <div>
-          <h1 className='title'>Analyze Movie Scripts</h1>
+          <h1 id='movieHeader'>Analyze Movie Scripts</h1>
         </div>
         <div className="margTopBot20">
           <form className='movieForm' onSubmit={this.handleClick}>

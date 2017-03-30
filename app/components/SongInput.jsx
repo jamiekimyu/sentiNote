@@ -27,8 +27,8 @@ class SongInput extends Component {
         </div>
 
         <div className='row centered'>
-          <div className="col-xs-12 col-md-6">
-            <form onSubmit={this.handleClick}>
+          <div className="row">
+            <form onSubmit={this.handleClick} className='songForm'>
               <Field name="song_title" type="text"  component={renderField} label="Title" />
               <br />
               <br />
@@ -40,7 +40,7 @@ class SongInput extends Component {
             </form>
           </div>
           <div className="row row-centered">
-            <div className="col-xs-12 col-lg-6">
+            <div className="row">
               <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
               <TagCloud
                 minSize={1}
