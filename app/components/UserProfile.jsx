@@ -8,7 +8,6 @@ import ReactPaginate from 'react-paginate';
 export default class User extends Component{
   constructor(props){
     super(props);
-    console.log("PROPS", props);
     this.state= {
       user: props.user.user,
       myEntries: props.user.myEntries,
@@ -20,7 +19,6 @@ export default class User extends Component{
   }
 
   handleFilterChange(e){
-    console.log(e.target.value);
     this.setState({
       filter: e.target.value
     })
