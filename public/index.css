@@ -34,6 +34,7 @@ textarea {
 
 .title{
   margin-left: 25px;
+  color: red !important;
 }
 
 
@@ -145,6 +146,10 @@ input {
   width: 100%;
   text-align: center;
   margin: 2px;
+}
+
+#inputH2{
+  height: 30%;
 }
 
 .entryListing {
