@@ -168,6 +168,10 @@ input:-webkit-autofill {
   margin-top: 29px
 }
 
+.movieForm {
+  margin-left: 10px;
+}
+
 #about {
   height: 130px;
   width: 130px;
@@ -264,13 +268,10 @@ br {
   color: white;
 }
 
-/*.journalForm {
-  width: 1000px;
-  margin: 0 auto;
-}*/
+
 
 #journalContent {
-  height:250px;
+  height: 50px;
   width: 90%;
   margin: 0 0 10px 30px;
 }
@@ -304,7 +305,7 @@ br {
 
 #lyricText {
  height:200px;
- width: 100%;
+ width: 33%;
  border-radius: 1%;
  margin-left: 10px;
 }
@@ -319,10 +320,14 @@ br {
 }
 
 #songHeading {
-  margin: 20px  0 25px 20px ;
+  margin: 20px  0 65px 20px ;
 }
 #journalHeader {
-  margin: 20px  0 55px 30px ;
+  margin: 20px 0 55px 0;
+}
+
+.journalForm {
+  margin-left: 17px
 }
 
 .entryHeading {
@@ -405,5 +410,28 @@ br {
 
 .maxW1000 {
   max-width: 800px
+}
+
+#movieHeader {
+  margin-bottom: 70px;
+}
+
+.top225 {
+  margin-top:225px;
+  width: 600px;
+}
+
+.top175 {
+  margin-top:175px;
+  width: 600px;
+}
+.songForm {
+  margin-left: 27px;
+}
+
+.square {
+  margin-top:0;
+  height: 500px;
+  width: 570px;
 }
 

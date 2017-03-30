@@ -40,7 +40,6 @@ class JournalInput extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-12 col-lg-6">
             <form className='journalForm' onSubmit={addEntry}>
               <div>
                 <Field name="title" type="text" className="" component={journalRenderField} id="title" label="Title" />
@@ -48,18 +47,19 @@ class JournalInput extends Component {
                 <button type="submit" disabled={submitting} className="btn btn-success" id='journalSubmit'>Submit Entry</button>
               </div>
               <div>
-                <Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" /></div>
-              <Field name="user" type="hidden"  value={user} component={journalRenderField} />
-            </form>
-          </div>
-
-          <div className="col-xs-12 col-lg-6">
-            <div className="row row-centered">
-              <div>
-                <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject} smartObject={smartObject} />
+                <Field transcript={transcript} onChangePostText={onChangePostText} name="content" type="text" className="form-control field" component={journalRenderField} id="content" label="Content" />
+                <Field name="user" type="hidden"  value={user} component={journalRenderField}/>
               </div>
-                <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
-            </div>
+            </form>
+        </div>
+        
+        <div className="row row-centered margTopBot20">
+          <GraphCarousel sentimentObject={sentimentObject} emotionObject={emotionObject} smartObject={smartObject} />
+        </div>
+        
+        <div className='row row-centered'>
+          <TagCloud minSize={1} maxSize={2} tags={emotionCount.concat([])} renderer={customRenderer} shuffle={false} onClick={tag => {emotionWord=tag.value;emotionInstances=tag.count; array = (emotion[tag.value]); this.setState({alertShow:true})}}/>
+        </div>
 
             {
               this.state.alertShow&&(
@@ -72,8 +72,6 @@ class JournalInput extends Component {
                 </div>
               )
             }
-          </div>
-        </div>
       </div>
     );
   };
