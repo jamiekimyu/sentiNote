@@ -11,15 +11,18 @@ export default function SimpleBarChart({sentimentObject}) {
         if(sentimentObj.score) sentimentArray.push({sentiment: "Overall", score: sentimentObj.totalPositive + sentimentObj.totalNegative });
         return sentimentArray;
     };
-	
+
+	const width = sentimentObject.identifier === 'movie' ? 700 : 600;
+    const right = sentimentObject.identifier === 'movie' ? 0 : 100;
+    const left = sentimentObject.identifier === 'movie' ? 175 : 5;
+
   	return (
-        <BarChart width={600} height={300} data={dataRange(sentimentObject)}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <BarChart width={width} height={300} data={dataRange(sentimentObject)}
+            margin={{top: 5, right: right, left: left, bottom: 5}}>
         <XAxis dataKey="sentiment"/>
         <YAxis />
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
-        <Legend />
         <ReferenceLine y={0} stroke='#000'/>
         <Bar dataKey="score" fill="#8884d8" />
         </BarChart>

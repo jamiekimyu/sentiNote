@@ -48,7 +48,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 </div>
             </Carousel.Item>
             <Carousel.Item>
-                <div id='graphBox' className="col-centered">
+                <div id='graphBox' className="col-xs-12 col-md-6 col-centered">
                     <BarGraph sentimentObject={sentimentObject} />
                 </div>
                 <div className="row top-margin">
@@ -60,7 +60,7 @@ export default function GraphCarousel({sentimentObject, emotionObject, smartObje
                 </div>
             </Carousel.Item>
             <Carousel.Item>
-                <div id='graphBox' className="col-centered">
+                <div id='graphBox' className="col-xs-12 col-md-6 col-centered">
                     <LineGraph sentimentObject={sentimentObject} />
                 </div>
                 <div className="row top-margin">
