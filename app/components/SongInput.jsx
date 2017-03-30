@@ -40,7 +40,7 @@ class SongInput extends Component {
             </form>
           </div>
           <div className="row row-centered">
-            <div className="col-xs-12 col-md-6">
+            <div className="col-xs-12 col-lg-6">
               <GraphCarousel emotionObject={emotionObject} sentimentObject={sentimentObject} smartObject={smartObject} />
               <TagCloud
                 minSize={1}

@@ -73,8 +73,8 @@ input:-webkit-autofill {
 
 #graphBox {
   display:inline-block;
-  height: 200px;
-  width: 680px;
+  height: 300px;
+  width: 1000px;
 }
 
 @-webkit-keyframes roll-in-left{0%{-webkit-transform:translateX(-800px) rotate(-540deg);transform:translateX(-800px) rotate(-540deg);opacity:0}100%{-webkit-transform:translateX(0) rotate(0deg);transform:translateX(0) rotate(0deg);opacity:1}}@keyframes roll-in-left{0%{-webkit-transform:translateX(-800px) rotate(-540deg);transform:translateX(-800px) rotate(-540deg);opacity:0}100%{-webkit-transform:translateX(0) rotate(0deg);transform:translateX(0) rotate(0deg);opacity:1}}
@@ -254,11 +254,6 @@ input:-webkit-autofill {
 
 .pieBox1 {
   border-radius: 100%;
-}
-
-.pieBox {
-  background-color: #2a9fd6;
-  border-radius: 70%;
 }
 
 #cloudKey {
