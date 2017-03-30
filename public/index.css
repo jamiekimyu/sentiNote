@@ -147,6 +147,10 @@ input {
   margin: 2px;
 }
 
+#inputH2{
+  height: 30%;
+}
+
 .entryListing {
   margin-left:10%;
   margin-right:20%;
