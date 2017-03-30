@@ -71,12 +71,12 @@ class SpeechInput extends Component {
     };
 
     return (
-      <button className="btn btn-primary microphone" onClick={() => {
+      <div className="btn btn-primary microphone" onClick={() => {
         this.listening = !this.listening;
         toggle(this.listening);
       }}>
         <img className="glyphicon" src='/android-microphone.png'/>
-      </button>    );
+      </div>    );
   }
 };
 
