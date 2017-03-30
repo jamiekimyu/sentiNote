@@ -8,19 +8,28 @@ import ReactPaginate from 'react-paginate';
 export default class User extends Component{
   constructor(props){
     super(props);
-    console.log("PROPS", props);
     this.state= {
       user: props.user.user,
-      myEntries: props.user.myEntries
+      myEntries: props.user.myEntries,
+      filter: ''
     }
 
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+
+  }
+
+  handleFilterChange(e){
+    this.setState({
+      filter: e.target.value
+    })
   }
 
 
   render(){
     const user = this.state.user;
-    const myEntries = this.state.myEntries;
-    console.log(user, myEntries);
+    const myEntries = this.state.myEntries.reverse().filter( entry => {
+      return entry.title.match(this.state.filter) || entry.content.match(this.state.filter);
+    });
     if(user) return (
       <div className="container">
         <div className="content">
@@ -37,7 +46,8 @@ export default class User extends Component{
                 <p> {user.description} </p>
               </div>
               <div className="col-xs-12 col-sm-12">
-                <h2> Previous Entries </h2>
+                <h2> Previous Entries</h2>
+                <input placeholder="Filter Entries" id='entriesFilter' onChange={(e) => this.handleFilterChange(e)}/>
                 <div className='entriesBox'>
                   <EntryList entries={myEntries} />
                 </div>

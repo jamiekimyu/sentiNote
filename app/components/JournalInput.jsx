@@ -35,8 +35,8 @@ class JournalInput extends Component {
 
     return (
       <div className='container'>
-        <div className="row title">
-          <h1 id='journalHeader'>Journal</h1>
+        <div className="row">
+          <h1 id='journalHeader' className='title'>Journal</h1>
         </div>
 
         <div className="row">
