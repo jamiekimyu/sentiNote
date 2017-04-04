@@ -11,9 +11,9 @@ let title, content, user, sentimentObject, emotionObject, emotionCount
 
 const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
-  content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
+  content =   state.transcription ? state.transcription : '';
   user =   state.auth.user
-  console.log('about to perform emotinator on ', state.form.journalForm);
+  console.log('about to perform emotinator on ', content);
   let emotionReturn = emotinator(content);
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
@@ -30,7 +30,7 @@ const mapstate = (state) => {
     emotionObject,
     emotionCount,
     smartObject,
-    trascript: state.transcription,
+    transcript: state.transcription,
     alertShow: false
   }
 }
