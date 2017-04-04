@@ -41,7 +41,7 @@ const mapDisptachToProps = (dispatch, ownProps) => {
       e.preventDefault()
       dispatch(addEntry({title,content,sent:sentimentObject,emotion:emotionObject,user_id:user.id}))
       dispatch(reset('journalForm'))
-      window.location.replace('/user')
+      window.location.replace('/home')
     },
     onChangePostText: (event) => {
       console.log('text is being changed');
