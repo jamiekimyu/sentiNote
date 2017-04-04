@@ -51,7 +51,7 @@ export function emotinator(content) {
 
 export function bayesinator(teachDocs, content) {
   let smartObject = {}
-  let sentenceArray = new Lexed(content).sentenceLevel()  
+  let sentenceArray = new Lexed(content).sentenceLevel()
   teachDocs.forEach(teachDoc=>{
     for(let key in teachDoc){
       if(Array.isArray(teachDoc[key])&&teachDoc[key].length){
@@ -163,7 +163,7 @@ export const journalRenderField = ({ onChangePostText, transcript, input, label,
     {
         label==='Content'&&(
           <div className="">
-              <textarea {...input} value={transcript} onChange={onChangePostText} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
+              <textarea {...input} placeholder={label} type='textarea' className="form-control field" id="journalContent" required/>
               {touched && error && <span>{error}</span>}
           </div>
         )

@@ -13,7 +13,7 @@ const mapstate = (state) => {
   title =  state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.title ? state.form.journalForm.values.title : '' : '' : ''
   content =   state.form.journalForm ? state.form.journalForm.values ? state.form.journalForm.values.content ? state.form.journalForm.values.content : '' : '' : ''
   user =   state.auth.user
-  console.log('about to perform emotinator');
+  console.log('about to perform emotinator on ', state.form.journalForm);
   let emotionReturn = emotinator(content);
   emotionObject = emotionReturn[0];
   emotionCount = emotionReturn[1];
