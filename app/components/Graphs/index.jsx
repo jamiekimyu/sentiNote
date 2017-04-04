@@ -6,6 +6,7 @@ import LineGraph from './LineGraph';
 import { Carousel } from 'react-bootstrap'
 
 export default function GraphCarousel({sentimentObject, emotionObject, smartObject}) {
+    console.log('CAROUSEL IS BEING RENDERED!', sentimentObject, emotionObject, smartObject);
     return(
         <Carousel>
             <Carousel.Item>
