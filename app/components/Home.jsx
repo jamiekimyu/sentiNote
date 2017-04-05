@@ -40,7 +40,7 @@ const Home = () => (
 					<img  id='yelpText' className='img-responsive' src='/movieText.png'/>
 				 </div> 
 			</Link>
-			<Link to='/aboutUs'>
+			<Link to='/aboutMe'>
 				<div id='box6' className="col-xs-6 col-md-4 col-centered">  
 					<img id='about' className='img-responsive center' src='/about.png'/>
 				</div> 

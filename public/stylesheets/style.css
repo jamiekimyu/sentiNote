@@ -462,3 +462,47 @@ br {
 .twitter {
   margin: 20px 0 0 190px;
 }
+
+/*Info Page*/
+.parallax-container {
+  min-height: 400px;
+  line-height: 0;
+}
+
+#index-banner {
+  height: 80vh;
+}
+
+#bannertitle {
+  font-family: 'Satisfy', cursive;
+  text-shadow: 3px 3px 2px #000000;
+  font-size: 150px;
+}
+
+.banner-content {
+  position: relative;
+  padding: 100px 15px 70px;
+  text-align: center;
+}
+
+.banner-button {
+  margin-top: 2%;
+  margin-left: 4%;
+}
+
+#vision-statement {
+  background-color: black;
+}
+
+.section-heading {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.text-light {
+  color: rgba(255,255,255,.7);
+  margin-bottom: 5%;
+  font-size: 20px;
+}
+/*End of Info Page*/
