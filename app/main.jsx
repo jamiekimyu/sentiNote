@@ -1,26 +1,27 @@
 'use strict'
 import axios from 'axios';
-import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory, Link} from 'react-router'
-import {render} from 'react-dom'
-import {connect, Provider} from 'react-redux'
-import store from './store'
-import Home from './components/Home'
-import Login from './components/Login'
-import WhoAmI from './components/WhoAmI'
-import JournalInputContainer from './containers/JournalInputContainer'
-import SongInputContainer from './containers/SongInputContainer'
-import UserProfileContainer from './containers/UserProfileContainer'
-import EditProfileContainer from './containers/EditProfileContainer'
+import React from 'react';
+import {Router, Route, IndexRedirect, browserHistory, Link} from 'react-router';
+import {render} from 'react-dom';
+import {connect, Provider} from 'react-redux';
+import store from './store';
+import Home from './components/Home';
+import Login from './components/Login';
+import WhoAmI from './components/WhoAmI';
+import JournalInputContainer from './containers/JournalInputContainer';
+import SongInputContainer from './containers/SongInputContainer';
+import UserProfileContainer from './containers/UserProfileContainer';
+import EditProfileContainer from './containers/EditProfileContainer';
 import Twitter from './components/Twitter';
 import UserHistoryTweets from './components/UserHistoryTweets';
 import EntryContainer from './containers/EntryContainer';
 import MovieInputContainer from './containers/MovieInputContainer';
-import ModalContainer from './containers/ModalContainer'
-import ModalSignUpContainer from './containers/ModalSignUpContainer'
+import ModalContainer from './containers/ModalContainer';
+import ModalSignUpContainer from './containers/ModalSignUpContainer';
+import Info from './components/InfoPage';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap';
-import {fetchTeachDoc, fetchAllTeachDocs} from './reducers/teachJournal'
-import {whoami} from './reducers/auth'
+import {fetchTeachDoc, fetchAllTeachDocs} from './reducers/teachJournal';
+import {whoami} from './reducers/auth';
 import {fetchMovieLinks} from './reducers/movie';
 import { selectEntryById } from './reducers/entry';
 
@@ -101,6 +102,7 @@ render (
 				<Route path="/movies" component={MovieInputContainer} onEnter={onMovieEnter}/>
         <Route path='/showModal' component={ModalContainer} />
         <Route path='/showModalSignUp' component={ModalSignUpContainer} />
+        <Route path='/info' component={Info} />
       </Route>
     </Router>
   </Provider>,
