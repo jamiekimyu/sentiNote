@@ -1,19 +1,16 @@
 import React,{ Component } from 'react';
 import { Parallax } from 'react-parallax';
-import ParallaxPart1 from './ParallaxPart1'
-import NonParallaxPart1 from './NonParallaxPart1'
+import InfoPage from './ParallaxPart1'
 
 class Info extends Component {
 
     render () {
-
         return (
              <div>
                 <Parallax bgImage="./public/starrynight.jpg" strength={400}>
                     <br />
-                    <ParallaxPart1 />
+                    <InfoPage />
                 </Parallax>
-                {/*<NonParallaxPart1 />*/}
             </div>
         );
    };

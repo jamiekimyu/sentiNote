@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ParallaxPart1 = () => {
+const InfoPage = () => {
   return (
     <div id="index-banner" className="parallax-container">
         <div className="container banner-content">
@@ -12,4 +12,4 @@ const ParallaxPart1 = () => {
   )
 }
 
-export default ParallaxPart1;
+export default InfoPage;
